@@ -1,0 +1,26 @@
+.bonsaiSegment{
+     float:inline-start;  width: 80%; padding: 1%;
+    
+}
+
+.quantity {
+    margin-right: 10%;
+}
+
+
+.contenedor{
+    display:inline-block;
+
+}
+
+
+.imagenB{
+    float: left;
+}
+.imagenB,
+.bonsaiSegment{
+    display:inline-block;
+
+    vertical-align:center;
+}
+
