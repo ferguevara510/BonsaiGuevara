@@ -1,4 +1,5 @@
 <?php
+
 class Cliente {
     public $id_cliente;
     public $nombre;
@@ -9,7 +10,7 @@ class Cliente {
     public $numTelefono;
     public $imagenPerfil;
 
-    public function __constructor() {
+    public function __construct() {
         $this->id_cliente = 0;
         $this->nombre = '';
         $this->apellidoPaterno = '';
@@ -17,6 +18,34 @@ class Cliente {
         $this->correo = '';
         $this->contrasena = '';
         $this->numTelefono = '';
-        $this->imagenPerfil = '';
+        $this->imagenPerfil = 'image.png';
+    }
+
+    public function registrarCliente(){
+
+        $validacion = false;
+        $mysqli = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
+
+        if($mysqli === false){
+            die("ERROR: Could not connect. " . $mysqli->connect_error);
+        }
+
+        $sql="INSERT INTO cliente (nombre, apellidoMaterno, apellidoPaterno, correo, contrasena, numTelefono, imagenPerfil) values (?,?,?,?,?,?,?)";
+        $stmt = $mysqli->prepare($sql);
+        if($stmt){
+            $stmt->bind_param("sssssss", $this->nombre, $this->apellidoMaterno, $this->apellidoPaterno, $this->correo, $this->contrasena, $this->numTelefono,$this->imagenPerfil);
+            
+            if($stmt->execute()){
+                $validacion = true;
+            }
+
+            $stmt->close();
+        } 
+        $mysqli->close();
+        return $validacion;
+    }
+
+    public function encriptarContrasena(){
+        $this->contrasena = md5($this->contrasena);
     }
 }
