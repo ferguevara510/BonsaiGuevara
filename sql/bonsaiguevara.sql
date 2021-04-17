@@ -2,7 +2,7 @@ CREATE DATABASE bonsaiguevara;
 USE bonsaiguevara;
 
 CREATE TABLE administrador (
-  usuario int(11) PRIMARY KEY NOT NULL,
+  usuario varchar(25) PRIMARY KEY NOT NULL,
   nombre varchar(100) NOT NULL,
   apellidoPaterno varchar(100) NOT NULL,
   apellidoMaterno varchar(100) NOT NULL,
