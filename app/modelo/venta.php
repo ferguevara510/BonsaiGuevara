@@ -5,7 +5,7 @@ class Venta {
     public $id_direccion;
     public $id_pago;
 
-    public function __constructor() {
+    public function __construct() {
         $this->folio = 0;
         $this->id_carrito = 0;
         $this->id_direccion = 0;

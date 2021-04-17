@@ -22,13 +22,9 @@ class Cliente {
     }
 
     public function registrarCliente(){
-
+        $this->encriptarContrasena();
         $validacion = false;
         $mysqli = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
-
-        if($mysqli === false){
-            die("ERROR: Could not connect. " . $mysqli->connect_error);
-        }
 
         $sql="INSERT INTO cliente (nombre, apellidoMaterno, apellidoPaterno, correo, contrasena, numTelefono, imagenPerfil) values (?,?,?,?,?,?,?)";
         $stmt = $mysqli->prepare($sql);
