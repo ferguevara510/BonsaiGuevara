@@ -9,7 +9,7 @@ class Cuidado {
     public $tiempoTransplante;
     public $tipoCultivo;
 
-    public function __constructor() {
+    public function __construct() {
         $this->id_cuidado = 0;
         $this->id_especie = 0;
         $this->estilo = 0;

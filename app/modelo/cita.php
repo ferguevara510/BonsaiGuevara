@@ -7,7 +7,7 @@ class Cita {
     public $descripcion;
     public $id_cliente;
 
-    public function __constructor() {
+    public function __construct() {
         $this->folio = 0;
         $this->fecha = 00-00-0000;
         $this->hora = 00:00:00;

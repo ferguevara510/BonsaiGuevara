@@ -9,7 +9,7 @@ class Administrador {
     public $numTelefono;
     public $contrasena;
 
-    public function __constructor() {
+    public function __construct() {
         $this->usuario = '';
         $this->nombre = '';
         $this->apellidoPaterno = '';
