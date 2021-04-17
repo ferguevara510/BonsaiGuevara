@@ -84,7 +84,7 @@ CREATE TABLE direccion (
   numInt varchar(5) NOT NULL,
   colonia varchar(50) NOT NULL,
   codigoPostal varchar(5) NOT NULL,
-  cuidad varchar(50) NOT NULL,
+  ciudad varchar(50) NOT NULL,
   estado varchar(50) NOT NULL
 );
 

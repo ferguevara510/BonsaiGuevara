@@ -11,5 +11,12 @@ class Cliente {
 
     public function __constructor() {
         $this->id_cliente = 0;
+        $this->nombre = '';
+        $this->apellidoPaterno = '';
+        $this->apellidoMaterno = '';
+        $this->correo = '';
+        $this->contrasena = '';
+        $this->numTelefono = '';
+        $this->imagenPerfil = '';
     }
 }
