@@ -1,13 +1,6 @@
 <?php
 
-/**
- * Database config variables
- */
-define('DB_SERVER', 'localhost');
-define("DB_USERNAME", "root");
-define("DB_PASSWORD","");
-define("DB_DATABASE", "bonsaiguevara");
-
+require_once "configuracion/env.php";
 
 $mysqli = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
  

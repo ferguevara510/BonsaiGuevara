@@ -133,46 +133,46 @@ require_once "../../configuracion/env.php";
             <div class="u-clearfix u-sheet u-sheet-1">
                 <h1 class="u-text u-text-default u-text-1">Registro de Usuario</h1>
                 <div class="u-form u-form-1">
-                    <form action="#" method="POST" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form"
+                    <form action="<?php echo URL_CONTROLADORES?>registrarCliente.php" method="POST" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form"
                         style="padding: 10px" source="custom" name="form">
                         <div class="u-form-group u-form-name">
                             <label for="name-dc48" class="u-form-control-hidden u-label">Nombre</label>
-                            <input type="text" placeholder="Nombre" id="name-dc48" name="name"
+                            <input type="text" placeholder="Nombre" id="nombre" name="nombre"
                                 class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
                         </div>
                         <div class="u-form-group u-form-name u-form-group-2">
-                            <label for="name-8ced" class="u-form-control-hidden u-label">Nombre</label>
-                            <input type="text" placeholder="Apellido Paterno" id="name-8ced" name="name-1"
+                            <label for="name-8ced" class="u-form-control-hidden u-label">Apellido Paterno</label>
+                            <input type="text" placeholder="Apellido Paterno" id="apellidoPeterno" name="apellidoPaterno"
                                 class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
                         </div>
                         <div class="u-form-group u-form-name u-form-group-3">
-                            <label for="name-998d" class="u-form-control-hidden u-label">Nombre</label>
-                            <input type="text" placeholder="Apellido Materno" id="name-998d" name="name-2"
+                            <label for="name-998d" class="u-form-control-hidden u-label">Apellido Materno</label>
+                            <input type="text" placeholder="Apellido Materno" id="apellidoMaterno" name="apellidoMaterno"
                                 class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
                         </div>
                         <div class="u-form-group u-form-group-4">
-                            <label for="text-5cce" class="u-form-control-hidden u-label"></label>
-                            <input type="text" placeholder="Contraseña" id="text-5cce" name="text"
+                            <label for="text-5cce" class="u-form-control-hidden u-label">Contraseña</label>
+                            <input type="password" placeholder="Contraseña" id="contrasena" name="contrasena"
                                 class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
                         </div>
                         <div class="u-form-group u-form-group-5">
-                            <label for="text-d7af" class="u-form-control-hidden u-label"></label>
-                            <input type="text" placeholder="Introduzca de nuevo su contraseña" id="text-d7af"
-                                name="text-1" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white"
+                            <label for="text-d7af" class="u-form-control-hidden u-label">Confirmar Contraseña</label>
+                            <input type="password" placeholder="Confirmar contraseña" id="confirmarContrasena"
+                                name="confirmarContrasena" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white"
                                 required="">
                         </div>
                         <div class="u-form-email u-form-group">
-                            <label for="email-dc48" class="u-form-control-hidden u-label">Email</label>
-                            <input type="email" placeholder="Correo" id="email-dc48" name="email"
+                            <label for="email-dc48" class="u-form-control-hidden u-label">Correo</label>
+                            <input type="email" placeholder="Correo" id="correo" name="correo"
                                 class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
                         </div>
                         <div class="u-form-group u-form-group-7">
-                            <label for="text-2386" class="u-form-control-hidden u-label"></label>
-                            <input type="text" placeholder="Telefono" id="text-2386" name="text-2"
+                            <label for="text-2386" class="u-form-control-hidden u-label">Teléfono</label>
+                            <input type="text" placeholder="Teléfono" id="telefono" name="telefono"
                                 class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
                         </div>
                         <div class="u-align-right u-form-group u-form-submit">
-                            <a href="#" class="boton-verde u-btn u-btn-submit u-button-style u-btn-1">ACEPTAR<br>
+                            <a href="<?php echo URL_CONTROLADORES?>registrarCliente.php" class="boton-verde u-btn u-btn-submit u-button-style u-btn-1">Aceptar<br>
                             </a>
                             <input type="submit" value="submit" class="u-form-control-hidden">
                         </div>
@@ -185,8 +185,9 @@ require_once "../../configuracion/env.php";
                 </div>
                 <div alt="" class="u-image u-image-circle u-image-registrar" data-image-width="1280" data-image-height="854">
                 </div>
-                <a href="https://nicepage.com/one-page-template"
-                    class="boton-verde u-btn u-button-style u-hover-palette-1-dark-1 u-btn-2">CANCELAR</a>
+                <a href="../../index.php
+                "
+                    class="boton-verde u-btn u-button-style u-hover-palette-1-dark-1 u-btn-2">Cancelar</a>
                 <p class="u-text u-text-registrar">Da click para cambiar tu imagen de perfil</p>
             </div>
         </section>
