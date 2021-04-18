@@ -176,19 +176,16 @@ require_once "../../configuracion/env.php";
                             </a>
                             <input type="submit" value="submit" class="u-form-control-hidden">
                         </div>
-                        <div class="u-form-send-message u-form-send-success"> Gracias! Tu mensaje ha sido enviado.
-                        </div>
-                        <div class="u-form-send-error u-form-send-message"> No se puede enviar su mensaje. Por favor,
-                            corrija los errores y vuelva a intentarlo. </div>
+                        <div class="u-form-send-message u-form-send-success"> Tus datos han sido registrados. </div>
+                        <div class="u-form-send-error u-form-send-message"> Ha ocurrido un error al guardarlo. </div>
                         <input type="hidden" value="" name="recaptchaResponse">
                     </form>
                 </div>
                 <div alt="" class="u-image u-image-circle u-image-registrar" data-image-width="1280" data-image-height="854">
                 </div>
-                <a href="../../index.php
-                "
+                <a href="../../index.php"
                     class="boton-verde u-btn u-button-style u-hover-palette-1-dark-1 u-btn-2">Cancelar</a>
-                <p class="u-text u-text-registrar">Da click para cambiar tu imagen de perfil</p>
+                <p class="u-text u-text-registrar">Selecciona tu imagen</p>
             </div>
         </section>
     </div>
