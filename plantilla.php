@@ -8,28 +8,29 @@
     <meta name="description" content="">
     <meta name="page_type" content="np-template-header-footer-from-plugin">
     <title>Inicio</title>
-    <link rel="stylesheet" href="css/nicepage.css" media="screen">
-    <link rel="stylesheet" href="css/Iniciar-Sesión.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-    <script class="u-script" type="text/javascript" src="js/nicepage.js" defer=""></script>
+    <link rel="stylesheet" href="<?php echo URL_CSS?>nicepage.css" media="screen">
+    <link rel="stylesheet" href="<?php echo URL_CSS?>Iniciar-Sesión.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="<?php echo URL_CSS?>style.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo URL_CSS?>bootstrap.css">
+    <script class="u-script" type="text/javascript" src="<?php echo URL_JS?>nicepage.js" defer=""></script>
+
 
     <meta name="generator" content="Nicepage 3.11.0, nicepage.com">
     <link id="u-theme-google-font" rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
     <link id="u-page-google-font" rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
-    <script type="text/javascript" src="js/jquery.1.11.1.js"></script>
-    <script type="text/javascript" src="js/bootstrap.js"></script>
-    <script type="text/javascript" src="js/jquery.isotope.js"></script>
-    <script type="text/javascript" src="js/jqBootstrapValidation.js"></script>
+    <script type="text/javascript" src="<?php echo URL_JS?>jquery.1.11.1.js"></script>
+    <script type="text/javascript" src="<?php echo URL_JS?>bootstrap.js"></script>
+    <script type="text/javascript" src="<?php echo URL_JS?>jquery.isotope.js"></script>
+    <script type="text/javascript" src="<?php echo URL_JS?>jqBootstrapValidation.js"></script>
 
     <script type="application/ld+json">{
 		"@context": "http://schema.org",
 		"@type": "Organization",
 		"name": "",
 		"url": "index.html",
-		"logo": "images/bonsai_karla.png"
+		"logo": "../../publico/imagenes/bonsai_karla.png"
 }</script>
     <meta property="og:title" content="Inicio">
     <meta property="og:type" content="website">
@@ -42,7 +43,7 @@
     <header class="u-clearfix u-header u-header" id="sec-e89e">
         <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
             <a href="index.html" class="u-image u-logo u-image-1" data-image-width="299" data-image-height="266">
-                <img src="images/bonsai_karla.png" class="u-logo-image u-logo-image-1" data-image-width="64">
+            <img src="<?php echo URL_IMAGENES?>bonsai_karla.png" class="u-logo-image u-logo-image-1" data-image-width="64">
             </a>
             <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
                 <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px;">

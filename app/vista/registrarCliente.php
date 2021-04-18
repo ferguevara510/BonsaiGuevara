@@ -172,7 +172,7 @@ require_once "../../configuracion/env.php";
                                 class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
                         </div>
                         <div class="u-align-right u-form-group u-form-submit">
-                            <a href="<?php echo URL_CONTROLADORES?>registrarCliente.php" class="boton-verde u-btn u-btn-submit u-button-style u-btn-1">Aceptar<br>
+                            <a href="<?php echo URL_CONTROLADORES?>registrarCliente.php" class="boton-verde u-btn u-btn-submit u-button-style u-btn-1">ACEPTAR<br>
                             </a>
                             <input type="submit" value="submit" class="u-form-control-hidden">
                         </div>
