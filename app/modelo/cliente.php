@@ -44,4 +44,27 @@ class Cliente {
     public function encriptarContrasena(){
         $this->contrasena = md5($this->contrasena);
     }
+
+    public static function buscarTodosClientes(){
+        $mysqli = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
+        $clientes = [];
+        $sql = "SELECT * FROM cliente";
+        if($result = $mysqli->query($sql)){
+            if($result->num_rows > 0){ 
+                while($row = $result->fetch_array()){
+                    $cliente = new Cliente();
+                    $cliente->nombre=$row["nombre"];
+                    $cliente->apellidoPaterno=$row["apellidoPaterno"];
+                    $cliente->apellidoMaterno=$row["apellidoMaterno"];
+                    $cliente->correo=$row["correo"];
+                    $cliente->numTelefono=$row["numTelefono"];
+                    $cliente->imagenPerfil=$row["imagenPerfil"];
+                    $clientes[]=$cliente;
+                }   
+            }
+            $result->close();
+        }
+        $mysqli->close();
+        return $clientes;
+    }
 }
