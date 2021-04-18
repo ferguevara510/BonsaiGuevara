@@ -99,6 +99,7 @@ class Cliente {
                 if($result->num_rows == 1) {
                     $row = $result->fetch_array(MYSQLI_ASSOC);
                     $cliente = new Cliente();
+                    $cliente->id_cliente=$row["id_cliente"];
                     $cliente->nombre=$row["nombre"];
                     $cliente->apellidoPaterno=$row["apellidoPaterno"];
                     $cliente->apellidoMaterno=$row["apellidoMaterno"];

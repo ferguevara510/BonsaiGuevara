@@ -1,7 +1,10 @@
 <?php
-require_once "../../configuracion/env.php";
+if (isset($_GET['id_cliente']) && is_numeric($_GET['id_cliente'])) {
+    require_once "../../configuracion/env.php";
+    require_once "../modelo/cliente.php";
+    $cliente = Cliente::buscarCliente($_GET['id_cliente']);
+}
 ?>
-
 
 <!DOCTYPE html>
 <html style="font-size: 16px;">
@@ -131,23 +134,23 @@ require_once "../../configuracion/env.php";
     <div>
         <section class="u-clearfix u-section-1" id="sec-0b39">
             <div class="u-clearfix u-sheet u-sheet-1">
-                <h1 class="u-text u-text-default u-text-1">Registro de Usuario</h1>
+                <h1 class="u-text u-text-default u-text-1">Editar Cliente</h1>
                 <div class="u-form u-form-1">
-                    <form action="<?php echo URL_CONTROLADORES?>registrarCliente.php" method="POST" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form"
+                    <form action="<?php echo URL_CONTROLADORES?>editarCliente.php?id_cliente=<?php echo $cliente->id_cliente?>" method="PUT" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form"
                         style="padding: 10px" source="custom" name="form">
                         <div class="u-form-group u-form-name">
                             <label for="name-dc48" class="u-form-control-hidden u-label">Nombre</label>
-                            <input type="text" placeholder="Nombre" id="nombre" name="nombre"
+                            <input value="<?php echo $cliente->nombre?>" type="text" placeholder="Nombre" id="nombre" name="nombre"
                                 class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
                         </div>
                         <div class="u-form-group u-form-name u-form-group-2">
                             <label for="name-8ced" class="u-form-control-hidden u-label">Apellido Paterno</label>
-                            <input type="text" placeholder="Apellido Paterno" id="apellidoPeterno" name="apellidoPaterno"
+                            <input value="<?php echo $cliente->apellidoPaterno?>" type="text" placeholder="Apellido Paterno" id="apellidoPeterno" name="apellidoPaterno"
                                 class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
                         </div>
                         <div class="u-form-group u-form-name u-form-group-3">
                             <label for="name-998d" class="u-form-control-hidden u-label">Apellido Materno</label>
-                            <input type="text" placeholder="Apellido Materno" id="apellidoMaterno" name="apellidoMaterno"
+                            <input value="<?php echo $cliente->apellidoMaterno?>" type="text" placeholder="Apellido Materno" id="apellidoMaterno" name="apellidoMaterno"
                                 class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
                         </div>
                         <div class="u-form-group u-form-group-4">
@@ -163,16 +166,16 @@ require_once "../../configuracion/env.php";
                         </div>
                         <div class="u-form-email u-form-group">
                             <label for="email-dc48" class="u-form-control-hidden u-label">Correo</label>
-                            <input type="email" placeholder="Correo" id="correo" name="correo"
+                            <input value="<?php echo $cliente->correo?>" type="email" placeholder="Correo" id="correo" name="correo"
                                 class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
                         </div>
                         <div class="u-form-group u-form-group-7">
                             <label for="text-2386" class="u-form-control-hidden u-label">Teléfono</label>
-                            <input type="text" placeholder="Teléfono" id="telefono" name="telefono"
+                            <input value="<?php echo $cliente->numTelefono?>" type="text" placeholder="Teléfono" id="telefono" name="telefono"
                                 class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
                         </div>
                         <div class="u-align-right u-form-group u-form-submit">
-                            <a href="<?php echo URL_CONTROLADORES?>registrarCliente.php" class="boton-verde u-btn u-btn-submit u-button-style u-btn-1">ACEPTAR<br>
+                            <a href="#" class="boton-verde u-btn u-btn-submit u-button-style u-btn-1">ACEPTAR<br>
                             </a>
                             <input type="submit" value="submit" class="u-form-control-hidden">
                         </div>
