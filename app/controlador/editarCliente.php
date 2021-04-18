@@ -2,25 +2,21 @@
 require_once "../modelo/cliente.php";
 require_once "../../configuracion/env.php";
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 if($_SERVER["REQUEST_METHOD"] == "PUT") {
-    if(isset($_REQUEST["id_cliente"]) && is_numeric($_GET['id_cliente']) && isset($_REQUEST["nombre"]) 
-        && isset($_REQUEST["apellidoPaterno"]) && isset($_REQUEST["apellidoMaterno"]) && isset($_REQUEST["correo"]) 
-        && isset($_REQUEST["telefono"])) {
-        $cliente = Cliente::buscarCliente($_REQUEST["id_cliente"]);
+    parse_str(file_get_contents("php://input"),$_PUT);
+    if(isset($_PUT["id_cliente"]) && is_numeric($_PUT['id_cliente']) && isset($_PUT["nombre"]) 
+        && isset($_PUT["apellidoPaterno"]) && isset($_PUT["apellidoMaterno"]) && isset($_PUT["correo"]) && isset($_PUT["telefono"])) {
+        $cliente = Cliente::buscarCliente($_PUT["id_cliente"]);
         $cambiarContrasena = false;
-        if (isset($_REQUEST["contrasena"]) && isset($_REQUEST["confirmarContrasena"])) {
+        if (isset($_PUT["contrasena"]) && $_PUT["contrasena"]!=null) {
             $cambiarContrasena = true;
-            $cliente->contrasena=$_REQUEST["contrasena"];
+            $cliente->contrasena=$_PUT["contrasena"];
         }
-        $cliente->nombre=$_REQUEST["nombre"];
-        $cliente->apellidoPaterno=$_REQUEST["apellidoPaterno"];
-        $cliente->apellidoMaterno=$_REQUEST["apellidoMaterno"];
-        $cliente->correo=$_REQUEST["correo"];
-        $cliente->numTelefono=$_REQUEST["telefono"];
+        $cliente->nombre=$_PUT["nombre"];
+        $cliente->apellidoPaterno=$_PUT["apellidoPaterno"];
+        $cliente->apellidoMaterno=$_PUT["apellidoMaterno"];
+        $cliente->correo=$_PUT["correo"];
+        $cliente->numTelefono=$_PUT["telefono"];
         $validacion = $cliente->editarCliente($cambiarContrasena);
         if($validacion) {
             $jsondata = ["success" => "success"];

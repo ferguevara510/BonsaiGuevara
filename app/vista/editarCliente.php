@@ -160,13 +160,12 @@ if (isset($_GET['id_cliente']) && is_numeric($_GET['id_cliente'])) {
                         <div class="u-form-group u-form-group-4">
                             <label for="text-5cce" class="u-form-control-hidden u-label">Contraseña</label>
                             <input type="password" placeholder="Contraseña" id="contrasena" name="contrasena"
-                                class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
+                                class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white">
                         </div>
                         <div class="u-form-group u-form-group-5">
                             <label for="text-d7af" class="u-form-control-hidden u-label">Confirmar Contraseña</label>
                             <input type="password" placeholder="Confirmar contraseña" id="confirmarContrasena"
-                                name="confirmarContrasena" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white"
-                                required="">
+                                name="confirmarContrasena" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white">
                         </div>
                         <div class="u-form-email u-form-group">
                             <label for="email-dc48" class="u-form-control-hidden u-label">Correo</label>
@@ -183,10 +182,8 @@ if (isset($_GET['id_cliente']) && is_numeric($_GET['id_cliente'])) {
                             </a>
                             <input type="submit" value="submit" class="u-form-control-hidden">
                         </div>
-                        <div class="u-form-send-message u-form-send-success"> Gracias! Tu mensaje ha sido enviado.
-                        </div>
-                        <div class="u-form-send-error u-form-send-message"> No se puede enviar su mensaje. Por favor,
-                            corrija los errores y vuelva a intentarlo. </div>
+                        <div class="u-form-send-message u-form-send-success"> Tus datos han sido actualizados. </div>
+                        <div class="u-form-send-error u-form-send-message"> Ha ocurrido un error al guardarlo. </div>
                         <input type="hidden" value="" name="recaptchaResponse">
                     </form>
                 </div>
@@ -195,7 +192,7 @@ if (isset($_GET['id_cliente']) && is_numeric($_GET['id_cliente'])) {
                 <a href="../../index.php
                 "
                     class="boton-verde u-btn u-button-style u-hover-palette-1-dark-1 u-btn-2">Cancelar</a>
-                <p class="u-text u-text-registrar">Da click para cambiar tu imagen de perfil</p>
+                <p class="u-text u-text-registrar">Cambia tu imagen</p>
             </div>
         </section>
     </div>
