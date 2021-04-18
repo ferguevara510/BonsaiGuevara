@@ -3,6 +3,9 @@ if (isset($_GET['id_cliente']) && is_numeric($_GET['id_cliente'])) {
     require_once "../../configuracion/env.php";
     require_once "../modelo/cliente.php";
     $cliente = Cliente::buscarCliente($_GET['id_cliente']);
+} else {
+    header("location: ../../index.php");
+    exit();
 }
 ?>
 
@@ -136,8 +139,9 @@ if (isset($_GET['id_cliente']) && is_numeric($_GET['id_cliente'])) {
             <div class="u-clearfix u-sheet u-sheet-1">
                 <h1 class="u-text u-text-default u-text-1">Editar Cliente</h1>
                 <div class="u-form u-form-1">
-                    <form action="<?php echo URL_CONTROLADORES?>editarCliente.php?id_cliente=<?php echo $cliente->id_cliente?>" method="PUT" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form"
+                    <form action="<?php echo URL_CONTROLADORES?>editarCliente.php" method="PUT" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form"
                         style="padding: 10px" source="custom" name="form">
+                        <input type="hidden" name="id_cliente" value="<?php echo $cliente->id_cliente?>">
                         <div class="u-form-group u-form-name">
                             <label for="name-dc48" class="u-form-control-hidden u-label">Nombre</label>
                             <input value="<?php echo $cliente->nombre?>" type="text" placeholder="Nombre" id="nombre" name="nombre"

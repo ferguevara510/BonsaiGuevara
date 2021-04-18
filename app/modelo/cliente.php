@@ -106,6 +106,7 @@ class Cliente {
                     $cliente->correo=$row["correo"];
                     $cliente->numTelefono=$row["numTelefono"];
                     $cliente->imagenPerfil=$row["imagenPerfil"];
+                    $cliente->contrasena=$row["contrasena"];
                 }
             }
             $stmt->close();
