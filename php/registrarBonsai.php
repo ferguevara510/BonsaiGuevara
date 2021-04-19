@@ -1,5 +1,5 @@
 <?php
-require_once "configDB.php";
+require_once "configuracion/env.php";
 
 //Variables de los inputs
 $nombre="";
@@ -96,7 +96,7 @@ if($stmt = $mysqli->prepare($sql)){
   if($stmt->execute()){
 
       // Redirigir a la lista de bonsais
-      header("location: listaBonsais.php");
+      header("location: php/listaBonsais.php");
   } else{
       echo "Algo Malo paso ,por favor intente de nuevo!!.";
   }
@@ -138,7 +138,7 @@ if($stmt = $mysqli->prepare($sql)){
     <script class="u-script" type="text/javascript" src="js/nicepage.js" defer=""></script>
 
     <style>
-<?php include 'css/registroBonsais.css'; ?>
+<?php include 'publico/css/registroBonsais.css'; ?>
 </style>
 
     <meta name="generator" content="Nicepage 3.11.0, nicepage.com">

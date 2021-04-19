@@ -19,15 +19,15 @@ require_once "configDB.php";
 
     <meta name="page_type" content="np-template-header-footer-from-plugin">
     <title>Inicio</title>
-    <link rel="stylesheet" href="css/nicepage.css" media="screen">
+    <link rel="stylesheet" href="publico/css/nicepage.css" media="screen">
 
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-    <script class="u-script" type="text/javascript" src="js/nicepage.js" defer=""></script>
+    <link rel="stylesheet" type="text/css" href="publico/css/bootstrap.css">
+    <script class="u-script" type="text/javascript" src="publico/js/nicepage.js" defer=""></script>
 
 
    
-    <script type="text/javascript" src="js/jquery.1.11.1.js"></script> 
-    <script type="text/javascript" src="js/bootstrap.js"></script> 
+    <script type="text/javascript" src="publico/js/jquery.1.11.1.js"></script> 
+    <script type="text/javascript" src="publico/js/bootstrap.js"></script> 
 
 
 
