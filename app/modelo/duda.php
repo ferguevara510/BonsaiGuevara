@@ -6,7 +6,7 @@ class Duda {
     public $respuesta;
     public $id_cliente;
 
-    public function __constructor() {
+    public function __construct() {
         $this->id_duda = 0;
         $this->correo = '';
         $this->descripcion = '';

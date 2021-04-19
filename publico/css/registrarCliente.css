@@ -1,7 +1,17 @@
+.form-hidden{
+  display: none !important;
+}
+
+.select-bottom{
+  cursor: pointer;
+  text-align: center;
+}
+
 .boton-verde{
   background-color: #007b00 !important;
   color: #fff !important;
 }
+
 .u-section-1 .u-sheet-1 {
   min-height: 737px;
 }
@@ -43,7 +53,7 @@
 .u-section-1 .u-image-registrar {
   width: 375px;
   height: 375px;
-  background-image: url("../imagenes/default.jpg");
+  background-image: url("../imagenes/perfil.jpg");
   background-position: 50% 50%;
   margin: -453px -46px 0 auto;
 }

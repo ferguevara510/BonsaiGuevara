@@ -9,7 +9,7 @@ class Bonsai {
     public $edad;
     public $precio;
     
-    public function __constructor() {
+    public function __construct() {
         $this->id_bonsai = 0;
         $this->imagenBonsai ='';
         $this->id_especie = 0;

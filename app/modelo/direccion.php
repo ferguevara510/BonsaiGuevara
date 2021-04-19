@@ -9,7 +9,7 @@ class Direccion {
     public $ciudad;
     public $estado;
 
-    public function __constructor() {
+    public function __construct() {
         $this->id_direccion = 0;
         $this->calle = '';
         $this->numExt = '';
