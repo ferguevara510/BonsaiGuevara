@@ -136,7 +136,7 @@ $clientes = Cliente::buscarTodosClientes();
             <div class="tarjeta-cliente">
             <div class="seccion-superior">
                 <div class="imagen-tarjeta">
-                    <img src="<?php echo URL_IMAGENES?>nadia.jpg" alt="">
+                    <img src="<?php echo $cliente->imagenPerfil?>" alt="">
                 </div>
                 <div class="tarjeta-nombre">
                     <span><?php echo "{$cliente->nombre} {$cliente->apellidoPaterno} {$cliente->apellidoMaterno}";?></span>

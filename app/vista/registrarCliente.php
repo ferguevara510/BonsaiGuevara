@@ -29,6 +29,7 @@ require_once "../../configuracion/env.php";
     <script type="text/javascript" src="<?php echo URL_JS?>bootstrap.js"></script>
     <script type="text/javascript" src="<?php echo URL_JS?>jquery.isotope.js"></script>
     <script type="text/javascript" src="<?php echo URL_JS?>jqBootstrapValidation.js"></script>
+    <script type="text/javascript" src="<?php echo URL_JS?>cliente.js"></script>
 
     <script type="application/ld+json">{
 		"@context": "http://schema.org",
@@ -134,7 +135,10 @@ require_once "../../configuracion/env.php";
                 <h1 class="u-text u-text-default u-text-1">Registro de Usuario</h1>
                 <div class="u-form u-form-1">
                     <form action="<?php echo URL_CONTROLADORES?>registrarCliente.php" method="POST" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form"
-                        style="padding: 10px" source="custom" name="form">
+                        style="padding: 10px" source="custom" name="form" enctype="multipart/form-data">
+                        
+                        <input class="form-file form-hidden" type="file" name="imagenPerfil" id="imagenPerfil">
+                        
                         <div class="u-form-group u-form-name">
                             <label for="name-dc48" class="u-form-control-hidden u-label">Nombre</label>
                             <input type="text" placeholder="Nombre" id="nombre" name="nombre"
@@ -181,11 +185,11 @@ require_once "../../configuracion/env.php";
                         <input type="hidden" value="" name="recaptchaResponse">
                     </form>
                 </div>
-                <div alt="" class="u-image u-image-circle u-image-registrar" data-image-width="1280" data-image-height="854">
+                <div alt="" class="u-image-perfil u-image u-image-circle u-image-registrar" data-image-width="1280" data-image-height="854">
                 </div>
                 <a href="../../index.php"
                     class="boton-verde u-btn u-button-style u-hover-palette-1-dark-1 u-btn-2">Cancelar</a>
-                <p class="u-text u-text-registrar">Selecciona tu imagen</p>
+                <p class="select-bottom u-text u-text-registrar">Selecciona tu imagen</p>
             </div>
         </section>
     </div>

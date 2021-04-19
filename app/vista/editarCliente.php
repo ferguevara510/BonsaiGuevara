@@ -35,6 +35,7 @@ if (isset($_GET['id_cliente']) && is_numeric($_GET['id_cliente'])) {
     <script type="text/javascript" src="<?php echo URL_JS?>bootstrap.js"></script>
     <script type="text/javascript" src="<?php echo URL_JS?>jquery.isotope.js"></script>
     <script type="text/javascript" src="<?php echo URL_JS?>jqBootstrapValidation.js"></script>
+    <script type="text/javascript" src="<?php echo URL_JS?>cliente.js"></script>
 
     <script type="application/ld+json">{
 		"@context": "http://schema.org",
@@ -139,8 +140,9 @@ if (isset($_GET['id_cliente']) && is_numeric($_GET['id_cliente'])) {
             <div class="u-clearfix u-sheet u-sheet-1">
                 <h1 class="u-text u-text-default u-text-1">Editar Cliente</h1>
                 <div class="u-form u-form-1">
-                    <form action="<?php echo URL_CONTROLADORES?>editarCliente.php" method="PUT" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form"
+                    <form enctype="multipart/form-data" action="<?php echo URL_CONTROLADORES?>editarCliente.php" method="POST" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form"
                         style="padding: 10px" source="custom" name="form">
+                        <input class="form-file form-hidden" type="file" name="imagenPerfil" id="imagenPerfil">
                         <input type="hidden" name="id_cliente" value="<?php echo $cliente->id_cliente?>">
                         <div class="u-form-group u-form-name">
                             <label for="name-dc48" class="u-form-control-hidden u-label">Nombre</label>
@@ -187,12 +189,12 @@ if (isset($_GET['id_cliente']) && is_numeric($_GET['id_cliente'])) {
                         <input type="hidden" value="" name="recaptchaResponse">
                     </form>
                 </div>
-                <div alt="" class="u-image u-image-circle u-image-registrar" data-image-width="1280" data-image-height="854">
+                <div alt="" class="u-image-registrar u-image-perfil u-image u-image-circle" style="background-image: url('/<?php echo $cliente->imagenPerfil?>');" data-image-width="1280" data-image-height="854">
                 </div>
                 <a href="../../index.php
                 "
                     class="boton-verde u-btn u-button-style u-hover-palette-1-dark-1 u-btn-2">Cancelar</a>
-                <p class="u-text u-text-registrar">Cambia tu imagen</p>
+                <p class="select-bottom u-text u-text-registrar">Cambia tu imagen</p>
             </div>
         </section>
     </div>
