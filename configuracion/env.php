@@ -14,5 +14,6 @@ define("DB_PASSWORD","");
 define("DB_DATABASE", "bonsaiguevara");
 
 $mysqli = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
+$mysqli2 = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
 
 ?>
