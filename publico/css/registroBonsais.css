@@ -30,11 +30,7 @@
     color: #fff;
     font-size: medium;
   }
-  .navFont{
-    font-family: 'Roboto', sans-serif;
-    color: #478ac9;
-    font-size: medium;
-  }
+  
 
 /*Inputs del mismo tamaño*/
   input, select, textarea{

@@ -1,7 +1,7 @@
 <?php
 
-require_once "configDB.php";
-
+require_once "../../configuracion/env.php";
+require_once "../../app/modelo/estilo.php";
 
 ?>
 
@@ -19,16 +19,24 @@ require_once "configDB.php";
 
     <meta name="page_type" content="np-template-header-footer-from-plugin">
     <title>Inicio</title>
-    <link rel="stylesheet" href="css/nicepage.css" media="screen">
+    <link rel="stylesheet" href="../../publico/css/nicepage.css" media="screen">
 
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-    <script class="u-script" type="text/javascript" src="js/nicepage.js" defer=""></script>
-
+    <link rel="stylesheet" type="text/css" href="publico/css/bootstrap.css">
+    <script class="u-script" type="text/javascript" src="../../publico/js/nicepage.js" defer=""></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
    
-    <script type="text/javascript" src="js/jquery.1.11.1.js"></script> 
-    <script type="text/javascript" src="js/bootstrap.js"></script> 
+    <script type="text/javascript" src="../../publico/js/jquery.1.11.1.js"></script> 
+    <script type="text/javascript" src="../../publico/js/bootstrap.js"></script> 
 
+    <script language="JavaScript" type="text/javascript">
+function confirmationDelete(anchor)
+{
+   var conf = confirm('Estas Seguro que quieres borrar este Bonsai?');
+   if(conf)
+      window.location=anchor.attr("href");
+}
+</script>
 
 
     <meta property="og:title" content="Inicio">
@@ -37,7 +45,7 @@ require_once "configDB.php";
     <link rel="canonical" href="index.html">
     <meta property="og:url" content="index.html">
     <style>
-<?php include 'css/listaBonsais.css'; ?>
+<?php include '../../publico/css/listaBonsais.css'; ?>
 </style>
 
 
@@ -47,7 +55,7 @@ require_once "configDB.php";
 <header style ="background-color: #ffffff;"  class="u-clearfix u-header u-header" id="sec-e89e">
   <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
         
-          <img src="images/bonsai_karla.png" class="u-logo-image u-logo-image-1" data-image-width="64">
+          <img src="../../publico/imagenes/bonsai_karla.png" class="u-logo-image u-logo-image-1" data-image-width="64">
         </a>
         <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
           <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px;">
@@ -74,7 +82,7 @@ require_once "configDB.php";
           <div class="u-custom-menu u-nav-container-collapse">
             <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
               <div class="u-sidenav-overflow">
-                <div class="u-menu-close"></div>
+                <div class="u-menu-close" ></div>
                 <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2">
                   <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Iniciar-Sesión.html" style="padding: 10px 20px;">Pedidos</a></li>
                   <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Iniciar-Sesión.html" style="padding: 10px 20px;">Compras</a></li>
@@ -97,32 +105,61 @@ require_once "configDB.php";
       
       <div class='contenedor'> <!--container-->
 <?php
-$sql = "SELECT * FROM bonsais";
+
+
+
+
+
+
+
+$sql = "SELECT * FROM bonsai";
 if($result = $mysqli->query($sql)){
     if($result->num_rows > 0){ 
       while($row = $result->fetch_array()){
+        //Obtener la especie del los bonsais
+        $especieaux=$row['id_especie'];
+
+        $consulta = "SELECT nombreEspecie FROM especie where id_especie = $especieaux";
+        $result2=$mysqli2->query($consulta);
+        $especie=$result2->fetch_array();
+        $estilo = new Estilo();
        
+        
+
                                 //Agregar opciones para editar y eliminar
 
-//Fuera del table                     
+//Fuera del table                      
+                                    //Iconos para editar y borrar
+                                    
+
                                      echo "<div class='bonsaiInformation'>;";
-                                     echo "<img src='".$row['ImageURL']."' alt='Not Found' onerror=this.src='images/Error.png' width='260' height='160' class='imagenB'>";
+                                     echo "<img src='".$row['imagenBonsai']."' alt='Not Found' onerror=this.src='../../publico/bonsais/Error.png' width='200' height='120' class='imagenB'>";
                                      echo"<div class='bonsaiSegment' >";
-                                     echo"<label class='nameFont' for=''>".$row['Nombre']."</label>" ;
+                                     echo"<label class='nameFont quantity' for=''>".$row['nombreCientifico']."</label>" ;
+                                     
+                                     echo"<label class='nameFont' for=''>".$row['nombreComun']."</label>" ;
 
                                      echo"<div>" ;
-                                     //Agregar Descripcion
-                                     echo"<p class='infoFont'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae earum neque dicta similique ipsum assumenda fugiat, minima aliquam reprehenderit modi sunt? Quaerat, fuga repellendus animi earum veritatis excepturi eligendi harum?</p>";
+                                     
+                                     echo"<label class='nameFont quantity' for=''> ESPECIE: ".$especie['nombreEspecie']."</label>" ;
+                                     echo"<label class='nameFont' for=''> ESTILO: ".$estilo->obtenerValores($row['estilo']) ."</label>" ;
+                                   
                                      echo"</div>";
 
                                      echo"<div >" ;
-                                     echo"<label class='quantity infoFont''for=''>"."Cantidad: ".$row['Quantity'] ."</label>";
-                                     echo"<label class='infoFont' for=''>"."Precio: ".$row['Price'].".00 $</label>" ;
+                                     echo"<label class='quantity infoFont''for=''>"."Edad: ".$row['edad'] ."</label>";
+                                     echo"<label class='infoFont quantity' for=''>"."Precio: ".$row['precio'].".00 $</label>" ;
+
+                                     echo"<i class='fa fa-trash-o  icons' aria-hidden='true'  
+                                     onclick='javascript:confirmationDelete($(this));return false;' href='../../app/controlador/eliminarBonsais.php?id=".$row['id_bonsai']."'></i>" ;
+                                     echo"<i class='fa fa-pencil icons' aria-hidden='true'></i>" ;
                                      echo"</div>" ;
 
 
                                      echo"</div>" ;
                                      echo"</div>" ;
+
+                                     
 
          }
          echo "</tbody>";                            
@@ -146,16 +183,6 @@ $mysqli->close();
 </div><!--container-->
 
 
-
-
-
-
-
-
-
-
-
- 
 
 
 

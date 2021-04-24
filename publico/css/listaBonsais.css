@@ -1,5 +1,6 @@
 .bonsaiSegment{
-     float:inline-start;  width: 80%; padding: 0.35%;
+     float:inline-start;  width: 80%; padding: 0.50%;
+     display: block;
     
 }
 
@@ -9,20 +10,28 @@
 
 
 .contenedor{
-    display:inline-block;
+    display:block;
     
 
 }
 
 
 .imagenB{
-    float: auto;
-    display: block;
     float: left;
+    display: block;
+ 
     opacity: 93%;
 
 
 }
+
+.icons{
+  margin-left: 2%;
+  float: right;
+  cursor: pointer;
+}
+
+
 .imagenB:hover{
     opacity: 78%;
 }
@@ -31,6 +40,7 @@
     
 background-color: rgba(42, 100, 57, 0.418);
 display: inline-block;
+
 border-radius: 6px;
 transition: 0.3s all;
 

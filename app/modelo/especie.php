@@ -1,4 +1,6 @@
 <?php
+require_once "../../configuracion/env.php";
+
 class Especie {
     public $id_especie;
     public $nombreEspecie;
@@ -8,3 +10,11 @@ class Especie {
         $this->nombreEspecie = '';
     }
 }
+
+
+
+
+
+
+
+?>

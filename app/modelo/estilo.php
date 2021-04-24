@@ -1,5 +1,6 @@
 <?php
-abstract class Estilo {
+ class Estilo {
+     
     const FUKINAGASHI = 1;
     const KENGAI = 2;
     const HAN_KENGAI = 3;
@@ -8,6 +9,7 @@ abstract class Estilo {
     const CHOKKAN = 6;
     const HOKIDACHI = 7;
     const YOSE_UE = 8;
+    
 
     public static function obtenerValores($estilo) {
         $cadena = '';
@@ -37,5 +39,6 @@ abstract class Estilo {
                 $cadena = 'YOSE-UE - BOSQUE';
                 break;
         }
+     return $cadena;
     }
 }
