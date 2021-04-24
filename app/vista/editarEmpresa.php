@@ -1,8 +1,8 @@
 <?php
-if (isset($_GET['id_cliente']) && is_numeric($_GET['id_cliente'])) {
+if (isset($_GET['usuario'])) {
     require_once "../../configuracion/env.php";
-    require_once "../modelo/cliente.php";
-    $cliente = Cliente::buscarCliente($_GET['id_cliente']);
+    require_once "../modelo/administrador.php";
+    $administrador = Administrador::consultarEmpresa();
 } else {
     header("location: ../../index.php");
     exit();
@@ -18,8 +18,9 @@ if (isset($_GET['id_cliente']) && is_numeric($_GET['id_cliente'])) {
     <meta name="keywords" content="Blooms, For Every Occasion">
     <meta name="description" content="">
     <meta name="page_type" content="np-template-header-footer-from-plugin">
-    <title>Editar Cliente</title>
+    <title>Editar Empresa</title>
     <link rel="stylesheet" href="<?php echo URL_CSS?>registrarCliente.css" media="screen">
+    <link rel="stylesheet" href="<?php echo URL_CSS?>empresa.css" media="screen">
     <link rel="stylesheet" href="<?php echo URL_CSS?>nicepage.css" media="screen">
     <link rel="stylesheet" href="<?php echo URL_CSS?>Iniciar-Sesión.css" media="screen">
     <link rel="stylesheet" type="text/css" href="<?php echo URL_CSS?>style.css">
@@ -35,7 +36,6 @@ if (isset($_GET['id_cliente']) && is_numeric($_GET['id_cliente'])) {
     <script type="text/javascript" src="<?php echo URL_JS?>bootstrap.js"></script>
     <script type="text/javascript" src="<?php echo URL_JS?>jquery.isotope.js"></script>
     <script type="text/javascript" src="<?php echo URL_JS?>jqBootstrapValidation.js"></script>
-    <script type="text/javascript" src="<?php echo URL_JS?>cliente.js"></script>
 
     <script type="application/ld+json">{
 		"@context": "http://schema.org",
@@ -138,25 +138,24 @@ if (isset($_GET['id_cliente']) && is_numeric($_GET['id_cliente'])) {
     <div>
         <section class="u-clearfix u-section-1" id="sec-0b39">
             <div class="u-clearfix u-sheet u-sheet-1">
-                <h1 class="u-text u-text-default u-text-1">Editar Cliente</h1>
+                <h1 class="u-text u-text-default u-text-1">Editar Empresa</h1>
                 <div class="u-form u-form-1">
                     <form enctype="multipart/form-data" action="<?php echo URL_CONTROLADORES?>editarCliente.php" method="POST" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form"
                         style="padding: 10px" source="custom" name="form">
-                        <input class="form-file form-hidden" type="file" name="imagenPerfil" id="imagenPerfil">
-                        <input type="hidden" name="id_cliente" value="<?php echo $cliente->id_cliente?>">
+                        <input type="hidden" name="usuario" value="administrador">
                         <div class="u-form-group u-form-name">
                             <label for="name-dc48" class="u-form-control-hidden u-label">Nombre</label>
-                            <input value="<?php echo $cliente->nombre?>" type="text" placeholder="Nombre" id="nombre" name="nombre"
+                            <input value="<?php echo $administrador->nombre?>" type="text" placeholder="Nombre" id="nombre" name="nombre"
                                 class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
                         </div>
                         <div class="u-form-group u-form-name u-form-group-2">
                             <label for="name-8ced" class="u-form-control-hidden u-label">Apellido Paterno</label>
-                            <input value="<?php echo $cliente->apellidoPaterno?>" type="text" placeholder="Apellido Paterno" id="apellidoPeterno" name="apellidoPaterno"
+                            <input value="<?php echo $administrador->apellidoPaterno?>" type="text" placeholder="Apellido Paterno" id="apellidoPeterno" name="apellidoPaterno"
                                 class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
                         </div>
                         <div class="u-form-group u-form-name u-form-group-3">
                             <label for="name-998d" class="u-form-control-hidden u-label">Apellido Materno</label>
-                            <input value="<?php echo $cliente->apellidoMaterno?>" type="text" placeholder="Apellido Materno" id="apellidoMaterno" name="apellidoMaterno"
+                            <input value="<?php echo $administrador->apellidoMaterno?>" type="text" placeholder="Apellido Materno" id="apellidoMaterno" name="apellidoMaterno"
                                 class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
                         </div>
                         <div class="u-form-group u-form-group-4">
@@ -171,12 +170,17 @@ if (isset($_GET['id_cliente']) && is_numeric($_GET['id_cliente'])) {
                         </div>
                         <div class="u-form-email u-form-group">
                             <label for="email-dc48" class="u-form-control-hidden u-label">Correo</label>
-                            <input value="<?php echo $cliente->correo?>" type="email" placeholder="Correo" id="correo" name="correo"
+                            <input value="<?php echo $administrador->correo?>" type="email" placeholder="Correo" id="correo" name="correo"
                                 class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
                         </div>
                         <div class="u-form-group u-form-group-7">
                             <label for="text-2386" class="u-form-control-hidden u-label">Teléfono</label>
-                            <input value="<?php echo $cliente->numTelefono?>" type="text" placeholder="Teléfono" id="telefono" name="telefono"
+                            <input value="<?php echo $administrador->numTelefono?>" type="text" placeholder="Teléfono" id="telefono" name="telefono"
+                                class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
+                        </div>
+                        <div class="u-form-group u-form-group-7">
+                            <label for="text-2386" class="u-form-control-hidden u-label">Dirección</label>
+                            <input value="<?php echo $administrador->direccion?>" type="text" placeholder="Dirección" id="direccion" name="direccion"
                                 class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
                         </div>
                         <div class="u-align-right u-form-group u-form-submit">
@@ -189,12 +193,10 @@ if (isset($_GET['id_cliente']) && is_numeric($_GET['id_cliente'])) {
                         <input type="hidden" value="" name="recaptchaResponse">
                     </form>
                 </div>
-                <div alt="" class="u-image-registrar u-image-perfil u-image u-image-circle" style="background-image: url('/<?php echo $cliente->imagenPerfil?>');" data-image-width="1280" data-image-height="854">
+                <div alt="" class="u-image-logo u-image-perfil u-image u-image-circle" data-image-width="1280" data-image-height="854">
                 </div>
-                <a href="../../index.php
-                "
+                <a href="../../index.php"
                     class="boton-verde u-btn u-button-style u-hover-palette-1-dark-1 u-btn-2">CANCELAR</a>
-                <p class="select-bottom u-text u-text-registrar">Cambia tu imagen</p>
             </div>
         </section>
     </div>

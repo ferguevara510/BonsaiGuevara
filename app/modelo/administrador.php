@@ -34,11 +34,35 @@ class Administrador {
                     $administrador->correo=$row["correo"];
                     $administrador->numTelefono=$row["numTelefono"];
                     $administrador->direccion=$row["direccion"];
+                    $administrador->usuario=$row["usuario"];
                 }   
             }
             $result->close();
         }
         $mysqli->close();
         return $administrador;
+    }
+
+    public function editarEmpresa($cambioContrasena = false) {
+        if ($cambioContrasena) {
+            $this->encriptarContrasena();
+        }
+        $validacion = false;
+        $mysqli = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
+        $sql="UPDATE administrador SET nombre=?, apellidoMaterno=?, apellidoPaterno=?, correo=?, contrasena=?, numTelefono=?, direccion=? WHERE usuario=?";
+        $stmt = $mysqli->prepare($sql);
+        if($stmt) {
+            $stmt->bind_param("ssssssss", $this->nombre, $this->apellidoMaterno, $this->apellidoPaterno, $this->correo, $this->contrasena, $this->numTelefono, $this->direccion, $this->usuario);
+            if($stmt->execute()) {
+                $validacion = true;
+            }
+            $stmt->close();
+        } 
+        $mysqli->close();
+        return $validacion;
+    }
+
+    public function encriptarContrasena(){
+        $this->contrasena = md5($this->contrasena);
     }
 }
