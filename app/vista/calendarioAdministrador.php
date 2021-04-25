@@ -1,7 +1,3 @@
-<?php
-require_once "../../configuracion/env.php";
-?>
-
 <!DOCTYPE html>
 <html style="font-size: 16px;">
 

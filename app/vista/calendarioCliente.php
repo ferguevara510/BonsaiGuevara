@@ -24,11 +24,14 @@ require_once "../../configuracion/env.php";
         href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
     <link id="u-page-google-font" rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="<?php echo URL_CSS_CALENDARIO?>">
     <script type="text/javascript" src="<?php echo URL_JS?>jquery.1.11.1.js"></script>
     <script type="text/javascript" src="<?php echo URL_JS?>bootstrap.js"></script>
     <script type="text/javascript" src="<?php echo URL_JS?>jquery.isotope.js"></script>
     <script type="text/javascript" src="<?php echo URL_JS?>jqBootstrapValidation.js"></script>
-
+    <script type="text/javascript" src="<?php echo URL_JS_CALENDARIO?>"></script>
+    <script type="text/javascript" src="<?php echo URL_JS?>calendario.js"></script>
+    
     <script type="application/ld+json">{
 		"@context": "http://schema.org",
 		"@type": "Organization",
@@ -127,7 +130,10 @@ require_once "../../configuracion/env.php";
         </div>
     </header>
     
-    <div>"AQUI VA A IR TODO SU CODIGO"</div>
+    <div id="calendario">
+
+
+    </div>
 
     <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-712f">
         <div class="u-clearfix u-sheet u-sheet-1">
