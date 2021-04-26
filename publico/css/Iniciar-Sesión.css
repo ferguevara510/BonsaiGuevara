@@ -3,6 +3,10 @@
   min-height: 935px;
 }
 
+.u-section-cita {
+  min-height: auto !important;
+}
+
 .u-section-1 .u-image-1 {
   object-position: 31.19% 28.12%;
   background-position: 31.19% 0%;
