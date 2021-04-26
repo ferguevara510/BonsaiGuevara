@@ -14,7 +14,7 @@ $administrador = Administrador::consultarEmpresa();
     <meta name="keywords" content="Blooms, For Every Occasion">
     <meta name="description" content="">
     <meta name="page_type" content="np-template-header-footer-from-plugin">
-    <title>Inicio</title>
+    <title>Consultar Empresa</title>
     <link rel="stylesheet" href="<?php echo URL_CSS?>nicepage.css" media="screen">
     <link rel="stylesheet" href="<?php echo URL_CSS?>Iniciar-Sesión.css" media="screen">
     <link rel="stylesheet" type="text/css" href="<?php echo URL_CSS?>style.css">

@@ -1,20 +1,20 @@
 <?php
 session_start();
-require 'php/database.php';
+//require 'php/database.php';
 
-if (isset($_SESSION['user_email'])) {
-  $resultado = $conn->prepare('SELECT * FROM usuario WHERE e_mail=:email');
-  $resultado->bindParam(':email', $_SESSION['user_email']);
-  $resultado->execute();
+//if (isset($_SESSION['user_email'])) {
+//  $resultado = $conn->prepare('SELECT * FROM usuario WHERE e_mail=:email');
+//  $resultado->bindParam(':email', $_SESSION['user_email']);
+//  $resultado->execute();
 
-  $registros = $resultado->fetch(PDO::FETCH_ASSOC);
+//  $registros = $resultado->fetch(PDO::FETCH_ASSOC);
 
-  $user = null;
+//  $user = null;
 
-  if (count($registros) > 0) {
-    $user = $registros;
-  }
-}
+//  if (count($registros) > 0) {
+//    $user = $registros;
+//  }
+//}
 ?>
 
 <!DOCTYPE html>
@@ -27,19 +27,19 @@ if (isset($_SESSION['user_email'])) {
   <meta name="description" content="">
   <meta name="page_type" content="np-template-header-footer-from-plugin">
   <title>Inicio</title>
-  <link rel="stylesheet" href="css/nicepage.css" media="screen">
-  <link rel="stylesheet" href="css/Iniciar-Sesión.css" media="screen">
-  <link rel="stylesheet" type="text/css" href="css/style.css">
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-  <script class="u-script" type="text/javascript" src="js/nicepage.js" defer=""></script>
+  <link rel="stylesheet" href="publico/css/nicepage.css" media="screen">
+  <link rel="stylesheet" href="publico/css/Iniciar-Sesión.css" media="screen">
+  <link rel="stylesheet" type="text/css" href="publico/css/style.css">
+  <link rel="stylesheet" type="text/css" href="publico/css/bootstrap.css">
+  <script class="u-script" type="text/javascript" src="publico/js/nicepage.js" defer=""></script>
 
   <meta name="generator" content="Nicepage 3.11.0, nicepage.com">
   <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
   <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
-  <script type="text/javascript" src="js/jquery.1.11.1.js"></script>
-  <script type="text/javascript" src="js/bootstrap.js"></script>
-  <script type="text/javascript" src="js/jquery.isotope.js"></script>
-  <script type="text/javascript" src="js/jqBootstrapValidation.js"></script>
+  <script type="text/javascript" src="publico/js/jquery.1.11.1.js"></script>
+  <script type="text/javascript" src="publico/js/bootstrap.js"></script>
+  <script type="text/javascript" src="publico/js/jquery.isotope.js"></script>
+  <script type="text/javascript" src="publico/js/jqBootstrapValidation.js"></script>
 
   <script type="application/ld+json">
     {
@@ -47,7 +47,7 @@ if (isset($_SESSION['user_email'])) {
       "@type": "Organization",
       "name": "",
       "url": "index.html",
-      "logo": "images/bonsai_karla.png"
+      "logo": "publico/imagenes/bonsai_karla.png"
     }
   </script>
   <meta property="og:title" content="Inicio">
@@ -61,7 +61,7 @@ if (isset($_SESSION['user_email'])) {
   <header class="u-clearfix u-header u-header" id="sec-e89e">
     <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
       <a href="index.html" class="u-image u-logo u-image-1" data-image-width="299" data-image-height="266">
-        <img src="images/bonsai_karla.png" class="u-logo-image u-logo-image-1" data-image-width="64">
+        <img src="publico/imagenes/bonsai_karla.png" class="u-logo-image u-logo-image-1" data-image-width="64">
       </a>
       <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
         <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px;">
@@ -116,33 +116,33 @@ if (isset($_SESSION['user_email'])) {
   </header>
 
   <!--Apartado de Creacion solo si el usuario a ingresado al sistema-->
-  <?php if (!empty($user)) : ?>
-    <br>Welcome <?= $user['e_mail'] ?>
+  <?php if (!empty($user) || true) : ?>
+    <br>Welcome <?php //$user['e_mail'] ?>
     <br>Inicio de Sesión Correcto
     <a href="php/logout.php">Salir</a>
     <!--Fin 1er php-->
     
     <section class="-lg -sm -xl -xs u-align-center u-clearfix u-white u-section-1" src="" id="carousel_8155">
-      <img class="u-expanded-width u-image u-preserve-proportions u-image-1" src="images/logo.jpg" data-image-width="1366" data-image-height="768" data-animation-name="rotateIn" data-animation-duration="1000" data-animation-delay="0" data-animation-direction="">
+      <img class="u-expanded-width u-image u-preserve-proportions u-image-1" src="publico/imagenes/logo.jpg" data-image-width="1366" data-image-height="768" data-animation-name="rotateIn" data-animation-duration="1000" data-animation-delay="0" data-animation-direction="">
       <div class="u-clearfix u-gutter-32 u-layout-wrap u-layout-wrap-1">
         <div class="u-layout">
           <div class="u-layout-row">
             <div class="u-align-center u-border-no-bottom u-border-no-left u-border-no-right u-border-no-top u-container-style u-layout-cell u-left-cell u-size-20 u-white u-layout-cell-1">
               <div class="u-container-layout u-container-layout-1">
-                <img class="u-expanded-width u-image u-image-2" src="images/WhatsAppImage2020-10-26at16.29.53.jpeg" data-image-width="810" data-image-height="1440">
+                <img class="u-expanded-width u-image u-image-2" src="publico/imagenes/pino.jpg" data-image-width="810" data-image-height="1440">
                 <h4 class="u-text u-text-custom-color-2 u-text-1">Pino</h4>
               </div>
             </div>
             <div class="u-align-center u-container-style u-layout-cell u-size-20 u-white u-layout-cell-2">
               <div class="u-container-layout u-valign-bottom u-container-layout-2">
-                <img class="u-expanded-width u-image u-image-3" src="images/17504330_1848514905387954_3742187222423034704_o.jpg" data-image-width="721" data-image-height="1280">
+                <img class="u-expanded-width u-image u-image-3" src="publico/imagenes/bugambilia.jpg" data-image-width="721" data-image-height="1280">
                 <h4 class="u-text u-text-custom-color-2 u-text-2">Bugambilia<br>
                 </h4>
               </div>
             </div>
             <div class="u-align-center u-container-style u-layout-cell u-right-cell u-size-20 u-white u-layout-cell-3">
               <div class="u-container-layout u-valign-top u-container-layout-3">
-                <img class="u-expanded-width u-image u-image-4" src="images/WhatsAppImage2020-10-26at16.32.03.jpeg" data-image-width="1440" data-image-height="810">
+                <img class="u-expanded-width u-image u-image-4" src="publico/imagenes/suculentas.jpg" data-image-width="1440" data-image-height="810">
                 <h4 class="u-text u-text-custom-color-2 u-text-3">Suculentas</h4>
               </div>
             </div>
