@@ -132,70 +132,53 @@ require_once "../../configuracion/env.php";
     <div>
         <section class="u-clearfix u-section-1" id="sec-0b39">
             <div class="u-clearfix u-sheet u-sheet-1">
-                <h1 class="u-text u-text-default u-text-1">Registro de Usuario</h1>
+                <h1 class="u-text u-text-default u-text-1">Registro de Cuidados</h1>
                 <div class="u-form u-form-1">
-                    <form action="<?php echo URL_CONTROLADORES?>registrarCliente.php" method="POST" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form"
+                    <form action="<?php echo URL_CONTROLADORES?>registrarCuidados.php" method="POST" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form"
                         style="padding: 10px" source="custom" name="form" enctype="multipart/form-data">
                         
-                        <input class="form-file form-hidden" type="file" name="imagenPerfil" id="imagenPerfil">
                         
                         <div class="u-form-group u-form-name">
-                            <label for="name-dc48" class="u-form-control-hidden u-label">Nombre</label>
-                            <input type="text" placeholder="Nombre" id="nombre" name="nombre"
-                                class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
+                            <label for="name-dc48" class="u-form-control-hidden u-label">Cantidad de Riego</label>
+                            <input type="text" placeholder="Cantidad de riego" id="cantidadriego" name="cantidadriego"
+                                class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">  
                         </div>
                         <div class="u-form-group u-form-name u-form-group-2">
-                            <label for="name-8ced" class="u-form-control-hidden u-label">Apellido Paterno</label>
-                            <input type="text" placeholder="Apellido Paterno" id="apellidoPeterno" name="apellidoPaterno"
+                            <label for="name-8ced" class="u-form-control-hidden u-label">Lugar</label>
+                            <input type="text" placeholder="Lugar" id="lugar" name="lugar"
                                 class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
                         </div>
                         <div class="u-form-group u-form-name u-form-group-3">
-                            <label for="name-998d" class="u-form-control-hidden u-label">Apellido Materno</label>
-                            <input type="text" placeholder="Apellido Materno" id="apellidoMaterno" name="apellidoMaterno"
+                            <label for="name-998d" class="u-form-control-hidden u-label">Maceta</label>
+                            <input type="text" placeholder="Maceta" id="maceta" name="maceta"
                                 class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
                         </div>
                         <div class="u-form-group u-form-group-4">
-                            <label for="text-5cce" class="u-form-control-hidden u-label">Contraseña</label>
-                            <input type="password" placeholder="Contraseña" id="contrasena" name="contrasena"
+                            <label for="text-5cce" class="u-form-control-hidden u-label">Tiempo de Transplante</label>
+                            <input type="text" placeholder="Tiempo de transplante" id="tiempotransplante" name="tiempotransplante"
                                 class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
-                        </div>
-                        <div class="u-form-group u-form-group-5">
-                            <label for="text-d7af" class="u-form-control-hidden u-label">Confirmar Contraseña</label>
-                            <input type="password" placeholder="Confirmar contraseña" id="confirmarContrasena"
-                                name="confirmarContrasena" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white"
-                                required="">
                         </div>
                         <div class="u-form-email u-form-group">
-                            <label for="email-dc48" class="u-form-control-hidden u-label">Correo</label>
-                            <input type="email" placeholder="Correo" id="correo" name="correo"
-                                class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
-                        </div>
-                        <div class="u-form-group u-form-group-7">
-                            <label for="text-2386" class="u-form-control-hidden u-label">Teléfono</label>
-                            <input type="text" placeholder="Teléfono" id="telefono" name="telefono"
+                            <label for="email-dc48" class="u-form-control-hidden u-label">Tipo de Cultivo</label>
+                            <input type="text" placeholder="Tipo de Cultivo" id="tipocultivo" name="tipocultivo"
                                 class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
                         </div>
                         <div class="u-align-right u-form-group u-form-submit">
-                            <a href="<?php echo URL_CONTROLADORES?>registrarCliente.php" class="boton-verde u-btn u-btn-submit u-button-style u-btn-1">ACEPTAR<br>
+                            <a href="<?php echo URL_CONTROLADORES?>registrarCuidados.php" class="boton-verde u-btn u-btn-submit u-button-style u-btn-1">ACEPTAR<br>
                             </a>
                             <input type="submit" value="submit" class="u-form-control-hidden">
                         </div>
-                        <div class="u-form-send-message u-form-send-success"> Tus datos han sido registrados. </div>
-                        <div class="u-form-send-error u-form-send-message"> Ha ocurrido un error al guardarlo. </div>
+                        <div class="u-form-send-message u-form-send-success"> Los cuidados han sido registrados. </div>
+                        <div class="u-form-send-error u-form-send-message"> Ha ocurrido un error al guardar los cuidados. </div>
                         <input type="hidden" value="" name="recaptchaResponse">
                     </form>
                 </div>
-                <div alt="" class="u-image-perfil u-image u-image-circle u-image-registrar" data-image-width="1280" data-image-height="854">
-                </div>
-                <a href="../../index.php"
-                    class="boton-verde u-btn u-button-style u-hover-palette-1-dark-1 u-btn-2">Cancelar</a>
-                <p class="select-bottom u-text u-text-registrar">Selecciona tu imagen</p>
-            </div>
         </section>
     </div>
 
     <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-712f">
         <div class="u-clearfix u-sheet u-sheet-1">
+        
             <p class="u-small-text u-text u-text-variant u-text-1">Universidad Veracruzana&nbsp;<br>Desarrollo de
                 Software
             </p>
