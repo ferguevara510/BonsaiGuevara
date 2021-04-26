@@ -140,7 +140,7 @@ if (isset($_GET['usuario'])) {
             <div class="u-clearfix u-sheet u-sheet-1">
                 <h1 class="u-text u-text-default u-text-1">Editar Empresa</h1>
                 <div class="u-form u-form-1">
-                    <form enctype="multipart/form-data" action="<?php echo URL_CONTROLADORES?>editarCliente.php" method="POST" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form"
+                    <form enctype="multipart/form-data" action="<?php echo URL_CONTROLADORES?>editarEmpresa.php" method="POST" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form"
                         style="padding: 10px" source="custom" name="form">
                         <input type="hidden" name="usuario" value="administrador">
                         <div class="u-form-group u-form-name">

@@ -65,4 +65,5 @@ class Administrador {
     public function encriptarContrasena(){
         $this->contrasena = md5($this->contrasena);
     }
+
 }
