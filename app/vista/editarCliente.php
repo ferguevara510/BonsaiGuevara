@@ -180,7 +180,7 @@ if (isset($_GET['id_cliente']) && is_numeric($_GET['id_cliente'])) {
                                 class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
                         </div>
                         <div class="u-align-right u-form-group u-form-submit">
-                            <a href="#" class="boton-verde u-btn u-btn-submit u-button-style u-btn-1">ACEPTAR<br>
+                            <a href="#" class="boton-verde u-btn u-btn-submit u-button-style u-btn-1">ACTUALIZAR DATOS<br>
                             </a>
                             <input type="submit" value="submit" class="u-form-control-hidden">
                         </div>
@@ -191,10 +191,8 @@ if (isset($_GET['id_cliente']) && is_numeric($_GET['id_cliente'])) {
                 </div>
                 <div alt="" class="u-image-registrar u-image-perfil u-image u-image-circle" style="background-image: url('/<?php echo $cliente->imagenPerfil?>');" data-image-width="1280" data-image-height="854">
                 </div>
-                <a href="../../index.php
-                "
-                    class="boton-verde u-btn u-button-style u-hover-palette-1-dark-1 u-btn-2">Cancelar</a>
-                <p class="select-bottom u-text u-text-registrar">Cambia tu imagen</p>
+               
+                <a class="select-bottom u-text u-text-registrar">CAMBIAR IMAGEN</a>
             </div>
         </section>
     </div>
