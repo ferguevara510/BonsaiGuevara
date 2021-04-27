@@ -2,14 +2,16 @@
 require_once "../../configuracion/env.php";
 
 //Variables de los inputs
-$nombre="";
+$nombreCi="";
+$nombreCo="";
 $precio="";
-$cantidad="";
+$edad="";
 //Variables para verificar errores
 $imgERR="";
-$namERR="";
+$namCiERR="";
+$namCoERR="";
 $prcERR="";
-$cantERR="";
+$edadErr="";
 
 
 
@@ -22,26 +24,26 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
   // Validar el nombre de usuario
   if(empty(trim($_POST["nombre"]))){
-    $namERR = "Porfavor ingrese un nombre para el Bonsai.";
+    $namCiERR = "Porfavor ingrese un nombre cientifico para el Bonsai.";
 } else{
     // Busca el nombre del bonsai en la base de datos
-    $sql = "SELECT * FROM bonsais WHERE Nombre = ?";
+    $sql = "SELECT * FROM bonsai WHERE nombreCientifico = ?";
     
     if($stmt = $mysqli->prepare($sql)){
      
         $stmt->bind_param("s", $param_name);
         
   
-        $param_name = trim($_POST["nombre"]);
+        $param_name = trim($_POST["nombreCi"]);
         
         if($stmt->execute()){
             
             $stmt->store_result();
             
             if($stmt->num_rows == 1){
-              $namERR = "Ya Existe este Bonsai.";
+              $namCiERR = "Ya Existe este Bonsai.";
             } else{
-                $nombre = trim($_POST["nombre"]);
+                $nombreCi = trim($_POST["nombreCi"]);
             }
         } else{
             echo "Oops! Something went wrong. Please try again later.";
@@ -56,12 +58,51 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 
 
+ // Validar el nombre de usuario
+ if(empty(trim($_POST["nombre"]))){
+  $namCoERR = "Porfavor ingrese un nombre cientifico para el Bonsai.";
+} else{
+  // Busca el nombre del bonsai en la base de datos
+  $sql = "SELECT * FROM bonsai WHERE nombreComun = ?";
+  
+  if($stmt = $mysqli->prepare($sql)){
+   
+      $stmt->bind_param("s", $param_name);
+      
+
+      $param_name = trim($_POST["nombreCo"]);
+      
+      if($stmt->execute()){
+          
+          $stmt->store_result();
+          
+          if($stmt->num_rows == 1){
+            $namCoERR = "Ya Existe este Bonsai.";
+          } else{
+              $nombreCo = trim($_POST["nombreCo"]);
+          }
+      } else{
+          echo "Oops! Something went wrong. Please try again later.";
+      }
+
+      // Close statement
+      $stmt->close();
+  }
+
+}
+
+
+
+
+
+
+
   
 
- // If upload button is clicked ...
+ 
 
  
-  $cantidad=$_POST["cantidad"];
+  $edad=$_POST["edad"];
   $precio=$_POST['precio'];
 
 
@@ -69,7 +110,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 // Validacion de los campos
 if (empty($namERR)){
 
- 
+ // If upload button is clicked ...
   if (isset($_POST['upload'])) {
 
     $filename = $_FILES["uploadfile"]["name"];
@@ -78,8 +119,9 @@ if (empty($namERR)){
       
 
 //Preparamos el statement para el SQL
-$sql="INSERT INTO bonsais (id,ImageURL,Nombre,Price,Quantity) values (Null,?,?,?,?)";
-
+$sql="INSERT INTO bonsai (id_bonsai,imagenBonsai,id_especie,estilo,nombreCientifico,nombreComun
+,edad,precio) values (Null,?,?,?,?,?,?,?)";
+// Modificar 
 if($stmt = $mysqli->prepare($sql)){
   // Bind variables to the prepared statement as parameters
   $stmt->bind_param("ssii", $param_imgURL, $param_name,$param_precio,$param_cantidad);
@@ -261,23 +303,46 @@ if($stmt = $mysqli->prepare($sql)){
 
   
   <br>
-  <label class="inputFont" for="nombre">Nombre del bonsái</label>
+
+  <label class="inputFont" for="nombre">Nombre Cientifico del bonsái</label>
   <br>
-<input name="nombre" type="text" >
-<!--Error de nombre-->
-<span class='help-block inputFont'><?php echo $namERR;?></span>
+<input name="nombreCi" type="text" >
+<!--Error de nombre cientifico-->
+<span class='help-block inputFont'><?php echo $namCiERR;?></span>
 <br>
+
+<label class="inputFont" for="nombre">Nombre Comun del bonsái</label>
+  <br>
+<input name="nombreCo" type="text" >
+<!--Error de nombre comun-->
+<span class='help-block inputFont'><?php echo $namCoERR;?></span>
+<br>
+
+<label class="inputFont" for="nombre">Estilos</label>
+  <br>
+<select>
+<option value="value1">FUKINAGASHI - FUSTIGADO PELO VENTO</option>
+<option value="value1">KENGAI - CASCADA</option>
+<option value="value1">HAN KENGAI - SEMI CASCADA</option>
+<option value="value1">MOYOGI - INFORMAL DIREITO</option>
+<option value="value1">SHAKAN - INCLINADO</option>
+<option value="value1">CHOKKAN - FORMAL DIREITO</option>
+<option value="value1">HOKIDACHI - ESTILO VASSQURA</option>
+<option value="value1">YOSE-UE - BOSQUE</option>
+   </select>
+   <br>
 <label class="inputFont"for="precio">Precio</label>
 <br>
 <input type="number" name="precio" id="campoEdad" min="0" max="999999" oninput="validity.valid||(value='');" 
  required="required">
  <span class='help-block inputFont'><?php echo $prcERR;?></span>
 <br>
-<label class="inputFont" for="cantidad">Cantidad</label>
+
+<label class="inputFont" for="cantidad">Edad</label>
 <br>
-<input type="number" name="cantidad" id="campoEdad" min="0" max="999999" oninput="validity.valid||(value='');" 
+<input type="number" name="edad" id="campoEdad" min="0" max="999999" oninput="validity.valid||(value='');" 
  required="required">
- <span class='help-block inputFont'><?php echo $cantERR;?></span>
+ <span class='help-block inputFont'><?php echo $edadErr;?></span>
 <br>
 <button class="registrar" type="submit" name="upload" >Registrar</button>
 <button class="limpiar" type="reset" >Limpiar </button>

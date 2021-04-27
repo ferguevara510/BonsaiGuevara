@@ -6,7 +6,7 @@ if(isset($_GET["id"]) && !empty($_GET["id"])){
     // Include config file
   
     // Prepare a delete statement
-    $sql = "DELETE FROM `bonsai` WHERE `bonsai`.`id_bonsai` = ?";
+    $sql = "DELETE FROM `bonsai` WHERE `bonsai`.`id_bonsai` =  ?";
    
    
     if($stmt = $mysqli->prepare($sql)){
@@ -14,7 +14,7 @@ if(isset($_GET["id"]) && !empty($_GET["id"])){
         $stmt->bind_param("i", $param_id);
         
         // Set parameters
-        $param_id = trim($_POST["id"]);
+        $param_id = trim($_GET["id"]);
         echo"hola";
         // Attempt to execute the prepared statement
         if($stmt->execute()){

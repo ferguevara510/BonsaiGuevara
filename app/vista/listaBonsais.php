@@ -147,7 +147,7 @@ if($result = $mysqli->query($sql)){
                                      echo"</div>";
 
                                      echo"<div >" ;
-                                     echo"<label class='quantity infoFont''for=''>"."Edad: ".$row['edad'] ."</label>";
+                                     echo"<label class='quantity infoFont''for=''>"."Edad: ".$row['edad'] ." años</label>";
                                      echo"<label class='infoFont quantity' for=''>"."Precio: ".$row['precio'].".00 $</label>" ;
 
                                      echo"<i class='fa fa-trash-o  icons' aria-hidden='true'  
