@@ -15,15 +15,15 @@ if(isset($_GET["id"]) && !empty($_GET["id"])){
         
         // Set parameters
         $param_id = trim($_GET["id"]);
-        echo"hola";
+        
         // Attempt to execute the prepared statement
         if($stmt->execute()){
             // Records deleted successfully. Redirect to landing page
-            echo"hola2";
+           
             header("location: ../../app/vista/listaBonsais.php");
             exit();
         } else{
-            echo"hola3";
+           
             echo "Oops! algo malo paso,por favor intenta otra vez.";
         }
     }

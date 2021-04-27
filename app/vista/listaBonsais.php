@@ -38,6 +38,17 @@ function confirmationDelete(anchor)
 }
 </script>
 
+<script language="JavaScript" type="text/javascript">
+function confirmationEdit(anchor)
+{
+   var conf = confirm('Estas Seguro que quieres Editar este Bonsai?');
+   if(conf)
+      window.location=anchor.attr("href");
+}
+</script>
+
+
+
 
     <meta property="og:title" content="Inicio">
     <meta property="og:type" content="website">
@@ -133,7 +144,7 @@ if($result = $mysqli->query($sql)){
                                     
 
                                      echo "<div class='bonsaiInformation'>;";
-                                     echo "<img src='".$row['imagenBonsai']."' alt='Not Found' onerror=this.src='../../publico/bonsais/Error.png' width='200' height='120' class='imagenB'>";
+                                     echo "<img src='".$row['imagenBonsai']."' alt='Not Found' onerror=this.src='../../publico/bonsais/Error.png' width='160' height='160' class='imagenB'>";
                                      echo"<div class='bonsaiSegment' >";
                                      echo"<label class='nameFont quantity' for=''>".$row['nombreCientifico']."</label>" ;
                                      
@@ -152,7 +163,8 @@ if($result = $mysqli->query($sql)){
 
                                      echo"<i class='fa fa-trash-o  icons' aria-hidden='true'  
                                      onclick='javascript:confirmationDelete($(this));return false;' href='../../app/controlador/eliminarBonsais.php?id=".$row['id_bonsai']."'></i>" ;
-                                     echo"<i class='fa fa-pencil icons' aria-hidden='true'></i>" ;
+                                     echo"<i class='fa fa-pencil icons' aria-hidden='true'
+                                     onclick='javascript:confirmationEdit($(this));return false;' href='../../app/controlador/editarBonsais.php?id=".$row['id_bonsai']."' ></i>" ;
                                      echo"</div>" ;
 
 
