@@ -191,7 +191,7 @@ if (isset($_GET['id_cliente']) && is_numeric($_GET['id_cliente'])) {
                 </div>
                 <div alt="" class="u-image-registrar u-image-perfil u-image u-image-circle" style="background-image: url('/<?php echo $cliente->imagenPerfil?>');" data-image-width="1280" data-image-height="854">
                 </div>
-               
+
                 <a class="select-bottom u-text u-text-registrar">CAMBIAR IMAGEN</a>
             </div>
         </section>

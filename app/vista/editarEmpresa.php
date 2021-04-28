@@ -1,8 +1,12 @@
 <?php
-require_once "../../configuracion/env.php";
-require_once "../modelo/administrador.php";
-
-$administrador = Administrador::consultarEmpresa();
+if (isset($_GET['usuario'])) {
+    require_once "../../configuracion/env.php";
+    require_once "../modelo/administrador.php";
+    $administrador = Administrador::consultarEmpresa();
+} else {
+    header("location: ../../index.php");
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -14,14 +18,14 @@ $administrador = Administrador::consultarEmpresa();
     <meta name="keywords" content="Blooms, For Every Occasion">
     <meta name="description" content="">
     <meta name="page_type" content="np-template-header-footer-from-plugin">
-    <title>Consultar Empresa</title>
+    <title>Editar Empresa</title>
+    <link rel="stylesheet" href="<?php echo URL_CSS?>registrarCliente.css" media="screen">
+    <link rel="stylesheet" href="<?php echo URL_CSS?>empresa.css" media="screen">
     <link rel="stylesheet" href="<?php echo URL_CSS?>nicepage.css" media="screen">
     <link rel="stylesheet" href="<?php echo URL_CSS?>Iniciar-Sesión.css" media="screen">
     <link rel="stylesheet" type="text/css" href="<?php echo URL_CSS?>style.css">
     <link rel="stylesheet" type="text/css" href="<?php echo URL_CSS?>bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo URL_CSS?>empresa.css">
     <script class="u-script" type="text/javascript" src="<?php echo URL_JS?>nicepage.js" defer=""></script>
-
 
     <meta name="generator" content="Nicepage 3.11.0, nicepage.com">
     <link id="u-theme-google-font" rel="stylesheet"
@@ -51,7 +55,7 @@ $administrador = Administrador::consultarEmpresa();
     <header class="u-clearfix u-header u-header" id="sec-e89e">
         <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
             <a href="index.html" class="u-image u-logo u-image-1" data-image-width="299" data-image-height="266">
-            <img src="<?php echo URL_IMAGENES?>bonsai_karla.png" class="u-logo-image u-logo-image-1" data-image-width="64">
+                <img src="<?php echo URL_IMAGENES?>bonsai_karla.png" class="u-logo-image u-logo-image-1" data-image-width="64">
             </a>
             <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
                 <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px;">
@@ -130,29 +134,71 @@ $administrador = Administrador::consultarEmpresa();
             </nav>
         </div>
     </header>
-    
-    <div class="tarjeta-empresa">
-        <div class="seccion-icono">
-            <img src="<?php echo URL_IMAGENES?>logo.jpg" alt="">
-        </div>
-        <div class="seccion-datos">
-            <div>
-                <img src="<?php echo URL_IMAGENES?>nombre.png" alt="">
-                <span><?php echo "{$administrador->nombre} {$administrador->apellidoPaterno} {$administrador->apellidoMaterno}";?></span>
+
+    <div>
+        <section class="u-clearfix u-section-1" id="sec-0b39">
+            <div class="u-clearfix u-sheet u-sheet-1">
+                <h1 class="u-text u-text-default u-text-1">Editar Empresa</h1>
+                <div class="u-form u-form-1">
+                    <form enctype="multipart/form-data" action="<?php echo URL_CONTROLADORES?>editarEmpresa.php" method="POST" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form"
+                        style="padding: 10px" source="custom" name="form">
+                        <input type="hidden" name="usuario" value="administrador">
+                        <div class="u-form-group u-form-name">
+                            <label for="name-dc48" class="u-form-control-hidden u-label">Nombre</label>
+                            <input value="<?php echo $administrador->nombre?>" type="text" placeholder="Nombre" id="nombre" name="nombre"
+                                class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
+                        </div>
+                        <div class="u-form-group u-form-name u-form-group-2">
+                            <label for="name-8ced" class="u-form-control-hidden u-label">Apellido Paterno</label>
+                            <input value="<?php echo $administrador->apellidoPaterno?>" type="text" placeholder="Apellido Paterno" id="apellidoPeterno" name="apellidoPaterno"
+                                class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
+                        </div>
+                        <div class="u-form-group u-form-name u-form-group-3">
+                            <label for="name-998d" class="u-form-control-hidden u-label">Apellido Materno</label>
+                            <input value="<?php echo $administrador->apellidoMaterno?>" type="text" placeholder="Apellido Materno" id="apellidoMaterno" name="apellidoMaterno"
+                                class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
+                        </div>
+                        <div class="u-form-group u-form-group-4">
+                            <label for="text-5cce" class="u-form-control-hidden u-label">Contraseña</label>
+                            <input type="password" placeholder="Contraseña" id="contrasena" name="contrasena"
+                                class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white">
+                        </div>
+                        <div class="u-form-group u-form-group-5">
+                            <label for="text-d7af" class="u-form-control-hidden u-label">Confirmar Contraseña</label>
+                            <input type="password" placeholder="Confirmar contraseña" id="confirmarContrasena"
+                                name="confirmarContrasena" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white">
+                        </div>
+                        <div class="u-form-email u-form-group">
+                            <label for="email-dc48" class="u-form-control-hidden u-label">Correo</label>
+                            <input value="<?php echo $administrador->correo?>" type="email" placeholder="Correo" id="correo" name="correo"
+                                class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
+                        </div>
+                        <div class="u-form-group u-form-group-7">
+                            <label for="text-2386" class="u-form-control-hidden u-label">Teléfono</label>
+                            <input value="<?php echo $administrador->numTelefono?>" type="text" placeholder="Teléfono" id="telefono" name="telefono"
+                                class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
+                        </div>
+                        <div class="u-form-group u-form-group-7">
+                            <label for="text-2386" class="u-form-control-hidden u-label">Dirección</label>
+                            <input value="<?php echo $administrador->direccion?>" type="text" placeholder="Dirección" id="direccion" name="direccion"
+                                class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
+                        </div>
+                        <div class="u-align-right u-form-group u-form-submit">
+                            <a href="#" class="boton-verde u-btn u-btn-submit u-button-style u-btn-1">ACEPTAR<br>
+                            </a>
+                            <input type="submit" value="submit" class="u-form-control-hidden">
+                        </div>
+                        <div class="u-form-send-message u-form-send-success"> Tus datos han sido actualizados. </div>
+                        <div class="u-form-send-error u-form-send-message"> Ha ocurrido un error al guardarlo. </div>
+                        <input type="hidden" value="" name="recaptchaResponse">
+                    </form>
+                </div>
+                <div alt="" class="u-image-logo u-image-perfil u-image u-image-circle" data-image-width="1280" data-image-height="854">
+                </div>
+                <a href="../../index.php"
+                    class="boton-verde u-btn u-button-style u-hover-palette-1-dark-1 u-btn-2">CANCELAR</a>
             </div>
-            <div>
-                <img src="<?php echo URL_IMAGENES?>direccion.png" alt="">
-                <span><?php echo $administrador->direccion?></span>
-            </div>
-            <div>
-                <img src="<?php echo URL_IMAGENES?>telefono.png" alt="">
-                <span><?php echo $administrador->numTelefono?></span>
-            </div>
-            <div>
-                <img src="<?php echo URL_IMAGENES?>correo.png" alt="">
-                <span><?php echo $administrador->correo?></span>
-            </div>
-        </div>
+        </section>
     </div>
 
     <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-712f">
