@@ -13,7 +13,7 @@ class Cita {
         $this->hora = "00:00:00";
         $this->duracion = 0;
         $this->descripcion ='';
-        $this->id_cliente = 0;
+        $this->id_cliente = 1;
     }
 
     public function registrarCita() {
@@ -35,10 +35,10 @@ class Cita {
     public function editarCita() {
         $validacion = false;
         $mysqli = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
-        $sql="UPDATE cita SET fecha=?, hora=?, duracion=?, descripcion=?, id_cliente=? WHERE folio=?";
+        $sql="UPDATE cita SET fecha=?, hora=?, duracion=?, descripcion=? WHERE folio=?";
         $stmt = $mysqli->prepare($sql);
         if($stmt) {
-            $stmt->bind_param("ssisii", $this->fecha, $this->hora, $this->duracion, $this->descripcion, $this->id_cliente, $this->folio);
+            $stmt->bind_param("ssisi", $this->fecha, $this->hora, $this->duracion, $this->descripcion, $this->folio);
             if($stmt->execute()) {
                 $validacion = true;
             }
