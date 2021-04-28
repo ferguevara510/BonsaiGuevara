@@ -11,8 +11,8 @@ class Cuidado {
 
     public function __construct() {
         $this->id_cuidado = 0;
-        $this->id_especie = 1;
-        $this->estilo = 1;
+        $this->id_especie = '0';
+        $this->estilo = '';
         $this->cantidadRiego = '';
         $this->lugar = '';
         $this->maceta = '';

@@ -1,5 +1,8 @@
 <?php
 require_once "../../configuracion/env.php";
+//require_once "../modelo/especie.php";
+
+//$especies= Especie::buscarEspecies();
 ?>
 
 
@@ -12,7 +15,7 @@ require_once "../../configuracion/env.php";
     <meta name="keywords" content="Blooms, For Every Occasion">
     <meta name="description" content="">
     <meta name="page_type" content="np-template-header-footer-from-plugin">
-    <title>Registrar Cliente</title>
+    <title>Registrar Cuidados</title>
     <link rel="stylesheet" href="<?php echo URL_CSS?>registrarCliente.css" media="screen">
     <link rel="stylesheet" href="<?php echo URL_CSS?>nicepage.css" media="screen">
     <link rel="stylesheet" href="<?php echo URL_CSS?>Iniciar-Sesión.css" media="screen">
@@ -137,23 +140,27 @@ require_once "../../configuracion/env.php";
                     <form action="<?php echo URL_CONTROLADORES?>registrarCuidados.php" method="POST" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form"
                         style="padding: 10px" source="custom" name="form" enctype="multipart/form-data">
                         
-                        
                         <div class="u-form-group u-form-name">
+                            <label for="text-2386" class="u-form-control-hidden u-label">Especie</label>
+                            <input type="text" placeholder="Especie" id="especie" name="especie"
+                                class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
+                        </div>
+                        <div class="u-form-group u-form-group-2">
                             <label for="name-dc48" class="u-form-control-hidden u-label">Cantidad de Riego</label>
                             <input type="text" placeholder="Cantidad de riego" id="cantidadriego" name="cantidadriego"
                                 class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">  
                         </div>
-                        <div class="u-form-group u-form-name u-form-group-2">
+                        <div class="u-form-group u-form-name u-form-group-3">
                             <label for="name-8ced" class="u-form-control-hidden u-label">Lugar</label>
                             <input type="text" placeholder="Lugar" id="lugar" name="lugar"
                                 class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
                         </div>
-                        <div class="u-form-group u-form-name u-form-group-3">
+                        <div class="u-form-group u-form-name u-form-group-4">
                             <label for="name-998d" class="u-form-control-hidden u-label">Maceta</label>
                             <input type="text" placeholder="Maceta" id="maceta" name="maceta"
                                 class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
                         </div>
-                        <div class="u-form-group u-form-group-4">
+                        <div class="u-form-group u-form-group-5">
                             <label for="text-5cce" class="u-form-control-hidden u-label">Tiempo de Transplante</label>
                             <input type="text" placeholder="Tiempo de transplante" id="tiempotransplante" name="tiempotransplante"
                                 class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
@@ -163,14 +170,41 @@ require_once "../../configuracion/env.php";
                             <input type="text" placeholder="Tipo de Cultivo" id="tipocultivo" name="tipocultivo"
                                 class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
                         </div>
+                        
+                        
                         <div class="u-align-right u-form-group u-form-submit">
                             <a href="<?php echo URL_CONTROLADORES?>registrarCuidados.php" class="boton-verde u-btn u-btn-submit u-button-style u-btn-1">ACEPTAR<br>
                             </a>
                             <input type="submit" value="submit" class="u-form-control-hidden">
+                            
                         </div>
                         <div class="u-form-send-message u-form-send-success"> Los cuidados han sido registrados. </div>
                         <div class="u-form-send-error u-form-send-message"> Ha ocurrido un error al guardar los cuidados. </div>
                         <input type="hidden" value="" name="recaptchaResponse">
+                        <a href="../../index.php"
+                        class="boton-verde u-btn u-button-style u-hover-palette-1-dark-1 u-btn-2">Cancelar</a>
+                        
+                        <div class="caja">
+                        <select  name= "estilo">
+                                    <option> Selecciona el Estilo </option>
+                                    <option value="1">FUKINAGASHI - FUSTIGADO PELO VENTO</option>
+                                    <option value="2">KENGAI - CASCADA</option>
+                                    <option value="3">HAN KENGAI - SEMI CASCADA</option>
+                                    <option value="4">MOYOGI - INFORMAL DIREITO</option>
+                                    <option value="5">SHAKAN - INCLINADO</option>
+                                    <option value="6">CHOKKAN - FORMAL DIREITO</option>
+                                    <option value="7">HOKIDACHI - ESTILO VASSQURA</option>
+                                    <option value="8">YOSE-UE - BOSQUE</option>
+                        <!-- </select>
+                        <div class="caja">
+                        <select  name= "especie">
+                        <?php $i =0; foreach ($especies as $especie){ ?>
+                        <option value="<?php echo $i ?>"> <?php echo $especie; ?> </option>
+                        <?php
+                        $i= $i+1;
+                        } ?> 
+                        </select> -->
+                        
                     </form>
                 </div>
         </section>
