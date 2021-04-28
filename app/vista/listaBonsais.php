@@ -163,10 +163,10 @@ if($result = $mysqli->query($sql)){
           echo"</div>" ;
           echo
           "<form action='' method='post'>
-            <input type='text' name='id' id='id' value='".$row['id_bonsai']."'>
-            <input type='text' name='nombre' id='nombre' value='".$row['nombreComun']."'>
-            <input type='text' name='precio' id='precio' value='".$row['precio']."'>
-            <input type='text' name='cantidad' id='cantidad' value='1'>
+            <input type='hidden' name='id' id='id' value='".$row['id_bonsai']."'>
+            <input type='hidden' name='nombre' id='nombre' value='".$row['nombreComun']."'>
+            <input type='hidden' name='precio' id='precio' value='".$row['precio']."'>
+            <input type='hidden' name='cantidad' id='cantidad' value='1'>
             <button class='btn btn-primary' name='btnAccion' value='Agregar' type='submit'>Agregar al Carrito</button>
            </form>";
 
