@@ -3,22 +3,22 @@
   require 'configuracion/database.php';
   include 'templates/menu.php';
 
-  if (isset($_SESSION['user_email'])) {
-    $resultado = $conn->prepare('SELECT * FROM cliente WHERE correo=:email');
-    $resultado->bindParam(':email', $_SESSION['user_email']);
-    $resultado->execute();
+    if(isset($_SESSION['usuario'])){
+      $resultado = $conn->prepare('SELECT * FROM administrador WHERE usuario=:user');
+      $resultado->bindParam(':user', $_SESSION['usuario']);
+      $resultado->execute();
 
-    $registros = $resultado->fetch(PDO::FETCH_ASSOC);
+      $registros = $resultado->fetch(PDO::FETCH_ASSOC);
 
-    $user = null;
-    if (count($registros) > 0) {
-      $user = $registros;
-    }
-  } 
+      $user = null;
+      if (count($registros) > 0) {
+        $user = $registros;
+      }
+  }
 ?>
 <!--Apartado de Creacion solo si el usuario a ingresado al sistema-->
-<?php if ($user['correo'] != null) { ?>
-  <br>Welcome <?php echo $user['correo']?>
+  <?php if ($user['usuario'] != null) { ?>
+  <br>Welcome <?php echo $user['usuario']?>
   <br>Inicio de Sesión Correcto
   <!--Inicio IF php-->
     <section class="-lg -sm -xl -xs u-align-center u-clearfix u-white u-section-1" src="" id="carousel_8155">
