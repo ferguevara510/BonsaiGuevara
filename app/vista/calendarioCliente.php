@@ -11,9 +11,10 @@ require_once "../../configuracion/env.php";
     <meta name="keywords" content="Blooms, For Every Occasion">
     <meta name="description" content="">
     <meta name="page_type" content="np-template-header-footer-from-plugin">
-    <title>Inicio</title>
+    <title>Calendario Cliente</title>
     <link rel="stylesheet" href="<?php echo URL_CSS?>nicepage.css" media="screen">
     <link rel="stylesheet" href="<?php echo URL_CSS?>Iniciar-Sesión.css" media="screen">
+    <link rel="stylesheet" href="<?php echo URL_CSS?>cita.css" media="screen">
     <link rel="stylesheet" type="text/css" href="<?php echo URL_CSS?>style.css">
     <link rel="stylesheet" type="text/css" href="<?php echo URL_CSS?>bootstrap.css">
     <script class="u-script" type="text/javascript" src="<?php echo URL_JS?>nicepage.js" defer=""></script>
@@ -24,11 +25,14 @@ require_once "../../configuracion/env.php";
         href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
     <link id="u-page-google-font" rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="<?php echo URL_CSS_CALENDARIO?>">
     <script type="text/javascript" src="<?php echo URL_JS?>jquery.1.11.1.js"></script>
     <script type="text/javascript" src="<?php echo URL_JS?>bootstrap.js"></script>
     <script type="text/javascript" src="<?php echo URL_JS?>jquery.isotope.js"></script>
     <script type="text/javascript" src="<?php echo URL_JS?>jqBootstrapValidation.js"></script>
-
+    <script type="text/javascript" src="<?php echo URL_JS_CALENDARIO?>"></script>
+    <script type="text/javascript" src="<?php echo URL_JS?>calendario.js"></script>
+    
     <script type="application/ld+json">{
 		"@context": "http://schema.org",
 		"@type": "Organization",
@@ -126,14 +130,140 @@ require_once "../../configuracion/env.php";
             </nav>
         </div>
     </header>
+
+    <div class="modal-footer">
+        <button type="button" class="boton-cita" id="editarCita">EDITAR CITA</button>
+    </div>
+
+    <div class="modal" tabindex="-1" role="dialog" id="editar">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="contenedor">
+                    <section class="u-clearfix u-section-1 u-section-cita" id="sec-0b39">
+                        <div class="u-clearfix contenedor u-sheet u-sheet-1">
+                            <h1 class="u-text u-text-default u-text-1 h1-cita">Editar Cita</h1>
+                            <form action="">                                                 
+                            <div class="row form-group">
+                                <label for="" class="u-label label-cita col-sm-2">Fecha</label>
+                                <div class="col-sm-10">
+                                    <input type="date" id="fecha" name="fechaInicio" class="form-control col-sm-8" required="">
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label for="" class="u-label label-cita col-sm-2">Hora</label>
+                                <div class="col-sm-10">    
+                                    <input type="time" min="14:00" max="19:00" id="hora" name="fechaInicio" class="form-control col-sm-8" required="">
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label for="" class="u-label label-cita col-sm-2">Duracion</label>
+                                <div class="col-sm-10">
+                                    <select class="col-sm-8 form-control" id="duracion" name="duracion">
+                                        <option value="1">15 min</option>
+                                        <option value="2">30 min</option>
+                                        <option value="3">45 min</option>
+                                        <option value="4">60 min</option>
+                                        <option value="5">75 min</option>
+                                        <option value="6">90 min</option>
+                                        <option value="7">105 min</option>
+                                        <option value="8">120 min</option>
+                                    </select>
+                                </div>    
+                            </div>
+                            <div class="row form-group">
+                                <label for="" class="u-form-control-hidden u-label">Descripcion</label>
+                                <div class="col-sm-12">
+                                    <textarea type="text" placeholder="Descripcion" class="form-control u-border-1 u-border-grey-30 u-input-rectangle u-white col-sm-8" id="descripcion" rows="5" cols="50" name="descripcion" required=""></textarea>
+                                </div>
+                            </div>
+                            </form> 
+                        </div>
+                    </section>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="boton-cita">ELIMINAR CITA</button>
+                    <button type="button" class="boton-cita">ACTUALIZAR CITA</button>
+                    <button type="button" class="boton-cita" data-dismiss="modal">CANCELAR</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="calendario">
+    </div>
     
-    <div>"AQUI VA A IR TODO SU CODIGO"</div>
+    <div class="modal" tabindex="-1" role="dialog" id="registro">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="contenedor">
+                    <section class="u-clearfix u-section-1 u-section-cita" id="sec-0b39">
+                        <div class="u-clearfix contenedor u-sheet u-sheet-1">
+                            <h1 class="u-text u-text-default u-text-1 h1-cita">Registro de Cita</h1>
+                            <form action="">                                                 
+                            <div class="row form-group">
+                                <label for="" class="u-label label-cita col-sm-2">Fecha</label>
+                                <div class="col-sm-10">
+                                    <input type="date" placeholder="" id="fechainicio" name="fechaInicio" class="form-control col-sm-8" required="">
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label for="" class="u-label label-cita col-sm-2">Hora</label>
+                                <div class="col-sm-10">    
+                                    <input type="time" min="14:00" max="19:00" placeholder="" id="horainicio" name="horaInicio" class="form-control col-sm-8" required="">
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label for="" class="u-label label-cita col-sm-2">Duracion</label>
+                                <div class="col-sm-10">
+                                    <select class="col-sm-8 form-control" id="duracioncita" name= "duracion">
+                                        <option value="1">15 min</option>
+                                        <option value="2">30 min</option>
+                                        <option value="3">45 min</option>
+                                        <option value="4">60 min</option>
+                                        <option value="5">75 min</option>
+                                        <option value="6">90 min</option>
+                                        <option value="7">105 min</option>
+                                        <option value="8">120 min</option>
+                                    </select>
+                                </div>    
+                            </div>
+                            <div class="row form-group">
+                                <label for="" class="u-form-control-hidden u-label">Descripcion</label>
+                                <div class="col-sm-12">
+                                    <textarea type="text" placeholder="Descripcion" class="form-control u-border-1 u-border-grey-30 u-input-rectangle u-white col-sm-8" id="descripcioncita" rows="5" cols="50" name="descripcion" required=""></textarea>
+                                </div>
+                            </div>
+                            </form> 
+                        </div>
+                    </section>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="boton-cita">REGISTRAR CITA</button>
+                    <button type="button" class="boton-cita" data-dismiss="modal">CANCELAR</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    </div>
 
     <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-712f">
         <div class="u-clearfix u-sheet u-sheet-1">
-            <p class="u-small-text u-text u-text-variant u-text-1">Universidad Veracruzana&nbsp;<br>Desarrollo de
-                Software
-            </p>
+            <p class="u-small-text u-text u-text-variant u-text-1">Universidad Veracruzana&nbsp;<br>Desarrollo de Software</p>
         </div>
     </footer>
 

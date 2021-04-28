@@ -38,4 +38,35 @@ abstract class Duracion {
                 break;
         }
     }
+
+    public static function generarIntervaloTiempo($duracion, $fecha) {
+        $cadena = '';
+        switch ($duracion) {
+            case 1:
+                $fecha->add(new DateInterval("P0DT15M"));
+                break;
+            case 2:
+                $fecha->add(new DateInterval("P0DT30M"));
+                break;
+            case 3:
+                $fecha->add(new DateInterval("P0DT45M"));
+                break;
+            case 4:
+                $fecha->add(new DateInterval("P0DT60M"));
+                break;
+            case 5:
+                $fecha->add(new DateInterval("P0DT75M"));
+                break;
+            case 6:
+                $fecha->add(new DateInterval("P0DT90M"));
+                break;
+            case 7:
+                $fecha->add(new DateInterval("P0DT105M"));
+                break;
+            case 8:
+                $fecha->add(new DateInterval("P0DT120M"));
+                break;
+        }
+        return $fecha;
+    }
 }
