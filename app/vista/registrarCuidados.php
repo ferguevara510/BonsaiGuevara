@@ -1,8 +1,8 @@
 <?php
 require_once "../../configuracion/env.php";
-//require_once "../modelo/especie.php";
+require_once "../modelo/especie.php";
 
-//$especies= Especie::buscarEspecies();
+$especies= Especie::buscarEspecies();
 ?>
 
 
@@ -140,11 +140,7 @@ require_once "../../configuracion/env.php";
                     <form action="<?php echo URL_CONTROLADORES?>registrarCuidados.php" method="POST" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form"
                         style="padding: 10px" source="custom" name="form" enctype="multipart/form-data">
                         
-                        <div class="u-form-group u-form-name">
-                            <label for="text-2386" class="u-form-control-hidden u-label">Especie</label>
-                            <input type="text" placeholder="Especie" id="especie" name="especie"
-                                class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
-                        </div>
+                 
                         <div class="u-form-group u-form-group-2">
                             <label for="name-dc48" class="u-form-control-hidden u-label">Cantidad de Riego</label>
                             <input type="text" placeholder="Cantidad de riego" id="cantidadriego" name="cantidadriego"
@@ -170,22 +166,10 @@ require_once "../../configuracion/env.php";
                             <input type="text" placeholder="Tipo de Cultivo" id="tipocultivo" name="tipocultivo"
                                 class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
                         </div>
-                        
-                        
-                        <div class="u-align-right u-form-group u-form-submit">
-                            <a href="<?php echo URL_CONTROLADORES?>registrarCuidados.php" class="boton-verde u-btn u-btn-submit u-button-style u-btn-1">ACEPTAR<br>
-                            </a>
-                            <input type="submit" value="submit" class="u-form-control-hidden">
-                            
-                        </div>
-                        <div class="u-form-send-message u-form-send-success"> Los cuidados han sido registrados. </div>
-                        <div class="u-form-send-error u-form-send-message"> Ha ocurrido un error al guardar los cuidados. </div>
-                        <input type="hidden" value="" name="recaptchaResponse">
-                        <a href="../../index.php"
-                        class="boton-verde u-btn u-button-style u-hover-palette-1-dark-1 u-btn-2">Cancelar</a>
-                        
-                        <div class="caja">
-                        <select  name= "estilo">
+                        <div class="u-form-email u-form-group">
+                        <label for="email-dc48" class="u-form-control-hidden u-label">Estilo</label>
+
+                        <select class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" name="estilo" required="">
                                     <option> Selecciona el Estilo </option>
                                     <option value="1">FUKINAGASHI - FUSTIGADO PELO VENTO</option>
                                     <option value="2">KENGAI - CASCADA</option>
@@ -195,16 +179,31 @@ require_once "../../configuracion/env.php";
                                     <option value="6">CHOKKAN - FORMAL DIREITO</option>
                                     <option value="7">HOKIDACHI - ESTILO VASSQURA</option>
                                     <option value="8">YOSE-UE - BOSQUE</option>
-                        <!-- </select>
-                        <div class="caja">
-                        <select  name= "especie">
+                         </select>
+                        </div>
+
+                        <div class="u-form-email u-form-group">
+                        <label for="email-dc48" class="u-form-control-hidden u-label">Especie</label>
+                        <select  class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white"name= "especie" required="">
+                        <option> Selecciona la Especie </option>
                         <?php $i =0; foreach ($especies as $especie){ ?>
-                        <option value="<?php echo $i ?>"> <?php echo $especie; ?> </option>
+                        <option value="<?php echo $especie->id_especie ?>"> <?php echo $especie->nombreEspecie; ?> </option>
                         <?php
                         $i= $i+1;
                         } ?> 
-                        </select> -->
-                        
+                        </select>
+                        </div> 
+
+                        <div class="u-align-right u-form-group u-form-submit">
+                            <a href="<?php echo URL_CONTROLADORES?>registrarCuidados.php" class="boton-verde u-btn u-btn-submit u-button-style u-btn-1">ACEPTAR<br>
+                            </a>
+                            <input type="submit" value="submit" class="u-form-control-hidden">
+                            
+                        </div>
+                        <div class="u-form-send-message u-form-send-success"> Los cuidados han sido registrados. </div>
+                        <div class="u-form-send-error u-form-send-message"> Ha ocurrido un error al guardar los cuidados. </div>
+                        <input type="hidden" value="" name="recaptchaResponse">
+
                     </form>
                 </div>
         </section>

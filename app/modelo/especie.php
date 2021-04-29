@@ -18,8 +18,8 @@ class Especie {
             if($result->num_rows > 0){ 
                 while($row = $result->fetch_array()){
                     $especie = new Especie();
-                    $especie->id_especie=$row["idespecie"];
-                    $especie->nombreEspecie=$row["nombreespecie"];
+                    $especie->id_especie=$row["id_especie"];
+                    $especie->nombreEspecie=$row["nombreEspecie"];
                     $especies[]=$especie;
                 }   
             }
