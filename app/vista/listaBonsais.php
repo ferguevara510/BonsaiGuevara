@@ -108,6 +108,7 @@ function confirmationDelete(anchor)
       </div>
       </header>
 <!--Fin del NavBar-->
+
 <!--Mensaje para corroborar funcionamiento y boton de limpiar-->
 <br>
 <?php if($mensaje != "") {?>
@@ -119,6 +120,7 @@ function confirmationDelete(anchor)
       
       <div class='contenedor'> <!--container-->
 <?php
+
 $sql = "SELECT * FROM bonsai";
 if($result = $mysqli->query($sql)){
     if($result->num_rows > 0){ 
@@ -138,6 +140,7 @@ if($result = $mysqli->query($sql)){
 //Fuera del table                      
                                     //Iconos para editar y borrar
                                     
+
 
           echo "<div class='bonsaiInformation'>;";
           echo "<img src='".$row['imagenBonsai']."' alt='Not Found' onerror=this.src='../../publico/bonsais/Error.png' width='200' height='120' class='imagenB'>";
@@ -173,7 +176,6 @@ if($result = $mysqli->query($sql)){
 
           echo"</div>" ;
           echo"</div>" ;
-
                                      
 
          }
