@@ -2043,7 +2043,6 @@
                     data: data,
                     dataType: "jsonp"
                 }).done(function(t) {
-                    console.log(t);
                     if ("success" === t.result || /already/.test(t.msg))
                         i(form),
                         e(form);
@@ -2056,8 +2055,13 @@
             function e(form) {
                 new Dialog(form).close()
             }
-            function i(form) {
-                form.trigger("reset");
+            function i(form,method) {
+                
+                if(method === "POST"){
+                    form.trigger("reset");
+                    $(".u-image-perfil").removeAttr("style");
+                }
+
                 var t = form.find(".u-form-send-success");
                 t.show(),
                 setTimeout(function() {
@@ -2098,8 +2102,7 @@
                         contentType: false
                     }).done(function(data) {
                         if (data && data.success)
-                            if (i(form),
-                            l)
+                            if (i(form,s),l)
                                 window.location.replace(l);
                             else
                                 e(form);

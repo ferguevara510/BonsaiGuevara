@@ -48,3 +48,11 @@ letter-spacing: 2px;
 .seccion-datos > div span{
     width: 80%;
 }
+
+.u-section-1 .u-image-logo {
+    width: 375px;
+    height: 375px;
+    background-image: url("../imagenes/logo-cuadrado.jpg");
+    background-position: 50% 50%;
+    margin: -453px -46px 0 auto;
+  }

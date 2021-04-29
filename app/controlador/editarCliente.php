@@ -2,10 +2,10 @@
 require_once "../../configuracion/env.php";
 require_once "../modelo/cliente.php";
 
-if($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //parse_str(file_get_contents("php://input"),$_PUT);
     $_PUT = $_POST;
-    if(isset($_PUT["id_cliente"]) && is_numeric($_PUT['id_cliente']) && isset($_PUT["nombre"]) 
+    if (isset($_PUT["id_cliente"]) && is_numeric($_PUT['id_cliente']) && isset($_PUT["nombre"]) 
         && isset($_PUT["apellidoPaterno"]) && isset($_PUT["apellidoMaterno"]) && isset($_PUT["correo"]) && isset($_PUT["telefono"])) {
         $cliente = Cliente::buscarCliente($_PUT["id_cliente"]);
         $cambiarContrasena = false;
@@ -14,12 +14,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             $cliente->contrasena=$_PUT["contrasena"];
         }
 
-        if(isset($_FILES["imagenPerfil"]) && file_exists($_FILES['imagenPerfil']['tmp_name'])){
+        if (isset($_FILES["imagenPerfil"]) && file_exists($_FILES['imagenPerfil']['tmp_name'])){
             $pathImage = PATH_IMAGENES_PERFIL.uniqid();
             if (move_uploaded_file($_FILES['imagenPerfil']['tmp_name'], $pathImage)) {
-                if(file_exists($_FILES['imagenPerfil']['tmp_name'])){
+                if (file_exists($_FILES['imagenPerfil']['tmp_name'])){
                     unlink($_FILES['imagenPerfil']['tmp_name']);
-                    if(file_exists($cliente->imagenPerfil) && $cliente->imagenPerfil !== URL_IMAGENE_PERFIL_DEFAULT){
+                    if (file_exists($cliente->imagenPerfil) && $cliente->imagenPerfil !== URL_IMAGENE_PERFIL_DEFAULT){
                         unlink($cliente->imagenPerfil);
                     }
                 }
@@ -33,7 +33,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $cliente->correo=$_PUT["correo"];
         $cliente->numTelefono=$_PUT["telefono"];
         $validacion = $cliente->editarCliente($cambiarContrasena);
-        if($validacion) {
+        if ($validacion) {
             $jsondata = ["success" => "success"];
             header('Content-type: application/json; charset=utf-8');
             echo json_encode($jsondata);
@@ -46,3 +46,4 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 }
+?>

@@ -1,8 +1,7 @@
 <?php
-
 require_once "../../configuracion/env.php";
 require_once "../../app/modelo/estilo.php";
-
+include URL_CONTROLADORES."carrito.php";
 ?>
 
 <!DOCTYPE html>
@@ -74,8 +73,15 @@ function confirmationDelete(anchor)
               <li class="u-nav-item navFont"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="Iniciar-Sesión.html" style="padding: 10px 20px;">Dudas</a></li>
               <li class="u-nav-item navFont"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="Iniciar-Sesión.html" style="padding: 10px 20px;">Citas</a></li>
               <li class="u-nav-item navFont"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="Iniciar-Sesión.html" style="padding: 10px 20px;">Empresa</a></li>
-              <li class="u-nav-item navFont"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="Iniciar-Sesión.html" style="padding: 10px 20px;">Cliente</a></li>
               <li class="u-nav-item navFont"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="Iniciar-Sesión.html" style="padding: 10px 20px;">Iniciar Sesión</a></li>
+              <li class="u-nav-item navFont">
+                <a 
+                  class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" 
+                  href="mostrar_carrito.php" 
+                  style="padding: 10px 20px;">
+                  Carrito (<?php echo (empty($_SESSION['Carrito']))?0:count($_SESSION['Carrito']);?>)
+                </a>
+              </li>
 
             </ul>
           </div>
@@ -92,6 +98,7 @@ function confirmationDelete(anchor)
                   <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Iniciar-Sesión.html" style="padding: 10px 20px;">Empresa</a></li>
                   <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Iniciar-Sesión.html" style="padding: 10px 20px;">Cliente</a></li>
                   <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Iniciar-Sesión.html" style="padding: 10px 20px;">Iniciar Sesión</a></li>
+                  <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Iniciar-Sesión.html" style="padding: 10px 20px;">Carrito</a></li>
                 </ul>
               </div>
             </div>
@@ -101,16 +108,18 @@ function confirmationDelete(anchor)
       </div>
       </header>
 <!--Fin del NavBar-->
-      
+
+<!--Mensaje para corroborar funcionamiento y boton de limpiar-->
+<br>
+<?php if($mensaje != "") {?>
+<div class="alert alert-success">
+    <?php print_r($mensaje);?>
+    <a href="<?php echo URL_CONTROLADORES?>limpiar_carrito.php" class="badge badge-success">Limpiar Carrito</a>
+</div>
+<?php }?>
       
       <div class='contenedor'> <!--container-->
 <?php
-
-
-
-
-
-
 
 $sql = "SELECT * FROM bonsai";
 if($result = $mysqli->query($sql)){
@@ -132,33 +141,41 @@ if($result = $mysqli->query($sql)){
                                     //Iconos para editar y borrar
                                     
 
-                                     echo "<div class='bonsaiInformation'>;";
-                                     echo "<img src='".$row['imagenBonsai']."' alt='Not Found' onerror=this.src='../../publico/bonsais/Error.png' width='200' height='120' class='imagenB'>";
-                                     echo"<div class='bonsaiSegment' >";
-                                     echo"<label class='nameFont quantity' for=''>".$row['nombreCientifico']."</label>" ;
-                                     
-                                     echo"<label class='nameFont' for=''>".$row['nombreComun']."</label>" ;
 
-                                     echo"<div>" ;
-                                     
-                                     echo"<label class='nameFont quantity' for=''> ESPECIE: ".$especie['nombreEspecie']."</label>" ;
-                                     echo"<label class='nameFont' for=''> ESTILO: ".$estilo->obtenerValores($row['estilo']) ."</label>" ;
-                                   
-                                     echo"</div>";
+          echo "<div class='bonsaiInformation'>;";
+          echo "<img src='".$row['imagenBonsai']."' alt='Not Found' onerror=this.src='../../publico/bonsais/Error.png' width='200' height='120' class='imagenB'>";
+          echo"<div class='bonsaiSegment' >";
+          echo"<label class='nameFont quantity' for=''>".$row['nombreCientifico']."</label>" ;
+          
+          echo"<label class='nameFont' for=''>".$row['nombreComun']."</label>" ;
 
-                                     echo"<div >" ;
-                                     echo"<label class='quantity infoFont''for=''>"."Edad: ".$row['edad'] ."</label>";
-                                     echo"<label class='infoFont quantity' for=''>"."Precio: ".$row['precio'].".00 $</label>" ;
+          echo"<div>" ;
+          
+          echo"<label class='nameFont quantity' for=''> ESPECIE: ".$especie['nombreEspecie']."</label>" ;
+          echo"<label class='nameFont' for=''> ESTILO: ".$estilo->obtenerValores($row['estilo']) ."</label>" ;
+        
+          echo"</div>";
 
-                                     echo"<i class='fa fa-trash-o  icons' aria-hidden='true'  
-                                     onclick='javascript:confirmationDelete($(this));return false;' href='../../app/controlador/eliminarBonsais.php?id=".$row['id_bonsai']."'></i>" ;
-                                     echo"<i class='fa fa-pencil icons' aria-hidden='true'></i>" ;
-                                     echo"</div>" ;
+          echo"<div >" ;
+          echo"<label class='quantity infoFont''for=''>"."Edad: ".$row['edad'] ."</label>";
+          echo"<label class='infoFont quantity' for=''>"."Precio: ".$row['precio'].".00 $</label>" ;
+
+          echo"<i class='fa fa-trash-o  icons' aria-hidden='true'  
+          onclick='javascript:confirmationDelete($(this));return false;' href='../../app/controlador/eliminarBonsais.php?id=".$row['id_bonsai']."'></i>" ;
+          echo"<i class='fa fa-pencil icons' aria-hidden='true'></i>" ;
+          echo"</div>" ;
+          echo
+          "<form action='' method='post'>
+            <input type='hidden' name='id' id='id' value='".$row['id_bonsai']."'>
+            <input type='hidden' name='nombre' id='nombre' value='".$row['nombreComun']."'>
+            <input type='hidden' name='precio' id='precio' value='".$row['precio']."'>
+            <input type='hidden' name='cantidad' id='cantidad' value='1'>
+            <button class='btn btn-primary' name='btnAccion' value='Agregar' type='submit'>Agregar al Carrito</button>
+           </form>";
 
 
-                                     echo"</div>" ;
-                                     echo"</div>" ;
-
+          echo"</div>" ;
+          echo"</div>" ;
                                      
 
          }

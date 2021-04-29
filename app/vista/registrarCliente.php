@@ -95,7 +95,9 @@ require_once "../../configuracion/env.php";
                                 href="Iniciar-Sesión.html" style="padding: 10px 20px;">Cliente</a></li>
                         <li class="u-nav-item"><a
                                 class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                                href="Iniciar-Sesión.html" style="padding: 10px 20px;">Iniciar Sesión</a></li>
+
+                                href="login.php" style="padding: 10px 20px;">Iniciar Sesión</a></li>
+
 
                     </ul>
                 </div>
