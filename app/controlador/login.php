@@ -17,6 +17,7 @@
             //password_verify(): Metodo para poder comparar contraseñas con encriptación hash.
             if(md5($_POST['pass']) == $registros['contrasena']){
                 $_SESSION['user_email'] = $registros['correo'];
+                $_SESSION['id_cliente'] = $registros['id_cliente'];
                 header('Location: '.'../../index.php');
             } else{
                 $message = 'Error: contraseña incorrecta';
