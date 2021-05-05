@@ -1,0 +1,23 @@
+.nameFont{
+    font-family: 'Roboto', sans-serif;
+    color: rgba(77, 39, 19, 0.966);
+    font-size: large;
+  }
+
+  .ventaInfo{
+    background-color: rgba(35, 134, 61, 0.418);
+  }
+
+  .upper{
+    margin-right: 10%;
+  }
+  .mid{
+    margin-right: 6%;
+  }
+
+  .low{
+    margin-right: 10%;
+  }
+  .ventas{
+    background-color: rgba(219, 201, 201, 0.836);
+  }
