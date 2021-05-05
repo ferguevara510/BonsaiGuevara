@@ -1,9 +1,10 @@
 <?php
     session_start();
-    require 'database.php';
+    require_once "../../configuracion/env.php";
+    require '../../configuracion/database.php';
 
     if (!empty($_POST['email']) && !empty($_POST['pass'])) {
-        $resultado = $conn->prepare('SELECT * FROM usuario WHERE e_mail=:email');
+        $resultado = $conn->prepare('SELECT * FROM cliente WHERE correo=:email');
         $resultado->bindParam(':email', $_POST['email']);
         $resultado->execute();
 
@@ -14,17 +15,18 @@
 
         if(!empty($registros) && count($registros) > 0){
             //password_verify(): Metodo para poder comparar contraseñas con encriptación hash.
-            if($_POST['pass'] == $registros['password']){
-                $_SESSION['user_email'] = $registros['e_mail'];
-                header('Location: ../index.php');
+            if(md5($_POST['pass']) == $registros['contrasena']){
+                $_SESSION['user_email'] = $registros['correo'];
+                $_SESSION['id_cliente'] = $registros['id_cliente'];
+                header('Location: '.'../../index.php');
             } else{
                 $message = 'Error: contraseña incorrecta';
-                $location = '../login.html';
+                $location = URL_VISTAS.'login.php';
                 alerta($message, $location);
             }
         } else {
-            $message = 'Usuario inexistente';
-            $location = '../login.html';
+            $message = 'Cliente inexistente';
+            $location = URL_VISTAS.'login.php';
             alerta($message, $location);
         }
     }

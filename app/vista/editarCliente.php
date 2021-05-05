@@ -52,95 +52,16 @@ if (isset($_GET['id_cliente']) && is_numeric($_GET['id_cliente'])) {
 </head>
 
 <body data-home-page="Iniciar-Sesión.html" data-home-page-title="Iniciar Sesión" class="u-body">
-    <header class="u-clearfix u-header u-header" id="sec-e89e">
-        <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
-            <a href="index.html" class="u-image u-logo u-image-1" data-image-width="299" data-image-height="266">
-                <img src="<?php echo URL_IMAGENES?>bonsai_karla.png" class="u-logo-image u-logo-image-1" data-image-width="64">
-            </a>
-            <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
-                <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px;">
-                    <a class="u-button-style u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-top-bottom-menu-spacing u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                        href="#">
-                        <svg>
-                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu-hamburger"></use>
-                        </svg>
-                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                            xmlns:xlink="http://www.w3.org/1999/xlink">
-                            <defs>
-                                <symbol id="menu-hamburger" viewBox="0 0 16 16" style="width: 16px; height: 16px;">
-                                    <rect y="1" width="16" height="2"></rect>
-                                    <rect y="7" width="16" height="2"></rect>
-                                    <rect y="13" width="16" height="2"></rect>
-                                </symbol>
-                            </defs>
-                        </svg>
-                    </a>
-                </div>
-                <div class="u-custom-menu u-nav-container">
-                    <ul class="u-nav u-unstyled u-nav-1">
-                        <li class="u-nav-item"><a
-                                class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                                href="Iniciar-Sesión.html" style="padding: 10px 20px;">Pedidos</a></li>
-                        <li class="u-nav-item"><a
-                                class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                                href="Iniciar-Sesión.html" style="padding: 10px 20px;">Compras</a></li>
-                        <li class="u-nav-item"><a
-                                class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                                href="Iniciar-Sesión.html" style="padding: 10px 20px;">Cuidados</a></li>
-                        <li class="u-nav-item"><a
-                                class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                                href="Iniciar-Sesión.html" style="padding: 10px 20px;">Dudas</a></li>
-                        <li class="u-nav-item"><a
-                                class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                                href="Iniciar-Sesión.html" style="padding: 10px 20px;">Citas</a></li>
-                        <li class="u-nav-item"><a
-                                class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                                href="Iniciar-Sesión.html" style="padding: 10px 20px;">Empresa</a></li>
-                        <li class="u-nav-item"><a
-                                class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                                href="Iniciar-Sesión.html" style="padding: 10px 20px;">Cliente</a></li>
-                        <li class="u-nav-item"><a
-                                class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-                                href="Iniciar-Sesión.html" style="padding: 10px 20px;">Iniciar Sesión</a></li>
-
-                    </ul>
-                </div>
-                <div class="u-custom-menu u-nav-container-collapse">
-                    <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
-                        <div class="u-sidenav-overflow">
-                            <div class="u-menu-close"></div>
-                            <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2">
-                                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Iniciar-Sesión.html"
-                                        style="padding: 10px 20px;">Pedidos</a></li>
-                                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Iniciar-Sesión.html"
-                                        style="padding: 10px 20px;">Compras</a></li>
-                                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Iniciar-Sesión.html"
-                                        style="padding: 10px 20px;">Cuidados</a></li>
-                                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Iniciar-Sesión.html"
-                                        style="padding: 10px 20px;">Dudas</a></li>
-                                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Iniciar-Sesión.html"
-                                        style="padding: 10px 20px;">Citas</a></li>
-                                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Iniciar-Sesión.html"
-                                        style="padding: 10px 20px;">Empresa</a></li>
-                                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Iniciar-Sesión.html"
-                                        style="padding: 10px 20px;">Cliente</a></li>
-                                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Iniciar-Sesión.html"
-                                        style="padding: 10px 20px;">Iniciar Sesión</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
-                </div>
-            </nav>
-        </div>
-    </header>
+    <?php
+    require_once URL_PLANTILLA."menuCliente.php";
+    ?>
 
     <div>
         <section class="u-clearfix u-section-1" id="sec-0b39">
             <div class="u-clearfix u-sheet u-sheet-1">
                 <h1 class="u-text u-text-default u-text-1">Editar Cliente</h1>
                 <div class="u-form u-form-1">
-                    <form enctype="multipart/form-data" action="<?php echo URL_CONTROLADORES?>editarCliente.php" method="POST" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form"
+                    <form enctype="multipart/form-data" action="<?php echo URL_CONTROLADORES?>editarCliente.php" method="post" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form"
                         style="padding: 10px" source="custom" name="form">
                         <input class="form-file form-hidden" type="file" name="imagenPerfil" id="imagenPerfil">
                         <input type="hidden" name="id_cliente" value="<?php echo $cliente->id_cliente?>">
@@ -180,7 +101,7 @@ if (isset($_GET['id_cliente']) && is_numeric($_GET['id_cliente'])) {
                                 class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
                         </div>
                         <div class="u-align-right u-form-group u-form-submit">
-                            <a href="#" class="boton-verde u-btn u-btn-submit u-button-style u-btn-1">ACEPTAR<br>
+                            <a href="#" class="boton-verde u-btn u-btn-submit u-button-style u-btn-1">ACTUALIZAR DATOS<br>
                             </a>
                             <input type="submit" value="submit" class="u-form-control-hidden">
                         </div>
@@ -191,10 +112,8 @@ if (isset($_GET['id_cliente']) && is_numeric($_GET['id_cliente'])) {
                 </div>
                 <div alt="" class="u-image-registrar u-image-perfil u-image u-image-circle" style="background-image: url('/<?php echo $cliente->imagenPerfil?>');" data-image-width="1280" data-image-height="854">
                 </div>
-                <a href="../../index.php
-                "
-                    class="boton-verde u-btn u-button-style u-hover-palette-1-dark-1 u-btn-2">CANCELAR</a>
-                <p class="select-bottom u-text u-text-registrar">Cambia tu imagen</p>
+
+                <a class="select-bottom u-text u-text-registrar">CAMBIAR IMAGEN</a>
             </div>
         </section>
     </div>

@@ -3,6 +3,10 @@
   min-height: 935px;
 }
 
+.u-section-cita {
+  min-height: auto !important;
+}
+
 .u-section-1 .u-image-1 {
   object-position: 31.19% 28.12%;
   background-position: 31.19% 0%;
@@ -247,7 +251,7 @@
 
 .u-section-2 .u-image-1 {
   min-height: 571px;
-  background-image: url("../images/WhatsAppImage2020-10-26at16.30.321.jpeg");
+  background-image: url("../imagenes/vario.jpg");
   background-position: 6.19% 50%;
   animation-duration: 1000ms;
 }

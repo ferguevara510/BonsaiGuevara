@@ -114,4 +114,32 @@ class Cliente {
         $mysqli->close();
         return $cliente;
     }
+
+    public static function buscarClienteCorreo($correo) {
+        $mysqli = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
+        $cliente = null;
+        $sql = "SELECT * FROM cliente WHERE correo=?";
+        $stmt = $mysqli->prepare($sql);
+        if($stmt) {
+            $stmt->bind_param("s", $correo);
+            if($stmt->execute()) {
+                $result = $stmt->get_result();
+                if($result->num_rows >= 1) {
+                    $row = $result->fetch_array(MYSQLI_ASSOC);
+                    $cliente = new Cliente();
+                    $cliente->id_cliente=$row["id_cliente"];
+                    $cliente->nombre=$row["nombre"];
+                    $cliente->apellidoPaterno=$row["apellidoPaterno"];
+                    $cliente->apellidoMaterno=$row["apellidoMaterno"];
+                    $cliente->correo=$row["correo"];
+                    $cliente->numTelefono=$row["numTelefono"];
+                    $cliente->imagenPerfil=$row["imagenPerfil"];
+                    $cliente->contrasena=$row["contrasena"];
+                }
+            }
+            $stmt->close();
+        } 
+        $mysqli->close();
+        return $cliente;
+    }
 }
