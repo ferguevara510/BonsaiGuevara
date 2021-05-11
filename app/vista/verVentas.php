@@ -19,7 +19,8 @@ require_once "../../app/modelo/estilo.php";
     <meta name="page_type" content="np-template-header-footer-from-plugin">
     <title>Inicio</title>
     <link rel="stylesheet" href="../../publico/css/nicepage.css" media="screen">
-
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="publico/css/bootstrap.css">
     <script class="u-script" type="text/javascript" src="../../publico/js/nicepage.js" defer=""></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -87,47 +88,49 @@ $bonsaiData=$result6->fetch_array();
         echo "<div class='ventas'>";
         echo "<div class='ventaInfo'>";
         //Upper
-        echo"<label class='nameFont  for=''>Fecha De Venta: </label>" ;
+        echo"<label class='nameFont  for=''>Fecha De Venta:&nbsp</label>" ;
         echo"<label class='nameFont upper' for=''>".$pagoData['fecha']."</label>" ;
-        echo"<label class='nameFont  for=''>Total: </label>" ;
+        echo"<label class='nameFont  for=''>Total:&nbsp</label>" ;
         echo"<label class='nameFont upper' for=''>".$pagoData['monto']."</label>" ;
 
-        echo"<label class='nameFont' for=''>Folio:</label>" ;
+        echo"<label class='nameFont' for=''>Folio:&nbsp</label>" ;
         echo"<label class='nameFont upper' for=''>".$folio."</label>" ;
 
 
       
-        echo"<label class='nameFont' for=''>Nombre del Cliente:</label>" ;
+        echo"<label class='nameFont' for=''>Nombre del Cliente:&nbsp</label>" ;
         echo"<label class='nameFont ' for=''>".$clienteData['nombre']."&nbsp;"."</label>" ;
         echo"<label class='nameFont ' for=''>".$clienteData['apellidoPaterno']."&nbsp;"."</label>" ;
         echo"<label class='nameFont upper' for=''>".$clienteData['apellidoMaterno']."</label>" ;
         
         echo "<div class='direccionInfo'>";
 //Mid
-        echo"<label class='nameFont' for=''>Calle:</label>" ;
+        echo"<label class='nameFont' for=''>Calle:&nbsp</label>" ;
         echo"<label class='nameFont mid' for=''>".$direccionData['calle']."</label>" ;
-        echo"<label class='nameFont' for=''>Número Exterior:</label>" ;
+        echo"<label class='nameFont' for=''>Número Exterior:&nbsp</label>" ;
         echo"<label class='nameFont mid' for=''>".$direccionData['numExt']."</label>" ;
-        echo"<label class='nameFont' for=''>Número Interior:</label>" ;
+        echo"<label class='nameFont' for=''>Número Interior:&nbsp</label>" ;
         echo"<label class='nameFont mid' for=''>".$direccionData['numInt']."</label>" ;
-        echo"<label class='nameFont' for=''>Colonia:</label>" ;
+        echo"<label class='nameFont' for=''>Colonia:&nbsp</label>" ;
         echo"<label class='nameFont mid' for=''>".$direccionData['colonia']."</label>" ;
-        echo"<label class='nameFont' for=''>Codigo Postal:</label>" ;
+        echo"<label class='nameFont' for=''>Codigo Postal:&nbsp</label>" ;
         echo"<label class='nameFont mid' for=''>".$direccionData['codigoPostal']."</label>" ;
-        echo"<label class='nameFont' for=''>Ciudad:</label>" ;
+        echo"<label class='nameFont' for=''>Ciudad:&nbsp</label>" ;
         echo"<label class='nameFont mid' for=''>".$direccionData['ciudad']."</label>" ;
-        echo"<label class='nameFont' for=''>Estado:</label>" ;
+        echo"<label class='nameFont' for=''>Estado:&nbsp</label>" ;
         echo"<label class='nameFont mid' for=''>".$direccionData['estado']."</label>" ;
 
         echo"</div>" ;
 
 //Low
         echo"<div class='productSegment' >";
+        echo"<div class='imagenB'>" ;
         echo "<img src='".$bonsaiData['imagenBonsai']."' alt='Not Found' onerror=this.src='../../publico/bonsais/Error.png' width='200' height='120'>";
-        echo"<label class='nameFont' for=''>Nombre del Bonsai:</label>" ;
-        echo"<label class='nameFont low ' for=''>".$bonsaiData['nombreComun']."</label>" ;
-        echo"<label class='nameFont' for=''>Precio Del Bonsai:</label>" ;
-        echo"<label class='nameFont low' for=''>".$bonsaiData['precio']."</label>" ;
+        echo"</div>" ;
+        echo"<label class='nameFont downText ' for=''>Nombre del Bonsai:</label>" ;
+        echo"<label class='nameFont low downText' for=''>".$bonsaiData['nombreComun']."</label>" ;
+        echo"<label class='nameFont downText' for=''>Precio Del Bonsai:</label>" ;
+        echo"<label class='nameFont low downText' for=''>".$bonsaiData['precio']."</label>" ;
         echo"</div>" ;
 
         echo"</div>" ;
