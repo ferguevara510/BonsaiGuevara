@@ -119,11 +119,6 @@ if($result = $mysqli->query($sql)){
           echo"<div >" ;
           echo"<label class='quantity infoFont''for=''>"."Edad: ".$row['edad'] ."</label>";
           echo"<label class='infoFont quantity' for=''>"."Precio: ".$row['precio'].".00 $</label>" ;
-
-          echo"<i class='fa fa-trash-o  icons' aria-hidden='true'  
-          onclick='javascript:confirmationDelete($(this));return false;' href='../../app/controlador/eliminarBonsais.php?id=".$row['id_bonsai']."'></i>" ;
-          echo"<i class='fa fa-pencil icons' aria-hidden='true'  
-          onclick='javascript:confirmationEdit($(this));return false;' href='../../app/controlador/editarBonsais.php?id=".$row['id_bonsai']."'> </i>" ;
           echo"</div>" ;
           echo
           "<form action='' method='post'>
@@ -131,6 +126,7 @@ if($result = $mysqli->query($sql)){
             <input type='hidden' name='nombre' id='nombre' value='".$row['nombreComun']."'>
             <input type='hidden' name='precio' id='precio' value='".$row['precio']."'>
             <input type='hidden' name='cantidad' id='cantidad' value='1'>
+            <button class='btn btn-primary' name='btnAccion' value='Agregar' type='submit'>Agregar al Carrito</button>
            </form>";
 
 
