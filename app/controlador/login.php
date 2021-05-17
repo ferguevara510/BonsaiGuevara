@@ -18,7 +18,7 @@
             if(md5($_POST['pass']) == $registros['contrasena']){
                 $_SESSION['user_email'] = $registros['correo'];
                 $_SESSION['id_cliente'] = $registros['id_cliente'];
-                header('Location: '.'../../index.php');
+                header('Location: '. URL_VISTAS.'index.php');
             } else{
                 $message = 'Error: contraseña incorrecta';
                 $location = URL_VISTAS.'login.php';

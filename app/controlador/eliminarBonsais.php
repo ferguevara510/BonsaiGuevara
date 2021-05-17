@@ -6,7 +6,7 @@ if(isset($_GET["id"]) && !empty($_GET["id"])){
     // Include config file
   
     // Prepare a delete statement
-    $sql = "DELETE FROM `bonsai` WHERE `bonsai`.`id_bonsai` = ?";
+    $sql = "DELETE FROM `bonsai` WHERE `bonsai`.`id_bonsai` =  ?";
    
    
     if($stmt = $mysqli->prepare($sql)){
@@ -14,16 +14,16 @@ if(isset($_GET["id"]) && !empty($_GET["id"])){
         $stmt->bind_param("i", $param_id);
         
         // Set parameters
-        $param_id = trim($_POST["id"]);
-        echo"hola";
+        $param_id = trim($_GET["id"]);
+        
         // Attempt to execute the prepared statement
         if($stmt->execute()){
             // Records deleted successfully. Redirect to landing page
-            echo"hola2";
+           
             header("location: ../../app/vista/listaBonsais.php");
             exit();
         } else{
-            echo"hola3";
+           
             echo "Oops! algo malo paso,por favor intenta otra vez.";
         }
     }
