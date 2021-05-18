@@ -8,6 +8,15 @@
   display: none !important;
 }
 
+.contenedor-margen{
+  margin: auto;
+  width: 90%;
+}
+
+.alinear-derecha{
+  text-align: right;
+}
+
 .fr-clearfix::after {
   clear: both;
   display: block;

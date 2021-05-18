@@ -1,3 +1,15 @@
+<?php
+$ruta ="";
+$rutaSesion = "";
+if(isset($index)){
+        $ruta = PATH_VISTA;
+        $rutaSesion = URL_CERRAR_SESION;
+}else{
+        $ruta = "../vista/";
+        $rutaSesion = "../controlador/logout.php";
+}
+?>
+
 <header class="u-clearfix u-header u-header" id="sec-e89e">
         <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
             <a href="/index.php" class="u-image u-logo u-image-1" data-image-width="299" data-image-height="266">
@@ -38,16 +50,16 @@
                                 href="" style="padding: 10px 20px;">Dudas</a></li>
                         <li class="u-nav-item"><a
                                 class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base active"
-                                href="<?php echo PATH_VISTA?>calendarioCliente.php" style="padding: 10px 20px;">Citas</a></li>
+                                href="<?php echo $ruta?>calendarioCliente.php?id_cliente=<?php echo $_SESSION["id_cliente"]?>" style="padding: 10px 20px;">Citas</a></li>
                         <li class="u-nav-item"><a
                                 class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base active"
-                                href="<?php echo PATH_VISTA?>consultarEmpresa.php" style="padding: 10px 20px;">Empresa</a></li>
+                                href="<?php echo $ruta?>consultarEmpresa.php" style="padding: 10px 20px;">Empresa</a></li>
                         <li class="u-nav-item"><a
                                 class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base active"
-                                href="<?php echo PATH_VISTA?>editarCliente.php?id_cliente=<?php echo $_SESSION["id_cliente"]?>" style="padding: 10px 20px;">Perfil</a></li>
+                                href="<?php echo $ruta?>editarCliente.php?id_cliente=<?php echo $_SESSION["id_cliente"]?>" style="padding: 10px 20px;">Perfil</a></li>
                         <li class="u-nav-item"><a
                                 class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base active"
-                                href="<?php echo URL_CERRAR_SESION?>" style="padding: 10px 20px;">Cerrar Sesión</a></li>
+                                href="<?php echo $rutaSesion?>" style="padding: 10px 20px;">Cerrar Sesión</a></li>
 
 
                     </ul>
@@ -65,13 +77,13 @@
                                         style="padding: 10px 20px;">Cuidados</a></li>
                                 <li class="u-nav-item"><a class="u-button-style u-nav-link" href=""
                                         style="padding: 10px 20px;">Dudas</a></li>
-                                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="<?php echo PATH_VISTA?>calendarioCliente.php"
+                                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="<?php echo $ruta?>calendarioCliente.php?id_cliente=<?php echo $_SESSION["id_cliente"]?>"
                                         style="padding: 10px 20px;">Citas</a></li>
-                                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="<?php echo PATH_VISTA?>consultarEmpresa.php"
+                                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="<?php echo $ruta?>consultarEmpresa.php"
                                         style="padding: 10px 20px;">Empresa</a></li>
-                                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="<?php echo PATH_VISTA?>editarCliente.php?id_cliente=<?php echo $_SESSION["id_cliente"]?>"
+                                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="<?php echo $ruta?>editarCliente.php?id_cliente=<?php echo $_SESSION["id_cliente"]?>"
                                         style="padding: 10px 20px;">Perfil</a></li>
-                                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="<?php echo URL_CERRAR_SESION?>"
+                                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="<?php echo $rutaSesion?>"
                                         style="padding: 10px 20px;">Cerrar Sesión</a></li>
                             </ul>
                         </div>
