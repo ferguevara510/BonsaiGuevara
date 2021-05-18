@@ -5,7 +5,7 @@ require_once "../modelo/cita.php";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if(isset($_POST["accion"]) && $_POST["accion"] == "delete" && isset($_POST["folio"])){
         $cita = Cita::buscarCitaPorFolio($_POST["folio"]);
-        $valdacion = $cita->eliminarCita();
+        $validacion = $cita->eliminarCita();
 
         if ($validacion) {
             $jsondata = ["success" => "success"];

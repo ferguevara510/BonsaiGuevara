@@ -153,10 +153,14 @@ if (isset($_GET['id_cliente']) && is_numeric($_GET['id_cliente'])) {
                 </div>
                 <div class="modal-body">
                     <div class="contenedor">
+                        <div id="alerta-editar" class="alert alert-dismissible tag-hidden" role="alert">
+                            <h4 class="alert-heading">Notificación</h4>
+                            <p class="mensaje"></p>
+                        </div>
                         <section class="u-clearfix u-section-1 u-section-cita" id="sec-0b39">
                             <div class="u-clearfix contenedor u-sheet u-sheet-1">
                                 <h1 class="u-text u-text-default u-text-1 h1-cita">Editar Cita</h1>
-                                <form class="form-cita" action="" id="form-cita-editar">
+                                <form class="form-cita" action="<?php echo URL_CONTROLADORES ?>editarCita.php" id="form-cita-editar">
                                 <input type="hidden" id="folio" name="folio">
                                     <div class="row form-group">
                                         <label for="" class="u-label label-cita col-sm-2">Fecha</label>

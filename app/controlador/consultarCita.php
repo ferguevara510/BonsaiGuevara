@@ -28,8 +28,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         }
         
         exit();
-    }else if(isset($_GET['folio'])){
-        $cita = Cita::buscarCitaCliente($_GET['folio']);
+    }else if(isset($_GET['id'])){
+        $cita = Cita::buscarCitaPorFolio($_GET['id']);
         header('Content-type: application/json; charset=utf-8');
         if(isset($cita)){
             echo json_encode($cita);
@@ -56,7 +56,20 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         echo json_encode($formatoCitas);
         exit();
     }else{
-
+        $citas = Cita::buscarCitas();
+        $formatoCitas = [];
+        foreach ($citas as $cita) {
+            $horario = [];
+            $horario["title"] = "Cita";
+            $horario["start"] = "{$cita->fecha} {$cita->hora}";
+            $fechaFin = Duracion::generarIntervaloTiempo($cita->duracion, new DateTime("{$cita->fecha} {$cita->hora}", new DateTimeZone('America/Mexico_City')));
+            $horario["end"] = $fechaFin->format("Y-m-d H:i:s");
+            $horario["id"] = $cita->folio;
+            $formatoCitas[] = $horario;
+        }
+        header('Content-type: application/json; charset=utf-8');
+        echo json_encode($formatoCitas);
+        exit();
     }
 }
 ?>

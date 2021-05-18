@@ -133,6 +133,7 @@ class Cita
      */
     public static function buscarCitaPorFolio($folio)
     {
+        require_once "cliente.php";
         $mysqli = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
         $cita = null;
         $sql = "SELECT * FROM cita WHERE folio = ?";
@@ -149,7 +150,8 @@ class Cita
                     $cita->hora = $row["hora"];
                     $cita->duracion = $row["duracion"];
                     $cita->descripcion = $row["descripcion"];
-                    $cita->id_cliente = $row["id_cliente"];
+                    $cliente = Cliente::buscarCliente($row["id_cliente"]);
+                    $cita->id_cliente = "{$cliente->nombre} {$cliente->apellidoPaterno} {$cliente->apellidoMaterno}";
                 }
             }
             $stmt->close();

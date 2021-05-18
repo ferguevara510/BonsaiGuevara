@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
   var fechaActual = new Date();
-  var parametro = fechaActual.getMonth() + 1 + "_" + fechaActual.getFullYear();
 
   fechaInical = convertirDateToString(fechaActual);
   var calendarEl = document.getElementById("calendario");
@@ -71,13 +70,9 @@ document.addEventListener("DOMContentLoaded", function () {
   $("#editarCita").click(function (datos) {
     if ($("#editarCita").attr("id-cita") != undefined) {
       $.ajax({
-        url:
-          "../controlador/consultarCita.php?folio=" +
-          $("#editarCita").attr("id-cita"),
+        url:"../controlador/consultarCita.php?id=" + $("#editarCita").attr("id-cita"),
         method: "GET",
         dataType: "json",
-        contentType: false,
-        processData: false,
       })
         .done(function (res) {
           $("#fecha").val(res.fecha);
@@ -107,6 +102,22 @@ document.addEventListener("DOMContentLoaded", function () {
       mostrarMensaje("Ese horario ya esta ocupado", false, "#alerta-registrar");
     }
   });
+
+  $("#btn-editar").click(function (datos) {
+    let fecha = $("#fecha").val();
+    let hora = $("#hora").val();
+    let citas = obtenerCitasDelDia(fecha);
+    let fechaFin = calcularHoraFin(
+      $("#duracion").val(),
+      fecha + " " + hora
+    );
+    if (validarHorarios(fecha + " " + hora, fechaFin, citas)) {
+      $("#form-cita-editar").submit();
+    } else {
+      mostrarMensaje("Ese horario ya esta ocupado", false, "#alerta-editar");
+    }
+  });
+
   $("#form-cita").validate({
     rules: {
       hora: {
@@ -240,8 +251,9 @@ document.addEventListener("DOMContentLoaded", function () {
         })
           .done(function (res) {
             mostrarMensaje("Cita guardada");
-            $("#form-cita").trigger("reset");
-            $("#modalCita").modal("hide");
+            $("#form-cita-editar").trigger("reset");
+            $("#editar").modal("hide");
+            let folio = $("#folio").val();
             let evento = calendar.getEventById( folio );
             if(evento){
               evento.remove();

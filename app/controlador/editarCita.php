@@ -4,7 +4,7 @@ require_once "../modelo/cita.php";
 require_once "../modelo/duracion.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (isset($_POST["folio"]) && is_numeric($_POST) && isset($_POST["fecha"]) && isset($_POST["hora"]) && isset($_POST["duracion"]) && isset($_POST["descripcion"]) && isset($_POST["id_cliente"])) {
+    if (isset($_POST["folio"]) && isset($_POST["fecha"]) && isset($_POST["hora"]) && isset($_POST["duracion"]) && isset($_POST["descripcion"]) && isset($_POST["id_cliente"])) {
         $cita = Cita::buscarCitaPorFolio($_POST["folio"]);
         $cita->fecha=$_POST["fecha"];
         $cita->hora=$_POST["hora"];
