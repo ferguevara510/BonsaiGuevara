@@ -15,12 +15,11 @@ if (isset($_GET['id_cliente']) && is_numeric($_GET['id_cliente'])) {
 <html style="font-size: 16px;">
 
 <head>
+    <title>Calendario Cliente</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <meta name="keywords" content="Blooms, For Every Occasion">
     <meta name="description" content="">
-    <meta name="page_type" content="np-template-header-footer-from-plugin">
-    <title>Calendario Cliente</title>
     <link rel="stylesheet" href="<?php echo URL_CSS ?>nicepage.css" media="screen">
     <link rel="stylesheet" href="<?php echo URL_CSS ?>Iniciar-Sesión.css" media="screen">
     <link rel="stylesheet" href="<?php echo URL_CSS ?>cita.css" media="screen">
@@ -28,8 +27,6 @@ if (isset($_GET['id_cliente']) && is_numeric($_GET['id_cliente'])) {
     <link rel="stylesheet" type="text/css" href="<?php echo URL_CSS ?>bootstrap.css">
     <script class="u-script" type="text/javascript" src="<?php echo URL_JS ?>nicepage.js" defer=""></script>
 
-
-    <meta name="generator" content="Nicepage 3.11.0, nicepage.com">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
     <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="<?php echo URL_CSS_CALENDARIO ?>">
@@ -57,7 +54,7 @@ if (isset($_GET['id_cliente']) && is_numeric($_GET['id_cliente'])) {
     <meta property="og:url" content="index.html">
 </head>
 
-<body data-home-page="Iniciar-Sesión.html" data-home-page-title="Iniciar Sesión" class="u-body">
+<body class="u-body">
     <?php
     require_once URL_PLANTILLA . "menuCliente.php";
     ?>

@@ -1,19 +1,12 @@
 <?php
-$ruta ="";
-$rutaSesion = "";
-if(isset($index)){
-        $ruta = PATH_VISTA;
-        $rutaSesion = URL_CERRAR_SESION;
-}else{
-        $ruta = "../vista/";
-        $rutaSesion = "../controlador/logout.php";
-}
+$ruta = "../vista/";
+$rutaSesion = "../controlador/logout.php";
 ?>
 
 <header class="u-clearfix u-header u-header" id="sec-e89e">
         <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
-            <a href="/index.php" class="u-image u-logo u-image-1" data-image-width="299" data-image-height="266">
-                <img src="publico/imagenes/bonsai_karla.png" class="u-logo-image u-logo-image-1" data-image-width="64">
+            <a href="index.php" class="u-image u-logo u-image-1" data-image-width="299" data-image-height="266">
+                <img src="../../publico/imagenes/bonsai_karla.png" class="u-logo-image u-logo-image-1" data-image-width="64">
             </a>
             <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
                 <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px;">
@@ -50,7 +43,7 @@ if(isset($index)){
                                 href="" style="padding: 10px 20px;">Cuidados</a></li>
                         <li class="u-nav-item"><a
                                 class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base active"
-                                href="" style="padding: 10px 20px;">Dudas</a></li>
+                                href="<?php echo $ruta?>registrarDuda.php" style="padding: 10px 20px;">Dudas</a></li>
                         <li class="u-nav-item"><a
                                 class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base active"
                                 href="<?php echo $ruta?>calendarioAdministrador.php" style="padding: 10px 20px;">Citas</a></li>
@@ -75,7 +68,7 @@ if(isset($index)){
                                         style="padding: 10px 20px;">Clientes</a></li>
                                 <li class="u-nav-item"><a class="u-button-style u-nav-link" href=""
                                         style="padding: 10px 20px;">Cuidados</a></li>
-                                <li class="u-nav-item"><a class="u-button-style u-nav-link" href=""
+                                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="<?php echo $ruta?>registrarDuda.php"
                                         style="padding: 10px 20px;">Dudas</a></li>
                                 <li class="u-nav-item"><a class="u-button-style u-nav-link" href="<?php echo $ruta?>calendarioAdministrador.php"
                                         style="padding: 10px 20px;">Citas</a></li>

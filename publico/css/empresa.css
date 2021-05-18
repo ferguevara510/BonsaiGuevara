@@ -1,8 +1,11 @@
+.contenedor-tarjeta-empresa{
+    height: 100vh;
+}
+
 .tarjeta-empresa{
     display: flex;
     flex-flow: row;
     justify-content: space-between;
-    height: 55vh;
     border: 5px solid #007b00;
     box-shadow: 7px 7px 15px #007b00; 
     border-radius: 20px;
