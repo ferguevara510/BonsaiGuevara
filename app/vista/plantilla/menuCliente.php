@@ -1,6 +1,6 @@
 <header class="u-clearfix u-header u-header" id="sec-e89e" style="background-color: white;">
 	<div class="u-clearfix u-sheet u-valign-middle u-sheet-1" >
-		<a href="/index.php" class="u-image u-logo u-image-1" data-image-width="299" data-image-height="266">
+		<a href="index.php" class="u-image u-logo u-image-1" data-image-width="299" data-image-height="266">
 			<img src="../../publico/imagenes/bonsai_karla.png" class="u-logo-image u-logo-image-1" data-image-width="64">
 		</a>
 		<nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
@@ -24,8 +24,8 @@
 				<ul class="u-nav u-unstyled u-nav-1">
 					<li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base active" href="pedidos.php" style="padding: 10px 20px;">Pedidos</a></li>
 					<li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base active" href="listaBonsaisCliente.php" style="padding: 10px 20px;">Bonsais</a></li>
-					<li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base active" href="" style="padding: 10px 20px;">Cuidados</a></li>
-					<li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base active" href="" style="padding: 10px 20px;">Dudas</a></li>
+					<li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base active" href="consultarCuidados.php" style="padding: 10px 20px;">Cuidados</a></li>
+					<li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base active" href="registrarDuda.php" style="padding: 10px 20px;">Dudas</a></li>
 					<li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base active" href="calendarioCliente.php" style="padding: 10px 20px;">Citas</a></li>
 					<li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base active" href="consultarEmpresa.php" style="padding: 10px 20px;">Empresa</a></li>
 					<li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base active" href="editarCliente.php?id_cliente=<?php echo $_SESSION["id_cliente"] ?>" style="padding: 10px 20px;">Perfil</a></li>
@@ -43,9 +43,9 @@
 						<div class="u-menu-close"></div>
 						<ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2">
 							<li class="u-nav-item"><a class="u-button-style u-nav-link" href="pedidos.php" style="padding: 10px 20px;">Pedidos</a></li>
-							<li class="u-nav-item"><a class="u-button-style u-nav-link" href="" style="padding: 10px 20px;">Bonsais</a></li>
-							<li class="u-nav-item"><a class="u-button-style u-nav-link" href="" style="padding: 10px 20px;">Cuidados</a></li>
-							<li class="u-nav-item"><a class="u-button-style u-nav-link" href="" style="padding: 10px 20px;">Dudas</a></li>
+							<li class="u-nav-item"><a class="u-button-style u-nav-link" href="listaBonsaisCliente.php" style="padding: 10px 20px;">Bonsais</a></li>
+							<li class="u-nav-item"><a class="u-button-style u-nav-link" href="consultarCuidados.php" style="padding: 10px 20px;">Cuidados</a></li>
+							<li class="u-nav-item"><a class="u-button-style u-nav-link" href="registrarDuda.php" style="padding: 10px 20px;">Dudas</a></li>
 							<li class="u-nav-item"><a class="u-button-style u-nav-link" href="calendarioCliente.php" style="padding: 10px 20px;">Citas</a></li>
 							<li class="u-nav-item"><a class="u-button-style u-nav-link" href="consultarEmpresa.php" style="padding: 10px 20px;">Empresa</a></li>
 							<li class="u-nav-item"><a class="u-button-style u-nav-link" href="editarCliente.php?id_cliente=<?php echo $_SESSION["id_cliente"] ?>" style="padding: 10px 20px;">Perfil</a></li>

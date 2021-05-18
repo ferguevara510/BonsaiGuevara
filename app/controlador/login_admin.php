@@ -14,10 +14,8 @@
         $location = '';
 
         if(!empty($registros) && count($registros) > 0){
-            echo $_POST['pass'];
-            echo $registros['contrasena'];
             //password_verify(): Metodo para poder comparar contraseñas con encriptación hash.
-            if($_POST['pass'] == $registros['contrasena']){
+            if(md5($_POST['pass']) == $registros['contrasena']){
                 $_SESSION['usuario'] = $registros['usuario'];
                 header('Location: '. URL_VISTAS.'index.php');
             } else{

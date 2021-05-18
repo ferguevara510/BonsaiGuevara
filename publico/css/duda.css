@@ -3,6 +3,7 @@
     margin: auto;
     display: flex;
     flex-flow: column;
+    height: 100vh;
 }
 
 .contenedor-duda {
