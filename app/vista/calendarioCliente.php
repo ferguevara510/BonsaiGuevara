@@ -1,5 +1,14 @@
 <?php
 require_once "../../configuracion/env.php";
+$_GET['id_cliente'] = "1";
+if (isset($_GET['id_cliente']) && is_numeric($_GET['id_cliente'])) {
+    require_once "../../configuracion/env.php";
+    require_once "../modelo/cita.php";
+    $cita = Cita::buscarCitaCliente($_GET['id_cliente']);
+} else {
+    header("location: ../../index.php");
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -49,73 +58,22 @@ require_once "../../configuracion/env.php";
 </head>
 
 <body data-home-page="Iniciar-Sesión.html" data-home-page-title="Iniciar Sesión" class="u-body">
-    <header class="u-clearfix u-header u-header" id="sec-e89e">
-        <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
-            <a href="index.html" class="u-image u-logo u-image-1" data-image-width="299" data-image-height="266">
-                <img src="<?php echo URL_IMAGENES ?>bonsai_karla.png" class="u-logo-image u-logo-image-1" data-image-width="64">
-            </a>
-            <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
-                <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px;">
-                    <a class="u-button-style u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-top-bottom-menu-spacing u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="#">
-                        <svg>
-                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu-hamburger"></use>
-                        </svg>
-                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                            <defs>
-                                <symbol id="menu-hamburger" viewBox="0 0 16 16" style="width: 16px; height: 16px;">
-                                    <rect y="1" width="16" height="2"></rect>
-                                    <rect y="7" width="16" height="2"></rect>
-                                    <rect y="13" width="16" height="2"></rect>
-                                </symbol>
-                            </defs>
-                        </svg>
-                    </a>
-                </div>
-                <div class="u-custom-menu u-nav-container">
-                    <ul class="u-nav u-unstyled u-nav-1">
-                        <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="Iniciar-Sesión.html" style="padding: 10px 20px;">Pedidos</a></li>
-                        <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="Iniciar-Sesión.html" style="padding: 10px 20px;">Compras</a></li>
-                        <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="Iniciar-Sesión.html" style="padding: 10px 20px;">Cuidados</a></li>
-                        <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="Iniciar-Sesión.html" style="padding: 10px 20px;">Dudas</a></li>
-                        <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="Iniciar-Sesión.html" style="padding: 10px 20px;">Citas</a></li>
-                        <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="Iniciar-Sesión.html" style="padding: 10px 20px;">Empresa</a></li>
-                        <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="Iniciar-Sesión.html" style="padding: 10px 20px;">Cliente</a></li>
-                        <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="Iniciar-Sesión.html" style="padding: 10px 20px;">Iniciar Sesión</a></li>
-
-                    </ul>
-                </div>
-                <div class="u-custom-menu u-nav-container-collapse">
-                    <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
-                        <div class="u-sidenav-overflow">
-                            <div class="u-menu-close"></div>
-                            <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2">
-                                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Iniciar-Sesión.html" style="padding: 10px 20px;">Pedidos</a></li>
-                                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Iniciar-Sesión.html" style="padding: 10px 20px;">Compras</a></li>
-                                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Iniciar-Sesión.html" style="padding: 10px 20px;">Cuidados</a></li>
-                                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Iniciar-Sesión.html" style="padding: 10px 20px;">Dudas</a></li>
-                                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Iniciar-Sesión.html" style="padding: 10px 20px;">Citas</a></li>
-                                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Iniciar-Sesión.html" style="padding: 10px 20px;">Empresa</a></li>
-                                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Iniciar-Sesión.html" style="padding: 10px 20px;">Cliente</a></li>
-                                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Iniciar-Sesión.html" style="padding: 10px 20px;">Iniciar Sesión</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
-                </div>
-            </nav>
-        </div>
-    </header>
+    <?php
+    require_once URL_PLANTILLA . "menuCliente.php";
+    ?>
 
     <div id="alerta" class="alert alert-dismissible tag-hidden" role="alert">
         <h4 class="alert-heading">Notificación</h4>
         <p class="mensaje"></p>
     </div>
 
-    <div class="modal-footer">
-        <button type="button" class="boton-cita" id="editarCita">EDITAR CITA</button>
-    </div>
+    <?php if (isset($cita)) { ?>
+        <div class="contenedor-margen alinear-derecha">
+            <button type="button" class="boton-cita" id-cita="<?php echo $cita->folio; ?>" id="editarCita">EDITAR CITA</button>
+        </div>
+    <?php } ?>
 
-    <div id="calendario">
+    <div id="calendario" id-cita="<?php echo $cita->folio; ?>">
     </div>
 
     <div class="modal" tabindex="-1" role="dialog" id="modalCita">
@@ -128,10 +86,14 @@ require_once "../../configuracion/env.php";
                 </div>
                 <div class="modal-body">
                     <div class="contenedor">
+                        <div id="alerta-registrar" class="alert alert-dismissible tag-hidden" role="alert">
+                            <h4 class="alert-heading">Notificación</h4>
+                            <p class="mensaje"></p>
+                        </div>
                         <section class="u-clearfix u-section-1 u-section-cita" id="sec-0b39">
                             <div class="u-clearfix contenedor u-sheet u-sheet-1">
                                 <h1 class="u-text u-text-default u-text-1 h1-cita">Registro de Cita</h1>
-                                <form action="<?php echo URL_CONTROLADORES ?>registrarCita.php" name="form-cita" method="POST" id="form-cita">
+                                <form action="<?php echo URL_CONTROLADORES ?>registrarCita.php" class="form-cita" name="form-cita" method="POST" id="form-cita">
                                     <div class="row form-group">
                                         <label for="" class="u-label label-cita col-sm-2">Fecha</label>
                                         <div class="col-sm-10">
@@ -185,57 +147,62 @@ require_once "../../configuracion/env.php";
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <div class="contenedor">
-                    <section class="u-clearfix u-section-1 u-section-cita" id="sec-0b39">
-                        <div class="u-clearfix contenedor u-sheet u-sheet-1">
-                            <h1 class="u-text u-text-default u-text-1 h1-cita">Editar Cita</h1>
-                            <form action="">                                                 
-                            <div class="row form-group">
-                                <label for="" class="u-label label-cita col-sm-2">Fecha</label>
-                                <div class="col-sm-10">
-                                    <input type="date" id="fecha" name="fecha" class="form-control col-sm-8" required="">
-                                </div>
-                            </div>
-                            <div class="row form-group">
-                                <label for="" class="u-label label-cita col-sm-2">Hora</label>
-                                <div class="col-sm-10">    
-                                    <input type="time" min="14:00" max="19:00" id="hora" name="hora" class="form-control col-sm-8" required="">
-                                </div>
-                            </div>
-                            <div class="row form-group">
-                                <label for="" class="u-label label-cita col-sm-2">Duracion</label>
-                                <div class="col-sm-10">
-                                    <select class="col-sm-8 form-control" id="duracion" name="duracion">
-                                        <option value="1">15 min</option>
-                                        <option value="2">30 min</option>
-                                        <option value="3">45 min</option>
-                                        <option value="4">60 min</option>
-                                        <option value="5">75 min</option>
-                                        <option value="6">90 min</option>
-                                        <option value="7">105 min</option>
-                                        <option value="8">120 min</option>
-                                    </select>
-                                </div>    
-                            </div>
-                            <div class="row form-group">
-                                <label for="" class="u-form-control-hidden u-label">Descripcion</label>
-                                <div class="col-sm-12">
-                                    <textarea type="text" placeholder="Descripcion" class="form-control u-border-1 u-border-grey-30 u-input-rectangle u-white col-sm-8" id="descripcion" rows="5" cols="50" name="descripcion" required=""></textarea>
-                                </div>
-                            </div>
-                            </form> 
+                        <div id="alerta-editar" class="alert alert-dismissible tag-hidden" role="alert">
+                            <h4 class="alert-heading">Notificación</h4>
+                            <p class="mensaje"></p>
                         </div>
-                    </section>
+                        <section class="u-clearfix u-section-1 u-section-cita" id="sec-0b39">
+                            <div class="u-clearfix contenedor u-sheet u-sheet-1">
+                                <h1 class="u-text u-text-default u-text-1 h1-cita">Editar Cita</h1>
+                                <form class="form-cita" action="<?php echo URL_CONTROLADORES ?>editarCita.php" id="form-cita-editar">
+                                <input type="hidden" id="folio" name="folio">
+                                    <div class="row form-group">
+                                        <label for="" class="u-label label-cita col-sm-2">Fecha</label>
+                                        <div class="col-sm-10">
+                                            <input type="date" id="fecha" name="fecha" class="form-control col-sm-8" required="">
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <label for="" class="u-label label-cita col-sm-2">Hora</label>
+                                        <div class="col-sm-10">
+                                            <input type="time" min="14:00" max="19:00" id="hora" name="hora" class="form-control col-sm-8" required="">
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <label for="" class="u-label label-cita col-sm-2">Duracion</label>
+                                        <div class="col-sm-10">
+                                            <select class="col-sm-8 form-control" id="duracion" name="duracion">
+                                                <option value="1">15 min</option>
+                                                <option value="2">30 min</option>
+                                                <option value="3">45 min</option>
+                                                <option value="4">60 min</option>
+                                                <option value="5">75 min</option>
+                                                <option value="6">90 min</option>
+                                                <option value="7">105 min</option>
+                                                <option value="8">120 min</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <label for="" class="u-form-control-hidden u-label">Descripcion</label>
+                                        <div class="col-sm-12">
+                                            <textarea type="text" placeholder="Descripcion" class="form-control u-border-1 u-border-grey-30 u-input-rectangle u-white col-sm-8" id="descripcion" rows="5" cols="50" name="descripcion" required=""></textarea>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </section>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="boton-cita">ELIMINAR CITA</button>
-                    <button type="button" class="boton-cita">ACTUALIZAR CITA</button>
+                    <button type="button" id="btn-eliminar" class="boton-cita">ELIMINAR CITA</button>
+                    <button type="button" id="btn-editar" class="boton-cita">ACTUALIZAR CITA</button>
                     <button type="button" class="boton-cita" data-dismiss="modal">CANCELAR</button>
                 </div>
             </div>
