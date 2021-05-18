@@ -1,61 +1,25 @@
 <?php
+
 require_once "../../configuracion/env.php";
 
 //Variables de los inputs
-$nombreCi="";
-$nombreCo="";
-$precio="";
-$estilos="";
-$edad="";
-$especies="";
+$nombreCi=$nombreCo=$precio=$estilos=$edad=$especies="";
 //Variables para verificar errores
-$imgERR="";
-$namCiERR="";
-$namCoERR="";
-$prcERR="";
-$edadErr="";
+$imgERR=$namCiERR=$namCoERR=$prcERR=$edadErr="";
 
 
+if(isset($_POST["id"]) && !empty($_POST["id"])){
+    // Get hidden input value
+    $id = $_POST["id"];
+    
 
-
-
-
-
-//pide el metodo post
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-
-  // Validar el nombre de usuario
-  if(empty(trim($_POST["nombreCi"]))){
+//Validaciones
+ // Validar el nombre de usuario
+ if(empty(trim($_POST["nombreCi"]))){
     $namCiERR = "Por favor ingrese un nombre cientifico para el Bonsai.";
 } else{
-    // Busca el nombre del bonsai en la base de datos
-    $sql = "SELECT * FROM bonsai WHERE nombreCientifico = ?";
-    
-    if($stmt = $mysqli->prepare($sql)){
-     
-        $stmt->bind_param("s", $param_name);
-        
-  
-        $param_name = trim($_POST["nombreCi"]);
-        
-        if($stmt->execute()){
-            
-            $stmt->store_result();
-            
-            if($stmt->num_rows == 1){
-              $namCiERR = "Ya Existe este Bonsai.";
-            } else{
-                $nombreCi = trim($_POST["nombreCi"]);
-            }
-        } else{
-            echo "Oops! Something went wrong. Please try again later.";
-        }
-
-        // Close statement
-        $stmt->close();
-    }
-
-  }
+    $nombreCi=$_POST["nombreCi"];
+}
 
 
 
@@ -64,44 +28,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
  if(empty(trim($_POST["nombreCo"]))){
   $namCoERR = "Por favor ingrese un nombre comun para el Bonsai.";
 } else{
-  // Busca el nombre del bonsai en la base de datos
-  $sql = "SELECT * FROM bonsai WHERE nombreComun = ?";
-  
-  if($stmt = $mysqli->prepare($sql)){
-   
-      $stmt->bind_param("s", $param_name);
-      
-
-      $param_name = trim($_POST["nombreCo"]);
-      
-      if($stmt->execute()){
-          
-          $stmt->store_result();
-          
-          if($stmt->num_rows == 1){
-            $namCoERR = "Ya Existe este Bonsai.";
-          } else{
-              $nombreCo = trim($_POST["nombreCo"]);
-          }
-      } else{
-          echo "Oops! Something went wrong. Please try again later.";
-      }
-
-      // Close statement
-      $stmt->close();
-  }
-
+    $nombreCo=$_POST["nombreCo"];
 }
 
-
-
-
-
-
-
-  
-
- 
 
  $estilos=$_POST["estilos"];
 $especies=$_POST["especie"];
@@ -122,8 +51,8 @@ if (empty($namCiERR && $namCoERR)){
       
 
 //Preparamos el statement para el SQL
-$sql="INSERT INTO bonsai (id_bonsai,imagenBonsai,id_especie,estilo,nombreCientifico,nombreComun
-,edad,precio) values (Null,?,?,?,?,?,?,?)";
+$sql="UPDATE bonsai SET  imagenBonsai = ?, id_especie = ?, estilo = ?, nombreCientifico = ?
+, nombreComun = ?, edad = ?, precio = ? WHERE `bonsai`.`id_bonsai` =  $id";
 // Modificar 
 if($stmt = $mysqli->prepare($sql)){
   // Bind variables to the prepared statement as parameters
@@ -146,6 +75,8 @@ if($stmt = $mysqli->prepare($sql)){
 
       // Redirigir a la lista de bonsais
       header("location: ../../app/vista/listaBonsais.php");
+   
+      exit();
   } else{
       echo "Algo Malo paso ,por favor intente de nuevo!!.";
   }
@@ -157,15 +88,73 @@ if($stmt = $mysqli->prepare($sql)){
 
  }
 
-} //Fin de validacion empty
+} //Fin de validaciones
+
+// Close connection
+$mysqli->close();
+
+}else{
+
+// Check existence of id parameter before processing further
+if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
+    // Get URL parameter
+    $id =  trim($_GET["id"]);
+    
+    // Prepare a select statement
+    $sql = "SELECT * FROM bonsai WHERE id_bonsai = ?";
+    if($stmt = $mysqli->prepare($sql)){
+        // Bind variables to the prepared statement as parameters
+        $stmt->bind_param("i", $param_id);
+        
+        // Set parameters
+        $param_id = $id;
+        
+        // Attempt to execute the prepared statement
+        if($stmt->execute()){
+            $result = $stmt->get_result();
+            
+            if($result->num_rows == 1){
+                /* Fetch result row as an associative array. Since the result set
+                contains only one row, we don't need to use while loop */
+                $row = $result->fetch_array(MYSQLI_ASSOC);
+                
+                // Retrieve individual field value
+                $nombreCi=$row["nombreCientifico"];
+                $nombreCo=$row["nombreComun"];
+                $precio=$row["precio"];
+                $estilos=$row["estilo"];
+                $edad=$row["edad"];
+                $especies=$row["id_especie"];
+                                  
+            } else{
+                // URL doesn't contain valid id. Redirect to error page
+                header("location: error.php");
+                exit();
+            }
+            
+        } else{
+            echo "Oops! Something went wrong. Please try again later.";
+        }
+    }
+    
+    // Close statement
+    $stmt->close();
+    
+    // Close connection
+    $mysqli->close();
+} else{
+    // URL doesn't contain id parameter. Redirect to error page
+    header("location: error.php");
+    exit();
+}
+
 
 }
 
 
 ?>
 
-<!---------------------------------------- Seccion de HTML------------------------------------------------>
-
+<!-----------------------------------------Codigo Html----------------------------------->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -280,7 +269,7 @@ if($stmt = $mysqli->prepare($sql)){
 
 
 <div class="registro">
-<form  style="position:relative" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+<form  style="position:relative" enctype="multipart/form-data" action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="post">
 <!-- Div de imagen-->
 <div class="image-upload" >
 <p style="text-align:Center;">
@@ -313,72 +302,73 @@ if($stmt = $mysqli->prepare($sql)){
 
   <label class="inputFont" for="nombre">Nombre Cientifico del bonsái</label>
   <br>
-<input name="nombreCi" type="text" >
+<input name="nombreCi" type="text" value="<?php echo $nombreCi ?>" >
 <!--Error de nombre cientifico-->
 <span class='help-block inputFont'><?php echo $namCiERR;?></span>
 <br>
 
 <label class="inputFont" for="nombre">Nombre Comun del bonsái</label>
   <br>
-<input name="nombreCo" type="text" >
+<input name="nombreCo" type="text" value="<?php echo $nombreCo ?>" >
 <!--Error de nombre comun-->
 <span class='help-block inputFont'><?php echo $namCoERR;?></span>
 <br>
 
 <label class="inputFont" for="estilos">Estilos</label>
   <br>
-<select name="estilos">
-<option value="1">FUKINAGASHI - FUSTIGADO PELO VENTO</option>
-<option value="2">KENGAI - CASCADA</option>
-<option value="3">HAN KENGAI - SEMI CASCADA</option>
-<option value="4">MOYOGI - INFORMAL DIREITO</option>
-<option value="5">SHAKAN - INCLINADO</option>
-<option value="6">CHOKKAN - FORMAL DIREITO</option>
-<option value="7">HOKIDACHI - ESTILO VASSQURA</option>
-<option value="8">YOSE-UE - BOSQUE</option>
+<select name="estilos" >
+<option value="1" <?php if ($estilos == '1') echo ' selected="selected"'; ?>>FUKINAGASHI - FUSTIGADO PELO VENTO</option>
+<option value="2"<?php if ($estilos == '2') echo ' selected="selected"'; ?>>KENGAI - CASCADA</option>
+<option value="3"<?php if ($estilos == '3') echo ' selected="selected"'; ?>>HAN KENGAI - SEMI CASCADA</option>
+<option value="4"<?php if ($estilos == '4') echo ' selected="selected"'; ?>>MOYOGI - INFORMAL DIREITO</option>
+<option value="5"<?php if ($estilos == '5') echo ' selected="selected"'; ?>>SHAKAN - INCLINADO</option>
+<option value="6"<?php if ($estilos == '6') echo ' selected="selected"'; ?>>CHOKKAN - FORMAL DIREITO</option>
+<option value="7"<?php if ($estilos == '7') echo ' selected="selected"'; ?>>HOKIDACHI - ESTILO VASSQURA</option>
+<option value="8"<?php if ($estilos == '8') echo ' selected="selected"'; ?>>YOSE-UE - BOSQUE</option>
    </select>
    <br>
 
    <label class="inputFont" for="especie">Especie</label>
   <br>
 <select name="especie">
-<option value="1">CONIFERA</option>
-<option value="2">FICOS RETUSA</option>
-<option value="3">FICOS NERIFOLIA</option>
-<option value="4">FICOS VARIEGADO</option>
-<option value="5">CAPALES</option>
-<option value="6">BUGAMBILIA ESPECTABILIS</option>
-<option value="7">JUNIPEROS PROCUMBENS</option>
-<option value="8">GINGO BILOBA</option>
-<option value="9">PINO PINEA</option>
-<option value="10">ABIES RELIGIOSA</option>
-<option value="11">ABIES ALBA</option>
-<option value="12">PIRACANTA ANGUSTITULIA AMARILLA</option>
-<option value="13">PIRACANTA ANGUSTITULIA ROJA</option>
-<option value="14">ACACIA PENATULA</option>
-<option value="15">ACER PALMATUM</option>
-<option value="16">JACARANDA MIMOSIDOLIA</option>
-<option value="17">CRIJOTOMENA JAPONICA</option>
-<option value="18">CEIBA PENTANDRA</option>
-<option value="19">RODADEN DRUM INDICUM</option>
-<option value="20">CEDRELLA O DORATA</option>
+<option value="1" <?php if ($especies == '1') echo ' selected="selected"'; ?>>CONIFERA</option>
+<option value="2" <?php if ($especies == '2') echo ' selected="selected"'; ?>>FICOS RETUSA</option>
+<option value="3" <?php if ($especies == '3') echo ' selected="selected"'; ?>>FICOS NERIFOLIA</option>
+<option value="4" <?php if ($especies == '4') echo ' selected="selected"'; ?>>FICOS VARIEGADO</option>
+<option value="5" <?php if ($especies == '5') echo ' selected="selected"'; ?>>CAPALES</option>
+<option value="6" <?php if ($especies == '6') echo ' selected="selected"'; ?>>BUGAMBILIA ESPECTABILIS</option>
+<option value="7" <?php if ($especies == '7') echo ' selected="selected"'; ?>>JUNIPEROS PROCUMBENS</option>
+<option value="8" <?php if ($especies == '8') echo ' selected="selected"'; ?>>GINGO BILOBA</option>
+<option value="9" <?php if ($especies == '9') echo ' selected="selected"'; ?>>PINO PINEA</option>
+<option value="10" <?php if ($especies == '10') echo ' selected="selected"'; ?>>ABIES RELIGIOSA</option>
+<option value="11" <?php if ($especies == '11') echo ' selected="selected"'; ?>>ABIES ALBA</option>
+<option value="12" <?php if ($especies == '12') echo ' selected="selected"'; ?>>PIRACANTA ANGUSTITULIA AMARILLA</option>
+<option value="13" <?php if ($especies == '13') echo ' selected="selected"'; ?>>PIRACANTA ANGUSTITULIA ROJA</option>
+<option value="14" <?php if ($especies == '14') echo ' selected="selected"'; ?>>ACACIA PENATULA</option>
+<option value="15" <?php if ($especies == '15') echo ' selected="selected"'; ?>>ACER PALMATUM</option>
+<option value="16" <?php if ($especies == '16') echo ' selected="selected"'; ?>>JACARANDA MIMOSIDOLIA</option>
+<option value="17" <?php if ($especies == '17') echo ' selected="selected"'; ?>>CRIJOTOMENA JAPONICA</option>
+<option value="18" <?php if ($especies == '18') echo ' selected="selected"'; ?>>CEIBA PENTANDRA</option>
+<option value="19" <?php if ($especies == '19') echo ' selected="selected"'; ?>>RODADEN DRUM INDICUM</option>
+<option value="20" <?php if ($especies == '20') echo ' selected="selected"'; ?>>CEDRELLA O DORATA</option>
    </select>
    <br>
 
 <label class="inputFont"for="precio">Precio</label>
 <br>
 <input type="number" name="precio" id="campoEdad" min="0" max="999999" oninput="validity.valid||(value='');" 
- required="required">
+ required="required" value="<?php echo $precio ?>">
  <span class='help-block inputFont'><?php echo $prcERR;?></span>
 <br>
 
 <label class="inputFont" for="cantidad">Edad</label>
 <br>
 <input type="number" name="edad" id="campoEdad" min="0" max="999999" oninput="validity.valid||(value='');" 
- required="required">
+ required="required" value="<?php echo $edad ?>">
  <span class='help-block inputFont'><?php echo $edadErr;?></span>
 <br>
-<button class="registrar" type="submit" name="upload" >Registrar</button>
+<input type="hidden" name="id" value="<?php echo $id; ?>"/>
+<button class="registrar" type="submit" name="upload" >Actuializar</button>
 <button class="limpiar" type="reset" >Limpiar </button>
 </p>
 

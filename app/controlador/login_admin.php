@@ -17,9 +17,9 @@
             echo $_POST['pass'];
             echo $registros['contrasena'];
             //password_verify(): Metodo para poder comparar contraseñas con encriptación hash.
-            if(md5($_POST['pass']) == $registros['contrasena']){
+            if($_POST['pass'] == $registros['contrasena']){
                 $_SESSION['usuario'] = $registros['usuario'];
-                header('Location: '.'../../index.php');
+                header('Location: '. URL_VISTAS.'index.php');
             } else{
                 $message = 'Error: contraseña incorrecta';
                 $location = URL_VISTAS.'login.php';
