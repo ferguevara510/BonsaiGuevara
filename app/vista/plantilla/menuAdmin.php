@@ -1,11 +1,13 @@
 <?php
 $ruta ="";
-        if(isset($index)){
-                $ruta = PATH_VISTA;
-        }else{
-                $ruta = "../vista/";
-        }
-        echo $ruta;
+$rutaSesion = "";
+if(isset($index)){
+        $ruta = PATH_VISTA;
+        $rutaSesion = URL_CERRAR_SESION;
+}else{
+        $ruta = "../vista/";
+        $rutaSesion = "../controlador/logout.php";
+}
 ?>
 
 <header class="u-clearfix u-header u-header" id="sec-e89e">
@@ -58,8 +60,6 @@ $ruta ="";
                         <li class="u-nav-item"><a
                                 class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base active"
                                 href="<?php echo URL_CONTROLADORES?>logout.php" style="padding: 10px 20px;">Cerrar Sesión</a></li>
-
-
                     </ul>
                 </div>
                 <div class="u-custom-menu u-nav-container-collapse">
@@ -81,7 +81,7 @@ $ruta ="";
                                         style="padding: 10px 20px;">Citas</a></li>
                                 <li class="u-nav-item"><a class="u-button-style u-nav-link" href="<?php echo $ruta?>editarEmpresa.php"
                                         style="padding: 10px 20px;">Perfil</a></li>
-                                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="<?php echo URL_CERRAR_SESION?>"
+                                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="<?php echo $rutaSesion?>"
                                         style="padding: 10px 20px;">Cerrar Sesión</a></li>
                             </ul>
                         </div>
