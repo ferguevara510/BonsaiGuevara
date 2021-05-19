@@ -19,7 +19,8 @@
 .imagenB{
     float: left;
     display: block;
- 
+    margin: 2%;
+
     opacity: 93%;
 
 
@@ -38,7 +39,8 @@
 .imagenB,
 .bonsaiSegment{
     
-background-color: rgba(42, 100, 57, 0.418);
+background-color: #66bb6a;
+box-shadow: 5px 10px #338a3e;
 display: inline-block;
 
 border-radius: 6px;
@@ -48,6 +50,22 @@ transition: 0.3s all;
 .bonsaiSegment:hover{
     background-color: rgba(70, 190, 0, 0.205);
 }
+
+.agregarBonsai{
+padding:1%;
+width: 35%;
+background-color: #338a3e;
+}
+.buttonBonsai{
+  width: 100%;
+  background-color: #338a3e;
+  font-size: 20px;
+  border-color: rgba(255, 255, 255, 0);
+  border-radius: 10%;
+  color: rgb(255, 255, 255);
+}
+
+
 
 .navFont{
     font-family: 'Roboto', sans-serif;

@@ -65,19 +65,15 @@ function confirmationEdit(anchor)
 <!--Nav Bar-->
 <!--No sirve-->
 <?php
-include "../../app/vista/plantilla/menuAdmin.php";
+include "../../app/vista/plantilla/menu.php";
 ?>
 <!--Fin del NavBar-->
 
-<!--Mensaje para corroborar funcionamiento y boton de limpiar-->
-<br>
-<?php if($mensaje != "") {?>
-<div class="alert alert-success">
-    <?php print_r($mensaje);?>
-    <a href="<?php echo URL_CONTROLADORES?>limpiar_carrito.php" class="badge badge-success">Limpiar Carrito</a>
+
+<div class="agregarBonsai">
+<a href="../../app/vista/registrarBonsai.php" class="buttonBonsai"> Registrar Bonsai</a>
+
 </div>
-<?php }?>
-      
       <div class='contenedor'> <!--container-->
 <?php
 
@@ -102,9 +98,10 @@ if($result = $mysqli->query($sql)){
                                     
 
 
-          echo "<div class='bonsaiInformation'>;";
-          echo "<img src='".$row['imagenBonsai']."' alt='Not Found' onerror=this.src='../../publico/bonsais/Error.png' width='200' height='120' class='imagenB'>";
+          echo "<div class='bonsaiInformation'>";
+        
           echo"<div class='bonsaiSegment' >";
+          echo "<img src='".$row['imagenBonsai']."' alt='Not Found' onerror=this.src='../../publico/bonsais/Error.png' width='200' height='120' class='imagenB'>";
           echo"<label class='nameFont quantity' for=''>".$row['nombreCientifico']."</label>" ;
           
           echo"<label class='nameFont' for=''>".$row['nombreComun']."</label>" ;
