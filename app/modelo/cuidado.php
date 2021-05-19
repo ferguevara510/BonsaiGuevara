@@ -84,6 +84,23 @@ class Cuidado {
         return $cuidados;
     }
 
+    public function eliminarCuidado()
+    {
+        $validacion = false;
+        $mysqli = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
+        $sql = "DELETE FROM cuidado WHERE id_cuidado=?";
+        $stmt = $mysqli->prepare($sql);
+        if ($stmt) {
+            $stmt->bind_param("i", $this->id_cuidado);
+            if ($stmt->execute()) {
+                $validacion = true;
+            }
+            $stmt->close();
+        }
+        $mysqli->close();
+        return $validacion;
+    }
+
     public static function buscarCuidado($id_cuidado) {
         require_once "especie.php";
         $mysqli = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);

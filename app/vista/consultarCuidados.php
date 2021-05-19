@@ -32,6 +32,8 @@ $cuidados = Cuidado::buscarCuidados();
     <script type="text/javascript" src="<?php echo URL_JS?>bootstrap.js"></script>
     <script type="text/javascript" src="<?php echo URL_JS?>jquery.isotope.js"></script>
     <script type="text/javascript" src="<?php echo URL_JS?>jqBootstrapValidation.js"></script>
+    <script type="text/javascript" src="<?php echo URL_JS?>cuidado.js"></script>
+
 
     <script type="application/ld+json">{
 		"@context": "http://schema.org",
@@ -137,7 +139,7 @@ $cuidados = Cuidado::buscarCuidados();
     <h1 class="u-text u-text-default u-text-cuidado .u-title">Lista de cuidados</h1>
     <div class="contenedor-tarjetas">
     <?php foreach ($cuidados as $cuidado){?>
-        <div class="tarjeta-cuidado">
+        <div id= "cuidado-<?php echo $cuidado->id_cuidado;?>"   class="tarjeta-cuidado">
             <div class="registro">
                 <strong>Especie:</strong>
                 <span><?php echo "{$cuidado->id_especie->nombreEspecie}"; ?></span>
@@ -171,8 +173,9 @@ $cuidados = Cuidado::buscarCuidados();
                     <img src="../../publico/imagenes/edit.png" alt="">
                 </a>
             </div>
+            
             <div class="boton-eliminar">
-                <a href="#">
+                <a class= "link-cuidado"  data-id= "<?php echo $cuidado->id_cuidado;?>">
                     <img src="../../publico/imagenes/delete.png" alt="">
                 </a>
             </div>
