@@ -43,7 +43,7 @@ require_once "../../app/modelo/estilo.php";
 <!--Nav Bar-->
 <!--No sirve-->
 <?php
-include "../../app/vista/plantilla/menu.php";
+include "../../app/vista/plantilla/menuAdmin.php";
 ?>
 <!--Fin del NavBar-->
 

@@ -6,7 +6,6 @@ include URL_CONTROLADORES . "carrito.php";
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -118,7 +117,6 @@ include URL_CONTROLADORES . "carrito.php";
             <input type='hidden' name='cantidad' id='cantidad' value='1'>
             <button class='btn btn-primary' name='btnAccion' value='Agregar' type='submit'>Agregar al Carrito</button>
            </form>";
-
 					echo "</div>";
 					echo "</div>";
 				}
