@@ -11,8 +11,7 @@
 
 .contenedor{
     display:block;
-    
-
+    height: 75vh;
 }
 
 
@@ -87,7 +86,6 @@ border-color: rgb(0, 0, 0);
     bottom: 0;
     background-size: cover;
     background: rgba(128, 179, 171, 0);
-    background: linear-gradient(70deg, var(--grad-1) 0%, var(--grad-2) 100%);
     
   }
 
@@ -115,3 +113,8 @@ border-color: rgb(0, 0, 0);
     background: rgba(32, 109, 13, 0.705); 
   }
 
+  .lead{
+    width: 90%;
+    margin: auto;
+    text-align: center;
+  }

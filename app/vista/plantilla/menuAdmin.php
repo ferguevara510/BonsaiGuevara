@@ -31,7 +31,7 @@ $rutaSesion = "../controlador/logout.php";
                     <ul class="u-nav u-unstyled u-nav-1">
                     <li class="u-nav-item"><a
                                 class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base active"
-                                href="" style="padding: 10px 20px;">Ventas</a></li>
+                                href="<?php echo $ruta?>verVentas.php" style="padding: 10px 20px;">Ventas</a></li>
                         <li class="u-nav-item"><a
                                 class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base active"
                                 href="<?php echo $ruta?>listaBonsais.php" style="padding: 10px 20px;">Bonsais</a></li>
@@ -40,7 +40,7 @@ $rutaSesion = "../controlador/logout.php";
                                 href="<?php echo $ruta?>consultarCliente.php" style="padding: 10px 20px;">Clientes</a></li>
                         <li class="u-nav-item"><a
                                 class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base active"
-                                href="" style="padding: 10px 20px;">Cuidados</a></li>
+                                href="<?php echo $ruta?>consultarCuidados.php" style="padding: 10px 20px;">Cuidados</a></li>
                         <li class="u-nav-item"><a
                                 class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base active"
                                 href="<?php echo $ruta?>registrarDuda.php" style="padding: 10px 20px;">Dudas</a></li>
@@ -60,7 +60,7 @@ $rutaSesion = "../controlador/logout.php";
                         <div class="u-sidenav-overflow">
                             <div class="u-menu-close"></div>
                             <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2">
-                                <li class="u-nav-item"><a class="u-button-style u-nav-link" href=""
+                                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="<?php echo $ruta?>verVentas.php"
                                         style="padding: 10px 20px;">Ventas</a></li>
                                 <li class="u-nav-item"><a class="u-button-style u-nav-link" href="<?php echo $ruta?>listaBonsais.php"
                                         style="padding: 10px 20px;">Bonsais</a></li>
