@@ -58,11 +58,11 @@ if(isset($_POST['btnAccion'])){
                 if(in_array($ID, $id_Productos)){
                     foreach($_SESSION['Carrito'] as $indice=>$producto){
                         if($producto['id'] == $ID) {
-                            $producto['cantidad'] = $producto['cantidad'] + 1;
+                            // $producto['cantidad'] = $producto['cantidad'] + 1;
                             $_SESSION['Carrito'][$indice] = $producto;
                         }
                     }
-                    $mensaje = 'Unidad Agregada al Carrito.';
+                    $mensaje = 'Unidad Ya Agregada al Carrito.';
                 } else {
                     $sizeCarrito = count($_SESSION['Carrito']);
                     $producto = array(

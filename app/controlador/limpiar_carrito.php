@@ -1,6 +1,8 @@
-<?php 
+<?php
+    require_once "../../configuracion/env.php";
+
     session_start();
-    session_unset();
-    session_destroy();
+    unset($_SESSION['Carrito']);
+
+    header('Location: '.URL_VISTAS.'listaBonsaisCliente.php');
 ?>
-<a href="logout.php">Regresar</a>
