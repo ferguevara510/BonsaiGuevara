@@ -103,8 +103,8 @@ include URL_CONTROLADORES . "carrito.php";
 
 
                     echo "<div class='bonsaiInformation'>;";
-                    echo "<img src='" . $row['imagenBonsai'] . "' alt='Not Found' onerror=this.src='../../publico/bonsais/Error.png' width='200' height='120' class='imagenB'>";
                     echo "<div class='bonsaiSegment' >";
+                    echo "<img src='" . $row['imagenBonsai'] . "' alt='Not Found' onerror=this.src='../../publico/bonsais/Error.png' width='200' height='120' class='imagenB'>";
                     echo "<label class='nameFont quantity' for=''>" . $row['nombreCientifico'] . "</label>";
 
                     echo "<label class='nameFont' for=''>" . $row['nombreComun'] . "</label>";
@@ -156,14 +156,6 @@ include URL_CONTROLADORES . "carrito.php";
 
     </div>
     <!--container-->
-
-    <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-712f">
-        <div class="u-clearfix u-sheet u-sheet-1">
-            <p class="u-small-text u-text u-text-variant u-text-1">Universidad Veracruzana&nbsp;<br>Desarrollo de
-                Software
-            </p>
-        </div>
-    </footer>
 </body>
 
 </html>
