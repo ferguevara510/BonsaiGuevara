@@ -57,7 +57,6 @@ include URL_CONTROLADORES . "carrito.php";
 
 
 </head>
-
 <body class="u-body">
     <!--Nav Bar-->
     <!--No sirve-->
