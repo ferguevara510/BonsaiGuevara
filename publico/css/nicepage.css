@@ -4,6 +4,10 @@
  * Copyright 2014-2020 Froala Labs
  */
 
+.texto-negro{
+  color: #000 !important;
+}
+
 .boton-cita {
   background-color: #007b00 !important;
   color: #fff !important;

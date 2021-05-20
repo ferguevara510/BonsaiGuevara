@@ -1,7 +1,7 @@
 <?php
 require_once "../../configuracion/env.php";
 require_once "../modelo/administrador.php";
-
+session_start();
 $administrador = Administrador::consultarEmpresa();
 ?>
 

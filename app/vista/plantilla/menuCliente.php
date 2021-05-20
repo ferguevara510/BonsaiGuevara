@@ -30,7 +30,7 @@
 					<li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base active" href="consultarEmpresa.php" style="padding: 10px 20px;">Empresa</a></li>
 					<li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base active" href="editarCliente.php?id_cliente=<?php echo $_SESSION["id_cliente"] ?>" style="padding: 10px 20px;">Perfil</a></li>
 					<li class="u-nav-item navFont">
-						<a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="mostrar_carrito.php" style="padding: 10px 20px;">
+						<a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base texto-negro" href="mostrar_carrito.php" style="padding: 10px 20px;">
 							Carrito (<?php echo (empty($_SESSION['Carrito'])) ? 0 : count($_SESSION['Carrito']); ?>)
 						</a>
 					</li>
