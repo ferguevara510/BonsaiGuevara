@@ -9,6 +9,8 @@ if (isset($_GET['id_cliente']) && is_numeric($_GET['id_cliente'])) {
     header("location: ../../index.php");
     exit();
 }
+
+session_start();
 ?>
 
 <!DOCTYPE html>

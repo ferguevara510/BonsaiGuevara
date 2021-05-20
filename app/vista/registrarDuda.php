@@ -56,9 +56,14 @@ session_start();
 
 <body data-home-page="Iniciar-Sesión.html" data-home-page-title="Iniciar Sesión" class="u-body">
     <?php
-    require_once "plantilla/menuCliente.php";
+    if(isset($_SESSION["usuario"])){
+        require_once "plantilla/menuAdmin.php";
+    }else if(isset($_SESSION["user_email"])){
+        require_once "plantilla/menuCliente.php";
+    }else{
+        require_once "plantilla/menu.php";
+    }
     ?>
-
     <h1 class="u-text u-text-default u-text-cliente .u-title">Dudas</h1>
     <div id="alerta" class="alert alert-dismissible tag-hidden" role="alert">
         <h4 class="alert-heading">Notificación</h4>

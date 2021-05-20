@@ -12,7 +12,6 @@
     right: 0;
     bottom: 0;
     background: rgba(128, 179, 171, 0);
-    background: linear-gradient(90deg, var(--grad-1) 0%, var(--grad-2) 100%);
     
   }
   
@@ -53,7 +52,10 @@ input:hover {
     box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.05);
   }
 
-
+.registro{
+  background: linear-gradient(90deg, var(--grad-1) 0%, var(--grad-2) 100%);
+  padding: 10px;
+}
 .registrar {background-image: linear-gradient(to right, #14b998 0%, #198851  51%, #14683a  100%)}
 .registrar {
     margin: 0.8%;

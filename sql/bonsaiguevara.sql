@@ -39,11 +39,10 @@ CREATE TABLE `administrador` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `administrador`
+-- Volcado de datos para la tabla `administrador` contraseña BonsaiGuevara5
 --
 
 INSERT INTO `administrador` (`usuario`, `nombre`, `apellidoPaterno`, `apellidoMaterno`, `correo`, `direccion`, `numTelefono`, `contrasena`) VALUES
-('admin', 'admin', '.', '.', 'admin@outlook.com', 'av. Xalapa', '8157653', 'admin'),
 ('OctavioGuevara', 'OCTAVIO CESAR', 'GUEVARA', 'TORRES', 'bonsai_guevara@outlook.com', 'CALLE DEL CAMPESINO #46 COLONIA OBRERO CAMPESINA CP:91020 XALAPA VERACRUZ', '2281774694', '62f82f9a8d525347bcbfec24924fd6ad');
 
 -- --------------------------------------------------------

@@ -1,5 +1,6 @@
 <?php
 require_once "../../configuracion/env.php";
+session_start();
 ?>
 
 <!DOCTYPE html>

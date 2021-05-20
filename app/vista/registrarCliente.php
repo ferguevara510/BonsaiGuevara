@@ -104,7 +104,7 @@ require_once "../../configuracion/env.php";
                 </div>
                 <div alt="" class="u-image-perfil u-image u-image-circle u-image-registrar" data-image-width="1280" data-image-height="854">
                 </div>
-                <a href="../../index.php"
+                <a href="<?php echo URL_VISTAS?>login.php"
                     class="boton-verde u-btn u-button-style u-hover-palette-1-dark-1 u-btn-2">Cancelar</a>
                 <p class="select-bottom u-text u-text-registrar">Selecciona tu imagen</p>
             </div>
