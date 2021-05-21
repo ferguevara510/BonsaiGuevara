@@ -176,7 +176,10 @@ session_start();
                 }
             }
         } else {
-            echo "<p class='lead'><em>No Hay Pedidos.</p>";
+            echo    "<div class='container'>
+                        <h3>Preparando</h3>
+                        <p class='lead'><em>No Hay Pedidos.</p>
+                    </div>";
         }
     } else {
         echo "ERROR: Could not able to execute $sql. " . $mysqli->error;
@@ -305,7 +308,10 @@ session_start();
                 }
             }
         } else {
-            echo "<p class='lead'><em>No Hay Pedidos.</p>";
+            echo    "<div class='container'>
+                        <h3>Enviados</h3>
+                        <p class='lead'><em>No Hay Pedidos.</p>
+                    </div>";
         }
     } else {
         echo "ERROR: Could not able to execute $sql. " . $mysqli->error;
@@ -434,7 +440,10 @@ session_start();
                 }
             }
         } else {
-            echo "<p class='lead'><em>No Hay Pedidos.</p>";
+            echo    "<div class='container'>
+                        <h3>Cancelados</h3>
+                        <p class='lead'><em>No Hay Pedidos.</p>
+                    </div>";
         }
     } else {
         echo "ERROR: Could not able to execute $sql. " . $mysqli->error;

@@ -88,7 +88,10 @@ if(isset($_POST['btnAccion'])){
                         if($producto['cantidad'] == 1){
                             unset($_SESSION['Carrito'][$indice]);
                             array_values($_SESSION['Carrito']);
-                            echo "<script>alert ('Producto Borrado');</script>";
+                            echo "<script type='text/javascript'>
+                            alert('Producto Borrado');
+                            window.location.href='".URL_VISTAS.'listaBonsaisCliente.php'."';
+                            </script>";
                         } else {
                             $producto['cantidad'] = $producto['cantidad'] - 1;
                             $_SESSION['Carrito'][$indice] = $producto;
