@@ -92,5 +92,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo json_encode($jsondata);
             exit();
         }
+    } else {
+        echo "<script type='text/javascript'>
+        alert('Datos Faltantes');
+        window.location.href='".URL_VISTAS.'pedido.php'."';
+        </script>";
     }
 }
