@@ -5,7 +5,11 @@ require_once "../modelo/duracion.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     if (isset($_GET['fecha'])) {
-        $citas = Cita::buscarCitasDia($_GET['fecha']);
+        if(isset($_GET["id"])){
+            $citas = Cita::buscarCitasDiaSinUnaFecha($_GET['fecha'],$_GET["id"]);
+        }else{
+            $citas = Cita::buscarCitasDia($_GET['fecha']);
+        }
         $citasDelDia = [];
         foreach ($citas as $cita) {
             $horario = [];

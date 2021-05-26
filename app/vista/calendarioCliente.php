@@ -61,16 +61,23 @@ session_start();
     require_once URL_PLANTILLA . "menuCliente.php";
     ?>
 
-    <div id="alerta" class="alert alert-dismissible tag-hidden" role="alert">
-        <h4 class="alert-heading">Notificación</h4>
-        <p class="mensaje"></p>
+    <div class="contenedor-margen">
+        <div id="alerta" class="alert alert-dismissible alert-custom tag-hidden" role="alert">
+            <h4 class="alert-heading">Notificación</h4>
+            <p class="mensaje">La cita se ha guardado</p>
+        </div>
     </div>
+    
 
     <?php if (isset($cita)) { ?>
         <div class="contenedor-margen alinear-derecha">
             <button type="button" class="boton-cita" id-cita="<?php echo $cita->folio; ?>" id="editarCita">EDITAR CITA</button>
         </div>
-    <?php } ?>
+    <?php }else{ ?>
+        <div class="contenedor-margen alinear-derecha">
+            <button type="button" class="boton-cita tag-hidden" id="editarCita">EDITAR CITA</button>
+        </div>
+        <?php } ?>
 
     <div id="calendario" id-cita="<?php echo $cita->folio; ?>">
     </div>

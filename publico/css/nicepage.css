@@ -4,6 +4,32 @@
  * Copyright 2014-2020 Froala Labs
  */
 
+.alert-custom{
+  color: #FFF !important;
+  min-height: 170px;
+  text-align: center; 
+}
+
+.alert-custom.alert-success{
+  background-color: #007b00 !important;
+  box-shadow: 7px 7px 15px #94BB97;
+  border: 5px solid #007b00;
+}
+
+.alert-custom.alert-warning{
+  background-color: #F95D51 !important;
+  box-shadow: 7px 7px 15px #9e7876;
+  border: 5px solid #F95D51;
+}
+
+.alert-heading{
+  font-size: 30px;
+}
+
+.mensaje{
+  font-size: 25px;
+}
+
 .texto-negro{
   color: #000 !important;
 }

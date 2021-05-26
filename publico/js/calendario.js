@@ -16,25 +16,33 @@ document.addEventListener("DOMContentLoaded", function () {
       method: "GET",
     },
     dateClick: function (datos) {
-      if (!$("#editarCita")) {
-        $("#form-cita").trigger("reset");
-        let fechaCita = new Date(datos.dateStr);
-        if (fechaCita.getDay() < 5) {
-          $("#fechainicio").val(datos.dateStr);
-          $("#fechainicio").prop("disabled", true);
-          $("#modalCita").modal("show");
-        } else {
+      if(validarFechaMayor(fechaInical,datos.dateStr)){
+        if ($("#editarCita").attr("id-cita") == undefined) {
+          $("#form-cita").trigger("reset");
+          let fechaCita = new Date(datos.dateStr);
+          if (fechaCita.getDay() < 5) {
+            $("#fechainicio").val(datos.dateStr);
+            $("#fechainicio").prop("disabled", true);
+            $("#modalCita").modal("show");
+          } else {
+            mostrarMensaje(
+              "Solo puede agendarse citas de lunes a viernes",
+              false
+            );
+          }
+        }else{
           mostrarMensaje(
-            "Solo puede agendarse citas de lunes a viernes",
+            "Solo se puede crear una cita por usuario borre o edite la que ya existe",
             false
           );
         }
       }else{
         mostrarMensaje(
-          "Solo se puede crear una cita por usuario borre o edite la que ya existe",
+          "Solo se pueden agendar citas en la fecha actual o en las posteriores",
           false
         );
       }
+      
     },
   });
   calendar.setOption("locale", "es");
@@ -57,7 +65,10 @@ document.addEventListener("DOMContentLoaded", function () {
       .done(function (res) {
         mostrarMensaje("Cita borrada");
         $("#form-cita").trigger("reset");
-        $("#modalCita").modal("hide");
+        $("#editar").modal("hide");
+        $("#editarCita").removeAttr("id-cita");
+        $("#editarCita").addClass("tag-hidden");
+
         let evento = calendar.getEventById( folio );
         if(evento){
           evento.remove();
@@ -67,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
         mostrarMensaje("No se ha podido guardar la cita", false);
       });
   });
-  $("#editarCita").click(function (datos) {
+  $("#editarCita").click(function (event) {
     if ($("#editarCita").attr("id-cita") != undefined) {
       $.ajax({
         url:"../controlador/consultarCita.php?id=" + $("#editarCita").attr("id-cita"),
@@ -106,7 +117,8 @@ document.addEventListener("DOMContentLoaded", function () {
   $("#btn-editar").click(function (datos) {
     let fecha = $("#fecha").val();
     let hora = $("#hora").val();
-    let citas = obtenerCitasDelDia(fecha);
+    let folio = $("#folio").val();
+    let citas = obtenerCitasDelDia(fecha,folio);
     let fechaFin = calcularHoraFin(
       $("#duracion").val(),
       fecha + " " + hora
@@ -163,7 +175,7 @@ document.addEventListener("DOMContentLoaded", function () {
       $(element).closest(".form-group").find(".help-block").html("");
     },
     submitHandler: function (form) {
-      if (!$("#editarCita")) {
+      if ($("#editarCita").attr("id-cita") == undefined) {
         var formData = new FormData(document.getElementById("form-cita"));
         formData.append("fecha", $("#fechainicio").val());
         formData.append("id_cliente", 1);
@@ -179,6 +191,8 @@ document.addEventListener("DOMContentLoaded", function () {
             mostrarMensaje("Cita guardada");
             $("#form-cita").trigger("reset");
             $("#modalCita").modal("hide");
+            $("#editarCita").attr("id-cita",res.cita.id);
+            $("#editarCita").removeClass("tag-hidden");
             calendar.addEvent(res.cita);
           })
           .fail(function (res) {
@@ -320,6 +334,7 @@ document.addEventListener("DOMContentLoaded", function () {
       $(id).removeClass("tag-hidden");
       $(id).removeClass("alert-success");
       $(id).addClass("alert-warning");
+      $('html, body').animate({scrollTop:0}, 'slow');
     }
 
     $(id + " .mensaje").html(mensaje);
@@ -333,10 +348,16 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 3000);
   }
 
-  function obtenerCitasDelDia(fecha) {
+  function obtenerCitasDelDia(fecha, id = null) {
     let fechasDias = [];
+    let url = "";
+    if(id == null){
+      url = "../controlador/consultarCita.php?fecha=" + fecha;
+    }else{
+      url = "../controlador/consultarCita.php?fecha=" + fecha + "&id="+id;
+    }
     $.ajax({
-      url: "../controlador/consultarCita.php?fecha=" + fecha,
+      url: url,
       method: "GET",
       async: false,
     }).done(function (datos) {
@@ -365,6 +386,15 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
     return horarioDisponible;
+  }
+
+  function validarFechaMayor(fechaActual,fechaSeleccionada) {
+    fechaActual = Date.parse(fechaActual);
+    fechaSeleccionada = Date.parse(fechaSeleccionada);
+    console.log(fechaActual)
+    console.log(fechaSeleccionada)
+    console.log(fechaActual >= fechaSeleccionada)
+    return fechaActual <= fechaSeleccionada;
   }
 
   function convertirDateToString(fecha, conHora = false) {

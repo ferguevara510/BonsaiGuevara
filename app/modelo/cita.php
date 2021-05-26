@@ -98,6 +98,34 @@ class Cita
         return $citas;
     }
 
+    public static function buscarCitasDiaSinUnaFecha($fecha,$id)
+    {
+        $mysqli = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
+        $citas = [];
+        $sql = "SELECT * FROM cita WHERE CAST(fecha AS DATE)=? and id != ?";
+        $stmt = $mysqli->prepare($sql);
+        if ($stmt) {
+            $stmt->bind_param("si", $fecha,$id);
+            if ($stmt->execute()) {
+                $result = $stmt->get_result();
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+                        $cita = new Cita();
+                        $cita->fecha = $row["fecha"];
+                        $cita->hora = $row["hora"];
+                        $cita->duracion = $row["duracion"];
+                        $cita->descripcion = $row["descripcion"];
+                        $cita->id_cliente = $row["id_cliente"];
+                        $citas[] = $cita;
+                    }
+                }
+                $stmt->close();
+            }
+        }
+        $mysqli->close();
+        return $citas;
+    }
+
     /**
      * @return Cita
      */

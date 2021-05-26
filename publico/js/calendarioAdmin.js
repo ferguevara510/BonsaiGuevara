@@ -16,7 +16,6 @@ document.addEventListener("DOMContentLoaded", function () {
       method: "GET",
     },
     eventClick: function (datos) {
-      console.log(datos.event.id);
       $.ajax({
         url:"../controlador/consultarCita.php?id=" + datos.event.id,
         method: "GET",
@@ -27,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
           $("#fecha").val(res.fecha);
           $("#folio").val(res.folio);
           $("#hora").val(res.hora);
-          $("#duracion").val(res.duracion);
+          $("#duracion").val(obtenerDuracion(res.duracion));
           $("#descripcion").val(res.descripcion);
           $("#vista").modal("show");
         })
@@ -66,5 +65,37 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     return fechaInical;
+  }
+
+  function obtenerDuracion(id) {
+    let valor = "";
+    switch(id){
+      case 1:
+        valor = "15 min";
+        break;
+      case 2:
+        valor = "30 min";
+        break;
+      case 3:
+        valor = "45 min";
+        break;
+      case 4:
+        valor = "60 min";
+        break;
+      case 5:
+        valor = "75 min";
+        break;
+      case 6:
+        valor = "90 min";
+        break;
+      case 7:
+        valor = "105 min";
+        break;
+      case 8:
+        valor = "120 min";
+        break;
+    }
+
+    return valor;
   }
 });

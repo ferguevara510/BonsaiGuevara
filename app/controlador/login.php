@@ -29,6 +29,10 @@
             $location = URL_VISTAS.'login.php';
             alerta($message, $location);
         }
+    }else{
+        $message = 'Los campos estan vacios';
+        $location = URL_VISTAS.'login.php';
+        alerta($message, $location);
     }
 
     function alerta($mensaje, $direccion){
