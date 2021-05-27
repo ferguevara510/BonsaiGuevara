@@ -29,7 +29,7 @@ $cuidados = Cuidado::buscarCuidados();
         href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
     <link id="u-page-google-font" rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
-    <script type="text/javascript" src="<?php echo URL_JS?>jquery.1.11.1.js"></script>
+    <script type="text/javascript" src="<?php echo URL_JS?>jquery.js"></script>
     <script type="text/javascript" src="<?php echo URL_JS?>bootstrap.js"></script>
     <script type="text/javascript" src="<?php echo URL_JS?>jquery.isotope.js"></script>
     <script type="text/javascript" src="<?php echo URL_JS?>jqBootstrapValidation.js"></script>
@@ -50,7 +50,7 @@ $cuidados = Cuidado::buscarCuidados();
     <meta property="og:url" content="index.html">
 </head>
 
-<body data-home-page="Iniciar-Sesión.html" data-home-page-title="Iniciar Sesión" class="u-body">
+<body class="u-body">
 
 
 <?php
@@ -99,6 +99,7 @@ $cuidados = Cuidado::buscarCuidados();
                 <strong>Estilo:</strong>
                 <span><?php echo Estilo::obtenerValores($cuidado->estilo);?></span>
             </div>
+            <?php if(isset($_SESSION["usuario"])){ ?>
             <div class="boton-editar">
                 <a href="../../app/vista/editarCuidados.php?id_cuidado=<?php echo $cuidado->id_cuidado; ?>">
                     <img src="../../publico/imagenes/edit.png" alt="">
@@ -110,6 +111,7 @@ $cuidados = Cuidado::buscarCuidados();
                     <img src="../../publico/imagenes/delete.png" alt="">
                 </a>
             </div>
+            <?php }?>
         </div>
     <?php }?>
     </div>
