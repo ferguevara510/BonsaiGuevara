@@ -64,7 +64,7 @@ $cuidados = Cuidado::buscarCuidados();
 ?>
 <?php if (isset($_SESSION["usuario"])){?>
     <div class="contenedor-margen alinear-derecha">
-        <button type="button" class="boton-cita" id="registrarCuidado"><a href="<?php echo URL_VISTAS ?>registrarCuidado.php">Registrar Cuidado</a></button>
+        <button type="button" class="boton-cita" id="registrarCuidado"><a href="<?php echo URL_VISTAS ?>registrarCuidados.php">Registrar Cuidado</a></button>
     </div>
 <?php }?>
     <h1 class="u-text u-text-default u-text-cuidado .u-title">Lista de cuidados</h1>
