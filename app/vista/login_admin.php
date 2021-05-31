@@ -18,8 +18,8 @@ require_once "../../configuracion/env.php";
     <div class="main_login">
         <h1 class="sign">Iniciar Sesión</h1>
         <form action="<?php echo URL_CONTROLADORES?>login_admin.php" method="post" class="form1">
-            <input class="email" name="user" type="text" placeholder="Usuario">
-            <input class="pass" name="pass" type="password" placeholder="Password">
+            <input class="email" name="user" type="text" placeholder="Usuario" required>
+            <input class="pass" name="pass" type="password" placeholder="Password" required>
             <input class="login" type="submit" value="Login">
             <p class="forgot"><a href="login.php">Cliente</p>
         </form>
