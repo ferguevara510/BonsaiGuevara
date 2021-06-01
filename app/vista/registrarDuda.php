@@ -98,12 +98,13 @@ session_start();
             <?php if($duda->respuesta == null && isset($_SESSION["usuario"])){?>
             <button class="respuesta boton-azul" id-duda="<?php echo $duda->id_duda?>" id="btn-respuesta-<?php echo $duda->id_duda?>">Responder</button>
             <?php }?>
-            <div class="contenedor-respuesta">
+            <div class="contenedor-respuesta" id="contenedor-respuesta-<?php echo $duda->id_duda?>">
                 <div class="nombre-duda <?php echo $duda->respuesta != null ? "" : "tag-hidden";?>" id="nombre-<?php echo $duda->id_duda?>"><?php echo "{$administrador->nombre} {$administrador->apellidoPaterno} {$administrador->apellidoMaterno}"?></div>
                 <div class="respuesta-duda <?php echo $duda->respuesta != null ? "" : "tag-hidden";?>" id="respuesta-<?php echo $duda->id_duda?>"><?php echo $duda->respuesta?></div>
                 <form class="tag-hidden form-respuesta" id="form-respuesta-<?php echo $duda->id_duda?>" action="<?php echo URL_CONTROLADORES ?>registrarDuda.php">
                 <input type="hidden" name="id_duda" value="<?php echo $duda->id_duda?>">
-                    <textarea name="respuesta" id="respuesta" rows="5"></textarea>
+                    <textarea name="respuesta" id="text-respuesta-<?php echo $duda->id_duda?>" rows="5"></textarea>
+                    <span class="col-sm-12 help-block"></span>
                     <button type="submit" class="boton-verde btn-guardar" id-duda="<?php echo $duda->id_duda?>">Guardar</button>
                 </form>
             </div>
