@@ -19,7 +19,6 @@ session_start();
     <meta name="description" content="">
     <meta name="page_type" content="np-template-header-footer-from-plugin">
     <title>Registrar Duda</title>
-    <link rel="stylesheet" href="<?php echo URL_CSS ?>consultarCliente.css">
     <link rel="stylesheet" href="<?php echo URL_CSS ?>nicepage.css" media="screen">
     <link rel="stylesheet" href="<?php echo URL_CSS ?>Iniciar-Sesión.css" media="screen">
     <link rel="stylesheet" type="text/css" href="<?php echo URL_CSS ?>style.css">
@@ -54,7 +53,7 @@ session_start();
     <meta property="og:url" content="index.html">
 </head>
 
-<body data-home-page="Iniciar-Sesión.html" data-home-page-title="Iniciar Sesión" class="u-body">
+<body class="u-body">
     <?php
     if(isset($_SESSION["usuario"])){
         require_once "plantilla/menuAdmin.php";

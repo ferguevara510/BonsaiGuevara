@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
   $(".btn-guardar").click(function (evento) {
     evento.preventDefault();
     boton = $(this);
-    if ($("#text-respuesta-" + boton.attr("id-duda")).val() != "") {
+    if ($("#text-respuesta-" + boton.attr("id-duda")).val().trim() != "") {
       var formData = new FormData(
         document.getElementById("form-respuesta-" + boton.attr("id-duda"))
       );

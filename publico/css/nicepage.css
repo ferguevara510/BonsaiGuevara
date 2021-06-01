@@ -3,6 +3,16 @@
  * License https://froala.com/wysiwyg-editor/terms/
  * Copyright 2014-2020 Froala Labs
  */
+.u-text-cliente {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  font-size: 1.25rem !important;
+  font-weight: 700 !important;
+  margin: 66px auto 0 !important;
+}
 
 .alert-custom{
   color: #FFF !important;
