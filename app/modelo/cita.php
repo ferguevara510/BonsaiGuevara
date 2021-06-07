@@ -230,7 +230,7 @@ class Cita
         $sql = "SELECT * FROM cita";
         if($result = $mysqli->query($sql)){
             if($result->num_rows > 0){ 
-                if($row = $result->fetch_array()){
+                while($row = $result->fetch_array()){
                     $cita = new Cita();
                     $cita->folio = $row["folio"];
                     $cita->fecha = $row["fecha"];
