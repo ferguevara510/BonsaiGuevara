@@ -142,6 +142,7 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
           $row = $result->fetch_array(MYSQLI_ASSOC);
 
           // Retrieve individual field value
+          $imagen = $row ["imagenBonsai"];
           $nombreCi = $row["nombreCientifico"];
           $nombreCo = $row["nombreComun"];
           $precio = $row["precio"];
@@ -250,7 +251,7 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
             <img src="../../publico/imagenes/upload.gif" width='200' height='200' class="inputImage" />
           </label>
 
-          <input type="file" name="uploadfile" oninput='validity.valid' id="file-input" single accept="image/png, .jpeg, .jpg , .gif,.bmp">
+          <input type="file" name="uploadfile" oninput='validity.valid' id="file-input" single accept="image/png, .jpeg, .jpg , .gif,.bmp" value= "<?php $imagen?>">
           <!--Si la imagen esta puesta manda el siguiente mensaje-->
           <!--Arreglar esta onda-->
           <?php
@@ -338,7 +339,7 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
         <span class='help-block inputFont'><?php echo $edadErr; ?></span>
         <br>
         <input type="hidden" name="id" value="<?php echo $id; ?>" />
-        <button class="registrar" type="submit" name="upload">Actuializar</button>
+        <button class="registrar" type="submit" name="upload">Actualizar</button>
         <button class="limpiar" type="reset">Limpiar </button>
       </p>
 
