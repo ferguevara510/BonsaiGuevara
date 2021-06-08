@@ -110,7 +110,6 @@
                 <div alt="" class="u-image-logo u-image-perfil u-image u-image-circle" data-image-width="1280" data-image-height="854">
                 </div>
                 <a href="../../index.php"
-                    class="boton-verde u-btn u-button-style u-hover-palette-1-dark-1 u-btn-2">CANCELAR</a>
             </div>
         </section>
     </div>
