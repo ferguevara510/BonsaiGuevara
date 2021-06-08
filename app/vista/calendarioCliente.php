@@ -92,7 +92,7 @@ session_start();
                 </div>
                 <div class="modal-body">
                     <div class="contenedor">
-                        <div id="alerta-registrar" class="alert alert-dismissible tag-hidden" role="alert">
+                        <div id="alerta-registrar" class="alert alert-dismissible alert-custom tag-hidden" role="alert">
                             <h4 class="alert-heading">Notificación</h4>
                             <p class="mensaje"></p>
                         </div>

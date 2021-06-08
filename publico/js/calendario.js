@@ -196,7 +196,7 @@ document.addEventListener("DOMContentLoaded", function () {
             calendar.addEvent(res.cita);
           })
           .fail(function (res) {
-            mostrarMensaje("No se ha podido guardar la cita", false);
+            mostrarMensaje("No se ha podido guardar la cita, fallo en la conexion a la base de datos", false,"#alerta-registrar");
           });
       } else {
         mostrarMensaje(
