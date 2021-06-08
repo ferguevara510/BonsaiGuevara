@@ -40,7 +40,7 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
 
 
   // Validacion de los campos
-  if (empty($namCiERR && $namCoERR)) {
+  if (empty($namCiERR || $namCoERR)) {
 
     // If upload button is clicked ...
     if (isset($_POST['upload'])) {

@@ -109,7 +109,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
   // Validacion de los campos
-  if (empty($namCiERR && $namCoERR)) {
+  if (empty($namCiERR || $namCoERR)) {
 
     // If upload button is clicked ...
     if (isset($_POST['upload'])) {
@@ -214,6 +214,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
   </script>
 
+
+
   <meta property="og:title" content="Inicio">
   <meta property="og:type" content="website">
   <meta name="theme-color" content="#478ac9">
@@ -275,9 +277,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <span class='help-block inputFont'><?php echo $namCiERR; ?></span>
         <br>
 
-        <label class="inputFont" for="nombre">Nombre Comun del bonsái</label>
+        <label class="inputFont" for="nombre" onClick="return empty()" >Nombre Comun del bonsái</label>
         <br>
-        <input name="nombreCo" type="text">
+        <input name="nombreCo" type="text" id="nombreNorm">
         <!--Error de nombre comun-->
         <span class='help-block inputFont'><?php echo $namCoERR; ?></span>
         <br>
