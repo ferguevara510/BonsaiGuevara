@@ -55,7 +55,7 @@
             <div class="u-clearfix u-sheet u-sheet-1">
                 <h1 class="u-text u-text-default u-text-1">Editar Empresa</h1>
                 <div class="u-form u-form-1">
-                    <form enctype="multipart/form-data" action="<?php echo URL_CONTROLADORES?>editarEmpresa.php" method="POST" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form"
+                    <form enctype="multipart/form-data" action="<?php echo URL_CONTROLADORES?>editarEmpresa.php" method="post" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form"
                         style="padding: 10px" source="custom" name="form">
                         <input type="hidden" name="usuario" value="administrador">
                         <div class="u-form-group u-form-name">
@@ -75,12 +75,12 @@
                         </div>
                         <div class="u-form-group u-form-group-4">
                             <label for="text-5cce" class="u-form-control-hidden u-label">Contraseña</label>
-                            <input type="password" placeholder="Contraseña" id="contrasena" name="contrasena"
+                            <input type="password" placeholder="Contraseña nueva" id="contrasena" name="contrasena"
                                 class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white">
                         </div>
                         <div class="u-form-group u-form-group-5">
-                            <label for="text-d7af" class="u-form-control-hidden u-label">Confirmar Contraseña</label>
-                            <input type="password" placeholder="Confirmar contraseña" id="confirmarContrasena"
+                            <label for="text-d7af" class="u-form-control-hidden u-label">Contraseña actual</label>
+                            <input type="password" placeholder="Contraseña actual" id="confirmarContrasena"
                                 name="confirmarContrasena" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white">
                         </div>
                         <div class="u-form-email u-form-group">
@@ -99,8 +99,7 @@
                                 class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
                         </div>
                         <div class="u-align-right u-form-group u-form-submit">
-                            <a href="#" class="boton-verde u-btn u-btn-submit u-button-style u-btn-1">ACEPTAR<br>
-                            </a>
+                            <a href="#" class="boton-verde u-btn u-btn-submit u-button-style u-btn-1">ACEPTAR<br></a>
                             <input type="submit" value="submit" class="u-form-control-hidden">
                         </div>
                         <div class="u-form-send-message u-form-send-success"> Tus datos han sido actualizados. </div>
