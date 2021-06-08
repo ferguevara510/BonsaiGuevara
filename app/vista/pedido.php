@@ -54,7 +54,7 @@ include URL_CONTROLADORES . "carrito.php";
 
 
             <div class="form-group">
-                <label for="nInterior">No. Interior</label>
+                <label for="nInterior">No. Interior (Opcional)</label>
                 <input type="text" class="form-control" id="numInt" name="numInt" placeholder="#">
             </div>
 
