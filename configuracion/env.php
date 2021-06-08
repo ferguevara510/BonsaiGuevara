@@ -19,28 +19,27 @@ define('DB_SERVER', 'localhost');
 define("DB_USERNAME", "root");
 define("DB_PASSWORD","");
 define("DB_DATABASE", "bonsaiguevara");
-mysqli_report(MYSQLI_REPORT_STRICT);
 
-try {
+error_reporting(E_ERROR | E_PARSE);
+
 $mysqli = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
-
-} catch (mysqli_sql_exception $e){
-    
-    header("location: ../../app/controlador/error.php");
-        exit();
+if ($mysqli->connect_error) {
+	echo "<script type='text/javascript'>
+	alert('Error de Conexión a la Base de Datos, intentelo más tarde');
+	window.location.href='".URL_VISTAS.'pedido.php'."';
+	</script>";
+    die('Error de Conexión (' . $mysqli->connect_errno . ') '
+            . $mysqli->connect_error);
 }
 
-try {
-
-    $mysqli2 = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
-    
-    } catch (mysqli_sql_exception $e){
-
-        header("location: ../../app/controlador/error.php");
-        exit();
-    }
-    
-
-
+$mysqli2 = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
+if ($mysqli2->connect_error) {
+	echo "<script type='text/javascript'>
+	alert('Error de Conexión a la Base de Datos, intentelo más tarde');
+	window.location.href='".URL_VISTAS.'pedido.php'."';
+	</script>";
+    die('Error de Conexión (' . $mysqli->connect_errno . ') '
+            . $mysqli->connect_error);
+}
 
 ?>
