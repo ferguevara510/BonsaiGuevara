@@ -35,6 +35,7 @@ class Administrador {
                     $administrador->numTelefono=$row["numTelefono"];
                     $administrador->direccion=$row["direccion"];
                     $administrador->usuario=$row["usuario"];
+                    $administrador->contrasena=$row["contrasena"];
                 }   
             }
             $result->close();
