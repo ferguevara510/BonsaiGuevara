@@ -67,7 +67,7 @@ if(isset($_GET["id_cuidado"])){
                     <form action="<?php echo URL_CONTROLADORES?>editarCuidados.php" method="post" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form"
                         style="padding: 10px" source="custom" name="form" enctype="multipart/form-data">
                         <input type="hidden" name="id_cuidado" value="<?php echo "{$cuidado->id_cuidado}"; ?>" >
-                 
+                        
                         <div class="u-form-group u-form-group-2">
                             <label for="name-dc48" class="u-form-control-hidden u-label">Cantidad de Riego</label>
                             <input type="text" value="<?php echo "{$cuidado->cantidadRiego}"; ?>" placeholder="Cantidad de riego" id="cantidadriego" name="cantidadriego"
@@ -121,19 +121,30 @@ if(isset($_GET["id_cuidado"])){
                         </select>
                         </div> 
 
+
+                       
+                        
+
                         <div class="u-align-right u-form-group u-form-submit">
-                            <a href="<?php echo URL_CONTROLADORES?>registrarCuidados.php" class="boton-verde u-btn u-btn-submit u-button-style u-btn-1">ACEPTAR<br>
-                            </a>
-                            <input type="submit" value="submit" class="u-form-control-hidden">
-                            
+                        <a href="<?php echo URL_CONTROLADORES?>registrarCuidados.php" class="boton-verde u-btn u-btn-submit u-button-style u-btn-1">ACEPTAR<br>
+                        </a>
+                        
+                        
+                        <input type="submit" value="submit" class="u-form-control-hidden">
                         </div>
+                        <a class="u-btn-2"></a>
+                        <a href="<?php echo URL_VISTAS?>consultarCuidados.php" class="boton-verde u-btn u-btn-1">CANCELAR</a>
                         <div class="u-form-send-message u-form-send-success"> Los cuidados han sido registrados. </div>
-                        <div class="u-form-send-error u-form-send-message"> Ha ocurrido un error al guardar los cuidados. </div>
+                        
+                        <div class="u-form-send-error u-form-send-message"> Ha ocurrido un error al guardar los cuidados en la base de datos,intentelo mas tarde. </div>
+                        
                         <input type="hidden" value="" name="recaptchaResponse">
 
+                        
+                        
                     </form>
-                </div>
         </section>
+        
     </div>
 
     <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-712f">
